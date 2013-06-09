@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp" >
+
+    <TextView
+        android:id="@+id/addConnectionTitletextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_connection_dialog_title_txtv"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/serverConnectionTitleEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/addConnectionTitletextView"
+        android:layout_below="@+id/addConnectionTitletextView"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="text|textNoSuggestions" />
+
+    <TextView
+        android:id="@+id/addConnectionHostTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serverConnectionTitleEditText"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_connection_dialog_host_txtv"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/serverConnectionHostEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addConnectionHostTextView"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="text|textNoSuggestions" />
+
+    <TextView
+        android:id="@+id/addServerConnectionPortTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serverConnectionHostEditText"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_connection_dialog_port"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/serverConnectionPortEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addServerConnectionPortTextView"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="numberSigned|textNoSuggestions"
+        android:text="@string/add_connection_dialog_port_hint" />
+
+    <TextView
+        android:id="@+id/addConnectionDescTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serverConnectionPortEditText"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_connection_dialog_description_txtv"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/serverConnectionDescriptionEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addConnectionDescTextView"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:lines="3" />
+
+    <TextView
+        android:id="@+id/addConnectionTypeTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serverConnectionDescriptionEditText"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_connection_dialog_type_txtv"
+        android:textColor="@color/black" />
+
+    <Spinner
+        android:id="@+id/serverConnectionAuthTypeSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addConnectionTypeTextView" />
+
+    <TextView
+        android:id="@+id/addConnectionLoginTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serverConnectionAuthTypeSpinner"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_connection_dialog_login_txtv"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/serverConnectionLoginEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addConnectionLoginTextView"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="text|textNoSuggestions" />
+
+    <TextView
+        android:id="@+id/addConnectionPasswordTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serverConnectionLoginEditText"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_connection_dialog_pwd_txtv"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/serverConnectionPasswordEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addConnectionPasswordTextView"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+</RelativeLayout>

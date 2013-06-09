@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_or_update_script_model_title_label" />
+
+    <EditText
+        android:id="@+id/addOrUpdateModelScriptTitleEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="text|textNoSuggestions" />
+
+    <Spinner
+        android:id="@+id/addOrUpdateModelScriptSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:spinnerMode="dropdown" />
+
+    <EditText
+        android:id="@+id/addOrUpdateModelScriptValueEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="@string/add_or_update_script_model_hint"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:lines="20"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

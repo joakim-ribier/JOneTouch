@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowBackground">@color/gray</item>
+        <item name="android:colorBackground">@color/gray</item>
+        <item name="android:editTextStyle">@style/EditTextAppTheme</item>
+    </style>
+
+    <style name="EditTextAppTheme" parent="android:Widget.EditText">
+        <item name="android:background">@drawable/edit_text_selector</item>
+        <item name="android:padding">4dp</item>
+         <item name="android:textSize">@dimen/_14sp</item>
+    </style>
+
+    <style name="TextViewWhiteAppTheme" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_18sp</item>
+    </style>
+
+    <style name="TextViewGreenAppTheme" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/green_overlay</item>
+        <item name="android:textSize">@dimen/_12sp</item>
+    </style>
+
+    <style name="TextViewRedAppTheme" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/red_overlay</item>
+        <item name="android:textSize">@dimen/_12sp</item>
+    </style>
+</resources>

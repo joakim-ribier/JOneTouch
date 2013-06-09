@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:paddingTop="1dp" >
+
+        <LinearLayout
+            android:id="@+id/myMenuItemConnectionLinearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray23"
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/myMenuItemServerConnectionUpdateClick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_menu_server_connection_selector"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:id="@+id/myMenuItemConnectionImage"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/my_menu_update_server_connection"
+                    android:src="@drawable/edit_click" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/myMenuItemConnectionTerminalLayoutClick"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/my_menu_server_connection_selector"
+                android:clickable="true"
+                android:padding="10dp" >
+
+                <TextView
+                    android:id="@+id/myMenuItemConnectionTitleTextView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/myMenuItemServerConnectionDeleteClick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_menu_server_connection_selector"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/my_menu_remove_server_connection"
+                    android:src="@drawable/delete" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

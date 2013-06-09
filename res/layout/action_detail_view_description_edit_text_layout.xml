@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="5dp" >
+
+    <EditText
+        android:id="@+id/actionDetailViewDescriptionEditText"
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="textMultiLine|textNoSuggestions">
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:layout_marginLeft="5dp" >
+
+        <ImageView
+            android:id="@+id/actionDetailViewDescriptionUndoButton"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/image_undo_selector"
+            android:clickable="true"
+            android:contentDescription="@string/cancel" >
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/actionDetailViewDescriptionValidateButton"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/image_check_selector"
+            android:clickable="true"
+            android:contentDescription="@string/action_detail_validate_button" >
+        </ImageView>
+    </LinearLayout>
+
+</LinearLayout>

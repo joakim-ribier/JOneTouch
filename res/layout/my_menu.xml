@@ -1,0 +1,220 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".SlideLeftMenuActivity" >
+
+    <LinearLayout
+        android:id="@+id/myMenuLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/relativeLayoutActionAdd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_add_action"
+                android:src="@drawable/add" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_add_action"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@color/gray23"
+            android:padding="10dp" />
+
+        <LinearLayout
+            android:id="@+id/myMenuScriptModelAddButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_add_script_model"
+                android:src="@drawable/add" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_add_script_model"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myMenuScriptModelUpdateButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_update_script_model"
+                android:src="@drawable/edit_click" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_update_script_model"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@color/gray23"
+            android:padding="10dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutLeftMenuAddConnection"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_add_server_connection"
+                android:src="@drawable/add" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_add_server_connection"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myMenuLayoutContainsServersItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/gray23"
+            android:padding="10dp" >
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/myMenuHelpLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_help"
+                android:src="@drawable/help" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_help"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/myMenuViewAboutOfLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_about_of"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_about_of"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/myMenuViewLogoutLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_logout"
+                android:src="@drawable/logout" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_logout"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/gray23"
+            android:padding="10dp" />
+    </LinearLayout>
+
+</ScrollView>
