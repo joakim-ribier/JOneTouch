@@ -46,6 +46,7 @@ import fr.rjoakim.android.jonetouch.service.ServiceException;
  */
 public abstract class UpdateActionScriptMyDialog extends MyDialog<List<String>> {
 
+	private final static String SEPARATOR = "#script suivant#";
 	private final ScriptService scriptService;
 
 	public UpdateActionScriptMyDialog(Activity activity, ScriptService scriptService) {
@@ -136,7 +137,7 @@ public abstract class UpdateActionScriptMyDialog extends MyDialog<List<String>> 
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				if (isChecked) {
-					insertTextAtCursorPosition(editText, getString(R.string.add_or_update_action_seperator_value) + "\n");
+					insertTextAtCursorPosition(editText, SEPARATOR + "\n");
 					checkBox.setChecked(false);
 				}
 			}
@@ -154,8 +155,7 @@ public abstract class UpdateActionScriptMyDialog extends MyDialog<List<String>> 
 
 	private List<String> formatScriptValues() {
 		String values = getEditTextValue(R.id.addOrUpdateActionScriptEditText);
-		String separator = getString(R.string.add_or_update_action_seperator_value);
-		Iterable<String> iterable = Splitter.on(separator).split(values);
+		Iterable<String> iterable = Splitter.on(SEPARATOR).split(values);
 		if (Iterables.isEmpty(iterable)) {
 			return Lists.newArrayList(values.trim());
 		} else {
@@ -172,10 +172,9 @@ public abstract class UpdateActionScriptMyDialog extends MyDialog<List<String>> 
 	public void show(Action action) {
 		super.show();
 		EditText editText = (EditText) content.findViewById(R.id.addOrUpdateActionScriptEditText);
-		String separator = getString(R.string.add_or_update_action_seperator_value);
 		for (ActionScript actionScript: action.getActionScripts()) {
 			String s = editText.getText().toString();
-			s = s + actionScript.getScript() + "\n" + separator + "\n";
+			s = s + actionScript.getScript() + "\n" + SEPARATOR + "\n";
 			editText.setText(s);
 		}
 	}

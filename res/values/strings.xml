@@ -3,135 +3,102 @@
 
     <!-- global view -->
     <string name="app_name">JOneTouch</string>
-    <string name="set_clipboard_password">Le mot de passe a été copié dans le presse-papier.</string>
-    <string name="failed">Une erreur est survenue, veuillez réessayer ou contacter directement le support.</string>
-    <string name="incorrect_data">Les données saisies sont incorrectes.</string>
-    <string name="delete_button">Supprimer</string>
-    <string name="no_button">Oui</string>
-    <string name="yes_button">Non</string>
-    <string name="cancel">annuler</string>
-    <string name="add">ajouter</string>
+    <string name="set_clipboard_password">The password has been copied to the clipboard.</string>
+    <string name="failed">An error occurred, please try again or contact support.</string>
+    <string name="incorrect_data">The data entered is incorrect.</string>
+    <string name="delete_button">Delete</string>
+    <string name="no_button">Yes</string>
+    <string name="yes_button">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">add</string>
     <string name="image_content_description">logo</string>
 
     <!-- application top menu -->
     <string name="activity_tool">menu</string>
-    <string name="activity_home">accueil</string>
-    <string name="activity_logout">déconnexion</string>
-    <string name="activity_refresh">rafraîchir</string>
-    <string name="activity_help">aide</string>
+    <string name="activity_home">home</string>
+    <string name="activity_logout">disconnect</string>
+    <string name="activity_refresh">refresh</string>
+    <string name="activity_help">help</string>
 
     <!-- my menu view -->
-    <string name="my_menu_add_action">Créer une action</string>
-    <string name="my_menu_add_script_model">Modèle de script</string>
-    <string name="my_menu_update_script_model">Modifier un modèle</string>
-    <string name="my_menu_help">Aide</string>
-    <string name="my_menu_add_server_connection">Connexion serveur</string>
-    <string name="my_menu_remove_server_connection">supprimer</string>
-    <string name="my_menu_nothing_server_connection">( cliquez ci-dessus pour créer une nouvelle connexion )</string>
-    <string name="my_menu_update_server_connection">modifier</string>
-    <string name="my_menu_logout">Se déconnecter</string>
-    <string name="my_menu_about_of">À propos</string>
+    <string name="my_menu_add_action">Create action</string>
+    <string name="my_menu_add_script_model">Script template</string>
+    <string name="my_menu_update_script_model">Update template</string>
+    <string name="my_menu_help">Help</string>
+    <string name="my_menu_add_server_connection">Server connection</string>
+    <string name="my_menu_remove_server_connection">delete</string>
+    <string name="my_menu_nothing_server_connection">( click above to create a new connection )</string>
+    <string name="my_menu_update_server_connection">update</string>
+    <string name="my_menu_logout">Disconnect</string>
+    <string name="my_menu_about_of">About</string>
 
     <!-- create account activity -->
-    <string name="create_account_email">Adresse électronique</string>
-    <string name="create_account_password">Mot de passe ( avec au minimum 8 caractères )</string>
-    <string name="create_account_button_ok">Créer mon compte</string>
-    <string name="create_account_error_validation_email">L\'adresse électronique n\'est pas valide.</string>
-    <string name="create_account_error_validation_pwd">Le mot de passe n\'est pas valide.</string>
-    <string name="create_account_failed">Une erreur est survenue pendant la création du compte.</string>
+    <string name="create_account_email">Email address</string>
+    <string name="create_account_password">Password ( minimum 8 characters )</string>
+    <string name="create_account_button_ok">Create account</string>
+    <string name="create_account_error_validation_email">The email address is invalid.</string>
+    <string name="create_account_error_validation_pwd">The password is invalid.</string>
+    <string name="create_account_failed">An error occurred while creating the account.</string>
 
     <!-- help dialog view -->
-    <string name="help_dialog_title">Bienvenue sur l\'application</string>
-    <string name="help_dialog_text_1"><![CDATA[<strong>JOneTouch</strong> est un gestionnaire de scripts qui a pour seul but de vous faciliter l\'administration d\'urgence de votre serveur depuis votre t&eacute;l&eacute;phone par l\'ex&eacute;cution d\'action en \"OneTouch\".]]></string>
-    <string name="help_dialog_text_2"><![CDATA[<br /><br />Le menu de gauche, permet d\'effectuer plusieurs op&eacute;rations : <ol><li>Param&eacute;trer et enregistrer les connexions SSH des serveurs distants.</li><li>Pr&eacute;d&eacute;finir les mod&egrave;les afin de ne pas r&eacute;&eacute;crire toujours le m&ecirc;me script.</li><li>Cr&eacute;er une action avec un ou plusieurs scripts sur une connexion donn&eacute;e.</li><li>Ex&eacute;cuter une action avec un simple et rapide \"OneTouch\".</li></ol>]]></string>
-    <string name="help_dialog_text_3"><![CDATA[<br />Le mot de passe de l\'application est crypt&eacute; en base de donn&eacute;es avec l\'algorithme <strong>SHA-2</strong> <i>(Secure Hash Algorithm)</i>. Les acc&egrave;s SSH des serveurs sont &eacute;galement crypt&eacute;s avec l\'algorithme <strong>AES</strong> <i>(Advanced Encryption Standard)</i>.<br />]]></string>
-    <string name="help_dialog_text_4"><![CDATA[<br />En cas de probl&egrave;mes ou de questions veuillez contacter directement le support.]]></string>
+    <string name="help_dialog_title">Welcome</string>
+    <string name="help_dialog_text_1"><![CDATA[Execute quickly scripts in SSH on your external servers with  \'OneTouch\'.]]></string>
+    <string name="help_dialog_text_2"><![CDATA[<br /><br />The left menu allows several operations: <ol><li>Save your SSH server connections.</li><li>Create your administration scripts.</li><li>Configure your action with default server connection and add scripts which will be executed by it.</li><li>Execute your action with one touch.</li></ol>]]></string>
+    <string name="help_dialog_text_3"><![CDATA[<br />The application password is encrypted in a database with <strong>SHA-2</strong> <i>(Secure Hash Algorithm)</i> algorithm. All server connection access is also encrypted in the database with <strong>AES</strong> <i>(Advanced Encryption Standard)</i> algorithm.<br />]]></string>
+    <string name="help_dialog_text_4"><![CDATA[<br />In case of problems or questions, please contact support by email.]]></string>
 
     <!-- logIn dialog view -->
-    <string name="log_in_dialog_title">Connexion à l\'application</string>
-    <string name="log_in_dialog_pwd_wrong">Le mot de passe est invalide.</string>
-
-    <!-- add server connection my dialog -->
-    <string name="add_connection_dialog_title">Nouvelle connexion</string>
-    <string name="add_connection_dialog_title_txtv">Nom de la connexion :</string>
-    <string name="add_connection_dialog_host_txtv">Hôte ( domaine / ip ) :</string>
-    <string name="add_connection_dialog_description_txtv">Description : </string>
-    <string name="add_connection_dialog_type_txtv">Type de connexion :</string>
-    <string name="add_connection_dialog_login_txtv">Utilisateur : </string>
-    <string name="add_connection_dialog_pwd_txtv">Mot de passe :</string>
-    <string name="add_connection_dialog_validation_password">Pour ce type d\'authentification le mot de passe est obligatoire.</string>
-    <string name="add_connection_dialog_validation_connextion_exists">Une connexion avec le même hôte et le même type d\'authentification existe déjà.</string>
-    <string name="add_connection_dialog_port">Port :</string>
-    <string name="add_connection_dialog_port_hint">22</string>
-
-    <!-- update server connection my dialog -->
-    <string name="update_server_connection_my_dialog_title">Mise à jour d\'une connexion</string>
-    <string name="update_server_connection_my_dialog_success">La connexion au serveur a été modifié.</string>
-
-    <!-- remove server connection my dialog -->
-    <string name="delete_server_connection_my_dialog_title">Suppression d\'une connexion</string>
-    <string name="delete_server_connection_my_dialog_text">Êtes-vous sûr de vouloir supprimer la connexion au serveur suivant ?</string>
-    <string name="delete_server_connection_my_dialog_type_no">connexion sans authentification</string>
-    <string name="delete_server_connection_my_dialog_type_auth">connexion avec mot de passe</string>
-    <string name="delete_server_connection_my_dialog_replace">à remplacer</string>
-    <string name="delete_server_connection_my_dialog_success">La connexion au serveur a été supprimé.</string>
-
-    <!-- choice connection my dialog -->
-    <string name="choice_connection_dialog_title">Choix de la connexion</string>
-    <string name="choice_connection_dialog_unknow">aucune connexion de sélectionnée</string>
-
-    <!-- my dialog -->
-    <string name="my_dialog_title">Boîte de dialogue</string>
+    <string name="log_in_dialog_title">Connect to the application</string>
+    <string name="my_dialog_title">Dialog</string>
     <string name="my_dialog_positive_button">OK</string>
-    <string name="my_dialog_negative_button">Annuler</string>
+    <string name="my_dialog_negative_button">Cancel</string>
 
     <!-- action view layout -->
-    <string name="action_view_layout_no_server_connection">la connexion par défaut n\'est pas définie\n( exécutez l\'action et sélectionnez la connexion )</string>
-    <string name="action_view_server_connection">la connexion par défaut est définie sur: \n( %1$s )</string>
-    <string name="about_of_loading">chargement &#8230;</string>
+    <string name="action_view_layout_no_server_connection">The default connection is not defined\n( execute action and select connection )</string>
+    <string name="action_view_server_connection">The default connection is defined on : \n( %1$s )</string>
+    <string name="about_of_loading">loading &#8230;</string>
 
     <!-- add or update action my dialog -->
-    <string name="add_action_dialog_title">Nouvelle action</string>
-    <string name="add_or_update_action_title_label">Nom de l\'action :</string>
+    <string name="add_action_dialog_title">New action</string>
+    <string name="add_or_update_action_title_label">Title :</string>
     <string name="add_or_update_action_description_label">Description :</string>
-    <string name="add_or_update_action_server_spinner_label">Connexion serveur &#8230;</string>
-    <string name="add_or_update_action_public_label">à l\'execution de l\'action</string>
-    <string name="add_or_update_action_script_label">Copiez et collez votre script ici ou selectionnez un modèle dans la liste ci-dessus.\n\nVous avez la possibilité d\'executer plusieurs scripts en respectant correctement le séparateur suivant: #script suivant#.\n\nModèle de script :\n\nls -l /var/log/myapp/\necho \"le répertoire de log est vide\"\n#script suivant#\nmkdir /home/savelog\ncp /var/log/myapp/* /home/savelog/\necho \"log sauvegardé\"\n#script suivant#\nls -l /home/savelog/\necho \"OK\"</string>
-    <string name="add_or_update_action_seperator_label">insérer une balise séparateur</string>
-    <string name="add_or_update_action_seperator_value">#script suivant#</string>
-    <string name="delete_action_dialog_title">Suppresion d\'une action</string>
-    <string name="delete_action_dialog_text">Êtes-vous sûr de vouloir supprimer l\'action suivante ?</string>
+    <string name="add_or_update_action_server_spinner_label">Server connection &#8230;</string>
+    <string name="add_or_update_action_public_label">execute the action</string>
+    <string name="add_or_update_action_script_label">Copy and paste your script here or select a template from the list above.\n\nYou have the ability to run multiple scripts simultaneously according to the following separator: #script suivant#.\n\Script template :\n\nls -l /var/log/myapp/\necho \"empty directory\"\n#script suivant#\nmkdir /home/savelog\ncp /var/log/myapp/* /home/savelog/\necho \"save log\"\n#script suivant#\nls -l /home/savelog/\necho \"OK\"</string>
+    <string name="add_or_update_action_seperator_label">insert separator tag</string>
+    <string name="delete_action_dialog_title">Delete action</string>
+    <string name="delete_action_dialog_text">Do you want to remove this action?</string>
 
     <!-- action list top layout -->
-    <string name="action_list_top_layout_all">Toutes les actions</string>
+    <string name="action_list_top_layout_all">All actions</string>
 
     <!-- action detail view -->
-    <string name="action_detail_delete_button">Supprimer l\'action</string>
-    <string name="action_detail_validate_button">valider</string>
+    <string name="action_detail_delete_button">Delete action</string>
+    <string name="action_detail_validate_button">OK</string>
 
     <!-- add or update action script action my dialog -->
-    <string name="action_detail_view_script_title_number">Liste des scripts ( %1$s )</string>
-    <string name="add_action_script_dialog_title">Ajouter des scripts</string>
-    <string name="update_action_script_dialog_title">Modification des scripts</string>
-    <string name="delete_action_script_dialog_title">Suppression d\'un script</string>
-    <string name="delete_action_script_dialog_text">Êtes-vous sûr de vouloir supprimer le script suivant ?</string>
+    <string name="action_detail_view_script_title_number">Scripts list ( %1$s )</string>
+    <string name="add_action_script_dialog_title">Add script</string>
+    <string name="update_action_script_dialog_title">Update script</string>
+    <string name="delete_action_script_dialog_title">Delete script</string>
+    <string name="delete_action_script_dialog_text">Do you want to remove this script ?</string>
 
     <!-- add update and delete model script dialog -->
-    <string name="add_script_model_dialog_title">Nouveau modèle</string>
-    <string name="add_or_update_script_model_title_label">Nom du script</string>
-    <string name="add_or_update_script_model_hint">Copiez et collez votre script ici ou selectionnez un modèle dans la liste ci-dessus.</string>
-    <string name="add_or_update_script_model_default_choice">sélectionnez un modèle &#8230;</string>
-    <string name="add_script_model_success">Le modèle de script \"%1$s\" a été créé avec succès.</string>
-    <string name="update_script_model_dialog_title">Modifier un modèle</string>
-    <string name="update_script_model_success">Le modèle de script \"%1$s\" a été modifié avec succès.</string>
-    <string name="update_script_model_unselected">Sélectionnez un modèle pour pouvoir le modifier ou le supprimer.</string>
-    <string name="delete_script_model_success">Le modèle de script \"%1$s\" a été supprimé avec succès.</string>
+    <string name="add_script_model_dialog_title">New template</string>
+    <string name="add_or_update_script_model_title_label">Title</string>
+    <string name="add_or_update_script_model_hint">Copy and paste your script here or select a template.</string>
+    <string name="add_or_update_script_model_default_choice">select a template &#8230;</string>
+    <string name="add_script_model_success">The script template \"%1$s\" has been created.</string>
+    <string name="update_script_model_dialog_title">Update template</string>
+    <string name="update_script_model_success">The script template \"%1$s\" has been updated.</string>
+    <string name="update_script_model_unselected">Select a template for to update it or delete.</string>
+    <string name="delete_script_model_success">The script template \"%1$s\" has been deleted.</string>
 
     <!-- command executor -->
-    <string name="command_executor_execute">Exécution du script &#8230;</string>
-    <string name="command_executor_try_connection">tentative de connexion à %1$s&#8230;\n</string>
-    <string name="command_executor_connect">connecté</string>
-    <string name="command_executor_desconnect">déconnecté</string>
-    <string name="command_executor_failed">problème de connexion :\n\n{%1$s}</string>
+    <string name="command_executor_execute">Executing script &#8230;</string>
+    <string name="command_executor_try_connection">connection attempt at %1$s&#8230;\n</string>
+    <string name="command_executor_connect">connected</string>
+    <string name="command_executor_desconnect">not logged</string>
+    <string name="command_executor_failed">connection error :\n\n{%1$s}</string>
 
 </resources>
