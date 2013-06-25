@@ -9,10 +9,10 @@ Execute quickly scripts in SSH on your external servers with  'OneTouch'
 
 This application is accessible by password.
 
-[JOneTouch on Googe Play Store](https://play.google.com/store/apps/details?id=fr.rjoakim.android.jonetouch)
+[JOneTouch on Google Play Store](https://play.google.com/store/apps/details?id=fr.rjoakim.android.jonetouch)
 
-CONTRIBUTION
-------------
+CONTRIBUTIONS
+-------------
 
 * [SlidingMenu](https://github.com/jfeinstein10/SlidingMenu)
 * [sshj](https://github.com/shikhar/sshj)
