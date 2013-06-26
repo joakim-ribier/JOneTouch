@@ -55,7 +55,6 @@ import fr.rjoakim.android.jonetouch.view.ActionView;
 public class JOneTouchActivity extends Activity implements OnGestureListener {
 
 	private static final String KEY_AUTH = "key_auth";
-	private static final String KEY_VIEW_ANIMATOR_INDEX = "key_view_animator_index";
 	
 	private MyAuthentication myAuthentication;
 	
@@ -111,7 +110,7 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 			
 		} else {
 			startApp(savedInstanceState);
-			buildAllActionViews(savedInstanceState);
+			buildAllActionViews(0);
 		}
 	}
 
@@ -169,19 +168,6 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 		logInDialog.show();
 	}
 	
-	private void buildAllActionViews(Bundle savedInstanceState) {
-		if (savedInstanceState != null) {
-			if (savedInstanceState.containsKey(KEY_VIEW_ANIMATOR_INDEX)) {
-				int index = (Integer) savedInstanceState.get(KEY_VIEW_ANIMATOR_INDEX);
-				buildAllActionViews(index);
-			} else {
-				buildAllActionViews(0);
-			}
-		} else {
-			buildAllActionViews(0);
-		}
-	}
-
 	private void buildAllActionViews(int index) {
 		actionListTopBarView.fill();
 
@@ -371,6 +357,5 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		outState.putSerializable(KEY_AUTH, myAuthentication);
-		outState.putSerializable(KEY_VIEW_ANIMATOR_INDEX, myViewAnimator.get().getDisplayedChild());
 	}
 }
