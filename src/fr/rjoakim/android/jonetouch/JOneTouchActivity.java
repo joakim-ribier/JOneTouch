@@ -258,7 +258,7 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			myMenu.show();
+			myMenu.hideOrShow();
 			break;
 		case R.id.action_options_help:
 			myMenu.displayHelpDialog();

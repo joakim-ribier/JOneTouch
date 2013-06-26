@@ -283,6 +283,14 @@ public class MyMenu {
 		slidingMenu.showMenu();
 	}
 	
+	public void hideOrShow() {
+		if (slidingMenu.isMenuShowing()) {
+			hide();
+		} else {
+			show();
+		}
+	}
+	
 	public void hide() {
 		slidingMenu.showContent();
 	}
