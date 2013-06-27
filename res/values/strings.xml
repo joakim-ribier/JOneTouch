@@ -50,7 +50,7 @@
 
     <!-- logIn dialog view -->
     <string name="log_in_dialog_title">Connect to the application</string>
-    <string name="my_dialog_title">Dialog</string>
+    <string name="log_in_dialog_pwd_wrong">Dialog</string>
  
     <!-- add server connection my dialog -->
     <string name="add_connection_dialog_title">New connection</string>
@@ -85,7 +85,7 @@
     <string name="choice_connection_dialog_unknow">no connection selected</string>
 
     <!-- my dialog -->
-    <string name="my_dialog_title">Dialo</string>
+    <string name="my_dialog_title">Dialog</string>
     <string name="my_dialog_positive_button">OK</string>
     <string name="my_dialog_negative_button">Cancel</string>
 
