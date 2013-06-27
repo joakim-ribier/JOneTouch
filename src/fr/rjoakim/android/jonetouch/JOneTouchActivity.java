@@ -72,6 +72,8 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 	private View.OnTouchListener gestureListener;
 	private ActionListTopBarView actionListTopBarView;
 	
+	private int backPressed = 0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -84,7 +86,6 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 				return gesureDetector.onTouchEvent(event);
 			}
 		};
-		
 		this.myAuthentication = new MyAuthentication();
 		
 		this.authenticationTypeService = new AuthenticationTypeService(getApplicationContext());
@@ -343,8 +344,16 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 	
 	@Override
 	public void onBackPressed() {
-		rebuildAllActionViews(0);
-		myMenu.hide();
+		backPressed ++;
+		if (backPressed == 2) {
+			backPressed = 0;
+			finish();
+		} else {
+			rebuildAllActionViews(0);
+			myMenu.hide();
+			Toast.makeText(this,
+					getString(R.string.back_pressed), Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	@Override

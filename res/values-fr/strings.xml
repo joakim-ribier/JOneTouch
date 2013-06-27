@@ -12,6 +12,7 @@
     <string name="cancel">annuler</string>
     <string name="add">ajouter</string>
     <string name="image_content_description">logo</string>
+    <string name="back_pressed">Appuyez une deuxième fois pour vous déconnecter de l\'application</string>
 
     <!-- application top menu -->
     <string name="activity_tool">menu</string>
