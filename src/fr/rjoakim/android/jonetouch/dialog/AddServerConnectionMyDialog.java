@@ -1,6 +1,7 @@
 package fr.rjoakim.android.jonetouch.dialog;
 
 import java.util.Collection;
+import java.util.List;
 
 import android.app.Activity;
 import android.view.View;
@@ -15,6 +16,7 @@ import fr.rjoakim.android.jonetouch.R;
 import fr.rjoakim.android.jonetouch.bean.AuthenticationType;
 import fr.rjoakim.android.jonetouch.bean.AuthenticationTypeEnum;
 import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
+import fr.rjoakim.android.jonetouch.dialog.bean.AuthenticationTypeUI;
 import fr.rjoakim.android.jonetouch.service.AuthenticationTypeService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
@@ -70,9 +72,28 @@ public abstract class AddServerConnectionMyDialog extends MyDialog<Long> {
 	
 	private void fillSpinner(View content) {
 		Collection<AuthenticationType> listTypes = authenticationTypeService.list();
+		List<AuthenticationTypeUI> authenticationTypeUIs = Lists.newArrayList();
+		for (AuthenticationType authenticationType: listTypes) {
+			switch (authenticationType.getType()) {
+			case NO_AUTHENTICATION:
+				authenticationTypeUIs.add(
+						new AuthenticationTypeUI(
+								authenticationType.getType(),
+								getString(R.string.server_connection_type_no_authentication)));
+				break;
+			case SSH_AUTHENTICATION_PASSWORD:
+				authenticationTypeUIs.add(
+						new AuthenticationTypeUI(
+								authenticationType.getType(),
+								getString(R.string.server_connection_type_ssh_authentication)));
+				break;
+			default:
+				break;
+			}
+		}
 		Spinner typeSpinner = (Spinner) content.findViewById(R.id.serverConnectionAuthTypeSpinner);
-		ArrayAdapter<AuthenticationType> dataAdapter = new ArrayAdapter<AuthenticationType>(activity,
-				R.layout.spinner_layout, Lists.newArrayList(listTypes));
+		ArrayAdapter<AuthenticationTypeUI> dataAdapter = new ArrayAdapter<AuthenticationTypeUI>(activity,
+				R.layout.spinner_layout, authenticationTypeUIs);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		typeSpinner.setAdapter(dataAdapter);
 	}
@@ -107,9 +128,9 @@ public abstract class AddServerConnectionMyDialog extends MyDialog<Long> {
 			return false;
 		}
 		
-		AuthenticationType authenticationType = getType();
+		AuthenticationTypeUI authenticationTypeUI = getType();
 		String password = getPassword();
-		if (authenticationType.getType() == AuthenticationTypeEnum.SSH_AUTHENTICATION_PASSWORD) {
+		if (authenticationTypeUI.getType() == AuthenticationTypeEnum.SSH_AUTHENTICATION_PASSWORD) {
 			if (Strings.isNullOrEmpty(password)) {
 				String failed = getString(R.string.add_connection_dialog_validation_password);
 				Toast.makeText(activity, failed, Toast.LENGTH_LONG).show();
@@ -122,10 +143,10 @@ public abstract class AddServerConnectionMyDialog extends MyDialog<Long> {
 	private Long createNewConnection() {
 		try {
 			String host = getHost();
-			AuthenticationType type = getType();
-			if (!serverService.isExists(host, type.getType())) {
+			AuthenticationTypeUI authenticationTypeUI = getType();
+			if (!serverService.isExists(host, authenticationTypeUI.getType())) {
 				return serverService.create(getTitle(), host, getPort(),
-						getDescription(), type, getLogin(), encryptPassword(getPassword()));
+						getDescription(), authenticationTypeUI.getType(), getLogin(), encryptPassword(getPassword()));
 			} else {
 				String failed = getString(R.string.add_connection_dialog_validation_connextion_exists);
 				Toast.makeText(activity, failed, Toast.LENGTH_LONG).show();
@@ -148,9 +169,9 @@ public abstract class AddServerConnectionMyDialog extends MyDialog<Long> {
 		return getEditTextValue(R.id.serverConnectionPasswordEditText);
 	}
 	
-	protected AuthenticationType getType() {
+	protected AuthenticationTypeUI getType() {
 		Spinner type = (Spinner) content.findViewById(R.id.serverConnectionAuthTypeSpinner);
-		return (AuthenticationType) type.getSelectedItem();
+		return (AuthenticationTypeUI) type.getSelectedItem();
 	}
 	
 	protected String getLogin() {

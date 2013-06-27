@@ -73,9 +73,8 @@ public class AuthenticationTypeDB extends DBHelper {
 				cursor.moveToFirst();
 				do {
 					Long id = cursor.getLong(cursor.getColumnIndex(COLUMN_NAME_ID));
-					String type = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_TYPE));
 					authenticationTypes.add(
-							new AuthenticationType(AuthenticationTypeEnum.fromId(id), type));
+							new AuthenticationType(AuthenticationTypeEnum.fromId(id)));
 				} while (cursor.moveToNext());
 			}
 			return authenticationTypes;

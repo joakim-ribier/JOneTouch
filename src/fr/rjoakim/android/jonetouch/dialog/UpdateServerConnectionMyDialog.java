@@ -103,6 +103,6 @@ public abstract class UpdateServerConnectionMyDialog extends AddServerConnection
 	
 	private Long updateServerConnection() throws ServiceException, CryptographyException {
 		return serverService.update(server, getTitle(), getHost(), getPort(),
-				getDescription(), getType(), getLogin(), encryptPassword(getPassword()));
+				getDescription(), getType().getType(), getLogin(), encryptPassword(getPassword()));
 	}
 }

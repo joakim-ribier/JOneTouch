@@ -65,6 +65,9 @@
     <string name="add_connection_dialog_port">Port :</string>
     <string name="add_connection_dialog_port_hint">22</string>
 
+    <string name="server_connection_type_no_authentication">aucune</string>
+    <string name="server_connection_type_ssh_authentication">ssh avec mot de passe</string>
+    
     <!-- update server connection my dialog -->
     <string name="update_server_connection_my_dialog_title">Mise à jour d\'une connexion</string>
     <string name="update_server_connection_my_dialog_success">La connexion au serveur a été modifié.</string>

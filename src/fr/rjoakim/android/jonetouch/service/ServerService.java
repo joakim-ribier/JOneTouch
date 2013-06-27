@@ -7,7 +7,6 @@ import android.content.Context;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 
-import fr.rjoakim.android.jonetouch.bean.AuthenticationType;
 import fr.rjoakim.android.jonetouch.bean.AuthenticationTypeEnum;
 import fr.rjoakim.android.jonetouch.bean.Server;
 import fr.rjoakim.android.jonetouch.db.DBException;
@@ -41,16 +40,16 @@ public class ServerService {
 		this.serverDB = new ServerDB(context);
 	}
 
-	public Long create(String title, String host, int port, String description, AuthenticationType authenticationType,
+	public Long create(String title, String host, int port, String description, AuthenticationTypeEnum type,
 			String login, String password) throws ServiceException {
 		
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(title), "title field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(host), "host field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(description), "description field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(login), "login field is required");
-		Preconditions.checkNotNull(authenticationType, "authenticationType is required");
+		Preconditions.checkNotNull(type, "type is required");
 		
-		switch (authenticationType.getType()) {
+		switch (type) {
 		case SSH_AUTHENTICATION_PASSWORD:
 			Preconditions.checkArgument(!Strings.isNullOrEmpty(password));
 			return createServerWithSSHAuthenticationPassword(title, host, port, description, login, password);
@@ -128,13 +127,14 @@ public class ServerService {
 	}
 
 	public Long update(Server server, String title, String host, Integer port,
-			String description, AuthenticationType type, String login,
+			String description, AuthenticationTypeEnum type, String login,
 			String password) throws ServiceException {
 
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(title), "title field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(host), "host field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(description), "description field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(login), "login field is required");
+		Preconditions.checkNotNull(type, "type is required");
 		try {
 			return serverDB.update(server,
 					title, host, port, description, type, login, password);

@@ -51,6 +51,41 @@
     <!-- logIn dialog view -->
     <string name="log_in_dialog_title">Connect to the application</string>
     <string name="my_dialog_title">Dialog</string>
+ 
+    <!-- add server connection my dialog -->
+    <string name="add_connection_dialog_title">New connection</string>
+    <string name="add_connection_dialog_title_txtv">Title :</string>
+    <string name="add_connection_dialog_host_txtv">Host ( domain / IP ) :</string>
+    <string name="add_connection_dialog_description_txtv">Description : </string>
+    <string name="add_connection_dialog_type_txtv">Connection type :</string>
+    <string name="add_connection_dialog_login_txtv">User : </string>
+    <string name="add_connection_dialog_pwd_txtv">Password :</string>
+    <string name="add_connection_dialog_validation_password">The password is required.</string>
+    <string name="add_connection_dialog_validation_connextion_exists">A connection with the same host already exist.</string>
+    <string name="add_connection_dialog_port">Port :</string>
+    <string name="add_connection_dialog_port_hint">22</string>
+    
+    <string name="server_connection_type_no_authentication">no authentication</string>
+    <string name="server_connection_type_ssh_authentication">ssh with password</string>
+
+    <!-- update server connection my dialog -->
+    <string name="update_server_connection_my_dialog_title">Updating connection</string>
+    <string name="update_server_connection_my_dialog_success">Сonnection updated</string>
+
+    <!-- remove server connection my dialog -->
+    <string name="delete_server_connection_my_dialog_title">Deleting connection</string>
+    <string name="delete_server_connection_my_dialog_text">Do you want to remove this connection ?</string>
+    <string name="delete_server_connection_my_dialog_type_no">connection without authentication</string>
+    <string name="delete_server_connection_my_dialog_type_auth">connection with password</string>
+    <string name="delete_server_connection_my_dialog_replace">replace</string>
+    <string name="delete_server_connection_my_dialog_success">Connection deleted</string>
+
+    <!-- choice connection my dialog -->
+    <string name="choice_connection_dialog_title">Connection choice</string>
+    <string name="choice_connection_dialog_unknow">no connection selected</string>
+
+    <!-- my dialog -->
+    <string name="my_dialog_title">Dialo</string>
     <string name="my_dialog_positive_button">OK</string>
     <string name="my_dialog_negative_button">Cancel</string>
 

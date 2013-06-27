@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.google.common.collect.Lists;
 
 import fr.rjoakim.android.jonetouch.bean.Authentication;
-import fr.rjoakim.android.jonetouch.bean.AuthenticationType;
 import fr.rjoakim.android.jonetouch.bean.AuthenticationTypeEnum;
 import fr.rjoakim.android.jonetouch.bean.NoAuthentication;
 import fr.rjoakim.android.jonetouch.bean.SSHAuthenticationPassword;
@@ -218,7 +217,7 @@ public class ServerDB extends DBHelper {
 	}
 	
 	public Long update(Server server, String title, String host, Integer port, String description,
-			AuthenticationType type, String login, String password) throws DBException {
+			AuthenticationTypeEnum type, String login, String password) throws DBException {
 		
 		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
 		db.beginTransaction();
@@ -230,7 +229,7 @@ public class ServerDB extends DBHelper {
 			values.put(COLUMN_NAME_HOST, host);
 			values.put(COLUMN_NAME_PORT, port);
 			values.put(COLUMN_NAME_DESCRIPTION, description);
-			values.put(COLUMN_NAME_AUTHENTICATION_TYPE, type.getType().getId());
+			values.put(COLUMN_NAME_AUTHENTICATION_TYPE, type.getId());
 			
 			int id = db.update(TABLE_NAME, values, getPrimaryKey() + " = ?", whereArgs);
 			if (id < 1) {
@@ -240,7 +239,7 @@ public class ServerDB extends DBHelper {
 			deleteAuthentication(serverId,
 					server.getAuthentication().getAuthenticationTypeEnum(), db);
 			
-			switch (type.getType()) {
+			switch (type) {
 			case NO_AUTHENTICATION:
 				insertNoAuthenticationType(serverId, login, db);
 				break;
