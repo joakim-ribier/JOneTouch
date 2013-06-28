@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:text=""
+        android:textAllCaps="true"
+		android:textStyle="bold"
         android:textSize="@dimen/_14sp" />
 
     <RelativeLayout

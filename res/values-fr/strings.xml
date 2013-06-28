@@ -90,12 +90,13 @@
     <string name="my_dialog_negative_button">Annuler</string>
 
     <!-- action view layout -->
-    <string name="action_view_layout_no_server_connection">la connexion par défaut n\'est pas définie\n( exécutez l\'action et sélectionnez la connexion )</string>
-    <string name="action_view_server_connection">la connexion par défaut est définie sur: \n( %1$s )</string>
+    <string name="action_view_layout_no_server_connection">La connexion n\'est pas définie, exécutez l\'action et sélectionnez la.</string>
+    <string name="action_view_server_connection">La connexion est définie sur %1$s</string>
     <string name="about_of_loading">chargement &#8230;</string>
 
     <!-- add or update action my dialog -->
     <string name="add_action_dialog_title">Nouvelle action</string>
+    <string name="update_action_dialog_title">Mise à jour de l\'action</string>
     <string name="add_or_update_action_title_label">Nom de l\'action :</string>
     <string name="add_or_update_action_description_label">Description :</string>
     <string name="add_or_update_action_server_spinner_label">Connexion serveur &#8230;</string>
@@ -109,7 +110,6 @@
     <string name="action_list_top_layout_all">Toutes les actions</string>
 
     <!-- action detail view -->
-    <string name="action_detail_delete_button">Supprimer l\'action</string>
     <string name="action_detail_validate_button">valider</string>
 
     <!-- add or update action script action my dialog -->

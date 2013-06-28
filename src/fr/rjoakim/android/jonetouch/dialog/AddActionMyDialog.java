@@ -42,10 +42,10 @@ import fr.rjoakim.android.jonetouch.service.ServiceException;
 public abstract class AddActionMyDialog extends MyDialog<Long> {
 
 	private final ServerService serverService;
-	private final ActionService actionService;
+	protected final ActionService actionService;
 	
-	private final Spinner spinner;
-	private final CheckBox checkBox;
+	protected final Spinner spinner;
+	protected final CheckBox checkBox;
 
 	public AddActionMyDialog(Activity activity, ServerService serverService,
 			ActionService actionService) {
@@ -118,19 +118,19 @@ public abstract class AddActionMyDialog extends MyDialog<Long> {
 		});
 	}
 	
-	private String getTitleText() {
+	protected String getTitleText() {
 		return getEditTextValue(R.id.addActionViewTitleEditText);
 	}
 	
-	private String getDescriptionText() {
+	protected String getDescriptionText() {
 		return getEditTextValue(R.id.addActionViewDescriptionEditText);
 	}
 	
-	private Server getServerConnectionValue() {
+	protected Server getServerConnectionValue() {
 		return (Server) spinner.getSelectedItem();
 	}
 	
-	private boolean checkValues() {
+	protected boolean checkValues() {
 		if (Strings.isNullOrEmpty(getTitleText()) ||
 				Strings.isNullOrEmpty(getDescriptionText())) {
 

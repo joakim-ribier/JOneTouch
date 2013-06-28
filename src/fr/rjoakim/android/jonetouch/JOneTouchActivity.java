@@ -202,13 +202,16 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 	private void fillAllViewsWithActions() {
 		try {
 			View actionListMainView = getLayoutInflater().inflate(R.layout.action_list_main_view, null);
+			actionListMainView.setOnTouchListener(gestureListener);
+			
 			myViewAnimator.get().addView(actionListMainView);
 			
 			List<Action> actions = actionService.list();
+			int index = 0;
 			for (Action action: actions) {
-				
-				addOnActionListView(action, actionListMainView);
-				addOnActionDetailView(action);
+				index ++;
+				addOnActionListView(action, actionListMainView, index);
+				addOnActionDetailView(action, index);
 			}
 		} catch (ServiceException e) {
 			Toast.makeText(this,
@@ -216,27 +219,35 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 		}
 	}
 
-	private void addOnActionListView(Action action, View actionListMainView) {
+	private void addOnActionListView(Action action, View actionListMainView, int index) {
 		View contentView = actionListMainView.findViewById(R.id.actionListMainViewContentScroll);
 		contentView.setOnTouchListener(gestureListener);
 		
 		LinearLayout activityMainLayout = (LinearLayout) actionListMainView
 				.findViewById(R.id.actionListMainViewContentLayout);
+		activityMainLayout.setOnTouchListener(gestureListener);
 		
-		activityMainLayout.addView(buildActionView(action));
+		View buildActionView = buildActionView(action, index);
+		buildActionView.setOnTouchListener(gestureListener);
+		
+		activityMainLayout.addView(buildActionView);
 	}
 
-	private View buildActionView(final Action action) {
+	private View buildActionView(final Action action, int index) {
 		ActionView actionView = new ActionView(
 				this, serverService, myTerminal, myAuthentication, actionService);
-		return actionView.build(action);
+		return actionView.build(action, index);
 	}
 
-	private void addOnActionDetailView(Action action) {
+	private void addOnActionDetailView(Action action, int index) {
 		ActionDetailView actionDetailView = new ActionDetailView(this, gestureListener,
 				serverService, myTerminal, myAuthentication, actionService, scriptService);
 		myViewAnimator.get().addView(
-				actionDetailView.build(action));
+				actionDetailView.build(action, index));
+	}
+	
+	public void showAnimatorView(int index) {
+		actionListTopBarView.displayedViewAnimator(myViewAnimator.get().getDisplayedChild(), index);
 	}
 	
 	@SuppressLint("NewApi")

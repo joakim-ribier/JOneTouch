@@ -72,27 +72,11 @@ public class ActionService {
 		}
 	}
 
-	public void updateTitle(long id, String title) throws ServiceException {
+	public void update(long id, String title, String description, Long serverOldId, Long serverNewId) throws ServiceException {
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(title), "title field is required");
-		try {
-			actionDB.updateTitle(id, title);
-		} catch (DBException e) {
-			throw new ServiceException(e.getMessage(), e);
-		}
-	}
-	
-	public void updateDescription(long id, String description) throws ServiceException {
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(description), "description field is required");
 		try {
-			actionDB.updateDescription(id, description);
-		} catch (DBException e) {
-			throw new ServiceException(e.getMessage(), e);
-		}
-	}
-	
-	public void updateServerConnection(long id, Long serverOldId, Long serverNewId) throws ServiceException {
-		try {
-			actionDB.updateServerConnection(id, serverOldId, serverNewId);
+			actionDB.update(id, title, description, serverOldId, serverNewId);
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}

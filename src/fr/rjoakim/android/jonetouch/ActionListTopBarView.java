@@ -160,7 +160,7 @@ public class ActionListTopBarView {
 		scrollTo(Math.round(nextDisplaying.getLeft()));
 	}
 	
-	private void displayedViewAnimator(int displayedChild, int nextIndex) {
+	public void displayedViewAnimator(int displayedChild, int nextIndex) {
 		if (nextIndex > displayedChild) {
 			myViewAnimator.setInAnimationInFromRight();
 			myViewAnimator.setInAnimationOutToLeft();

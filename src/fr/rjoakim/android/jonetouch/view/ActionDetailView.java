@@ -16,7 +16,6 @@ import fr.rjoakim.android.jonetouch.R;
 import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.bean.ActionScript;
 import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
-import fr.rjoakim.android.jonetouch.dialog.DeleteActionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.DeleteActionScriptMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.UpdateActionScriptMyDialog;
 import fr.rjoakim.android.jonetouch.service.ActionService;
@@ -69,14 +68,14 @@ public class ActionDetailView {
 		this.view.findViewById(R.id.actionDetailViewScroll).setOnTouchListener(gestureListener);
 	}
 	
-	public View build(Action action) {
-		addActionView(action);
+	public View build(Action action, int index) {
+		addActionView(action, index);
 		addActionScriptView(action);
 		return view;
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void addActionView(Action action) {
+	private void addActionView(Action action, int index) {
 		ActionView actionView = new ActionView(
 				activity, serverService, myTerminal, myAuthentication, actionService);
 		
@@ -86,13 +85,12 @@ public class ActionDetailView {
 			layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
 			linearLayout.setLayoutTransition(layoutTransition);
 		}
-		linearLayout.addView(actionView.buildEditView(action));
+		linearLayout.addView(actionView.buildEditView(action, index));
 	}
 
 	private void addActionScriptView(final Action action) {
 		setTitleActionScriptTextView(action);
 		setEditScriptActionButton(action);
-		setDeleteActionButtonEvent(action);
 		
 		LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.actionDetailScriptViewLayout);
 		if (action.getActionScripts().size() > 0) {
@@ -141,22 +139,6 @@ public class ActionDetailView {
 		});
 	}
 
-	private void setDeleteActionButtonEvent(final Action action) {
-		View deleteActionButton = view.findViewById(R.id.actionDetailViewDeleteButton);
-		deleteActionButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				DeleteActionMyDialog deleteActionMyDialog = new DeleteActionMyDialog(activity, actionService, action) {
-					@Override
-					public void onSuccess(Void t) {
-						ActionDetailView.this.activity.rebuildAllActionViews(0);
-					}
-				};
-				deleteActionMyDialog.show();
-			}
-		});
-	}
-	
 	private void addDeleteScriptButtonEvent(final ActionScript actionScript,
 			final LinearLayout actionDetailScriptView) {
 		

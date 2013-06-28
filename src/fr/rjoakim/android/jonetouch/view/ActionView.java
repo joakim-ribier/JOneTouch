@@ -17,6 +17,8 @@ import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
 import fr.rjoakim.android.jonetouch.bean.Server;
 import fr.rjoakim.android.jonetouch.dialog.ChoiceConnectionMyDialog;
+import fr.rjoakim.android.jonetouch.dialog.DeleteActionMyDialog;
+import fr.rjoakim.android.jonetouch.dialog.UpdateActionMyDialog;
 import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
@@ -69,17 +71,17 @@ public class ActionView {
 		}
 	}
 
-	public View buildEditView(final Action action) {
-		return build(action, true);
+	public View buildEditView(Action action, int index) {
+		return build(action, true, index);
 	}
 
-	public View build(final Action action) {
-		return build(action, false);
+	public View build(Action action, int index) {
+		return build(action, false, index);
 	}
 	
-	private View build(final Action action, boolean edit) {
+	private View build(final Action action, boolean edit, final int index) {
 		final Server server = getServer(action);
-		final ImageView runScriptView = (ImageView) view.findViewById(R.id.actionLayoutWidgetStart);
+		final View runScriptView = view.findViewById(R.id.actionLayoutWidgetStart);
 		runScriptView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -103,117 +105,41 @@ public class ActionView {
 		TextView descTextView = (TextView) view.findViewById(R.id.actionLayoutViewDescriptionTextView);
 		descTextView.setText(action.getDescription());
 		
-		TextView serverDefineTextView = (TextView) view.findViewById(R.id.actionLayoutWidgetServer);
+		ImageView isServerConnectionImageDefine = (ImageView) view.findViewById(R.id.actionViewLayoutLinkImage);
 		if (server != null) {
-			serverDefineTextView.setText(
-					activity.getString(R.string.action_view_server_connection, server.getTitle()));
-		} else {
-			serverDefineTextView.setText(getString(R.string.action_view_layout_no_server_connection));
+			isServerConnectionImageDefine.setBackgroundResource(R.drawable.link);
 		}
+
+		View isServerConnectionView = view.findViewById(R.id.actionViewLayoutLink);
+		isServerConnectionView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (server != null) {
+					Toast.makeText(v.getContext(),
+							activity.getString(R.string.action_view_server_connection, server.getTitle()), Toast.LENGTH_LONG).show();
+				} else {
+					Toast.makeText(v.getContext(),
+							getString(R.string.action_view_layout_no_server_connection), Toast.LENGTH_LONG).show();
+				}
+			}
+		});
+		
+		View showActionDetailsViewButton = view.findViewById(R.id.actionViewLayoutDetails);
+		showActionDetailsViewButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				activity.showAnimatorView(index);
+			}
+		});
 		
 		if (edit) {
-			setEditTitleButtonEvent(action);
-			setEditDescriptionButtonEvent(action);
-			setEditServerConnectionButtonEvent(action);
+			View optionsLayout = view.findViewById(R.id.actionViewLayoutOptionsLayout);
+			optionsLayout.setVisibility(View.VISIBLE);
+			setActionUpdateButtonEvent(action, index);
+			setActionDeleteButtonEvent(action);
 		}
 		
 		return view;
-	}
-	
-	private void setEditTitleButtonEvent(final Action action) {
-		View button = view.findViewById(R.id.actionViewEditTitleButton);
-		button.setVisibility(View.VISIBLE);
-		button.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				v.setVisibility(View.INVISIBLE);
-				final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.actionLayoutView);
-				int indexOfChild = linearLayout.indexOfChild(view.findViewById(R.id.actionLayoutViewTitle));
-				ActionEditTitleView actionEditTitleView = new ActionEditTitleView(activity, actionService) {
-					@Override
-					public void onSuccess(View child, String value) {
-						activity.rebuildAllActionViews();
-					}
-
-					@Override
-					public void onFailed() {
-						Toast.makeText(v.getContext(),
-								activity.getString(R.string.failed), Toast.LENGTH_LONG).show();
-					}
-
-					@Override
-					public void onCancel(View view) {
-						((LinearLayout)view.getParent()).removeView(view);
-						v.setVisibility(View.VISIBLE);
-					}
-				};
-				linearLayout.addView(actionEditTitleView.build(action), indexOfChild+1);
-			}
-		});
-	}
-	
-	private void setEditDescriptionButtonEvent(final Action action) {
-		View button = view.findViewById(R.id.actionViewEditDescriptionButton);
-		button.setVisibility(View.VISIBLE);
-		button.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				v.setVisibility(View.INVISIBLE);
-				final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.actionLayoutView);
-				int indexOfChild = linearLayout.indexOfChild(view.findViewById(R.id.actionLayoutViewDescription));
-				ActionEditDescriptionView actionEditDescriptionView = new ActionEditDescriptionView(activity, actionService) {
-					@Override
-					public void onSuccess(View child, String value) {
-						activity.rebuildAllActionViews();
-					}
-
-					@Override
-					public void onFailed() {
-						Toast.makeText(v.getContext(),
-								activity.getString(R.string.failed), Toast.LENGTH_LONG).show();
-					}
-
-					@Override
-					public void onCancel(View view) {
-						((LinearLayout)view.getParent()).removeView(view);
-						v.setVisibility(View.VISIBLE);
-					}
-				};
-				linearLayout.addView(actionEditDescriptionView.build(action), indexOfChild+1);
-			}
-		});
-	}
-	
-	private void setEditServerConnectionButtonEvent(final Action action) {
-		View button = view.findViewById(R.id.actionViewEditServerConnectionButton);
-		button.setVisibility(View.VISIBLE);
-		button.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				v.setVisibility(View.INVISIBLE);
-				final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.actionLayoutView);
-				int indexOfChild = linearLayout.indexOfChild(view.findViewById(R.id.actionLayoutViewServerConnection));
-				ActionEditServerConnectionView actionEditDescriptionView = new ActionEditServerConnectionView(activity, actionService, serverService) {
-					@Override
-					public void onSuccess(Void arg) {
-						activity.rebuildAllActionViews();
-					}
-
-					@Override
-					public void onFailed() {
-						Toast.makeText(v.getContext(),
-								activity.getString(R.string.failed), Toast.LENGTH_LONG).show();
-					}
-					
-					@Override
-					public void onCancel(View view) {
-						((LinearLayout)view.getParent()).removeView(view);
-						v.setVisibility(View.VISIBLE);
-					}
-				};
-				linearLayout.addView(actionEditDescriptionView.build(action), indexOfChild+1);
-			}
-		});
 	}
 
 	private Server getServer(Action action) {
@@ -237,5 +163,37 @@ public class ActionView {
 	
 	private String getString(int id) {
 		return activity.getString(id);
+	}
+	
+	private void setActionUpdateButtonEvent(final Action action, final int index) {
+		View actionUpdateButton = view.findViewById(R.id.actionViewLayoutOptionsLayoutUpdate);
+		actionUpdateButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				UpdateActionMyDialog updateActionMyDialog = new UpdateActionMyDialog(activity, serverService, actionService) {
+					@Override
+					public void onSuccess(Long t) {
+						ActionView.this.activity.rebuildAllActionViews(index);
+					}
+				};
+				updateActionMyDialog.show(action);
+			}
+		});
+	}
+	
+	private void setActionDeleteButtonEvent(final Action action) {
+		View deleteActionButton = view.findViewById(R.id.actionViewLayoutOptionsLayoutDelete);
+		deleteActionButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DeleteActionMyDialog deleteActionMyDialog = new DeleteActionMyDialog(activity, actionService, action) {
+					@Override
+					public void onSuccess(Void t) {
+						ActionView.this.activity.rebuildAllActionViews(0);
+					}
+				};
+				deleteActionMyDialog.show();
+			}
+		});
 	}
 }

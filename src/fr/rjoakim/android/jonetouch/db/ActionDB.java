@@ -208,45 +208,16 @@ public class ActionDB extends DBHelper {
 		}
 	}
 
-	public void updateTitle(long actionId, String title) throws DBException {
-		String[] whereArgs = new String[] { String.valueOf(actionId) };
-		ContentValues values = new ContentValues();
-		values.put(COLUMN_NAME_TITLE, title);
-		update(values, whereArgs);
-	}
-	
-	public void updateDescription(long actionId, String description) throws DBException {
-		String[] whereArgs = new String[] { String.valueOf(actionId) };
-		ContentValues values = new ContentValues();
-		values.put(COLUMN_NAME_DESCRIPTION, description);
-		update(values, whereArgs);
-	}
-	
-	private void update(ContentValues values, String[] whereArgs) throws DBException {
-		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
-		db.beginTransaction();
-		try {
-			int id = db.update(TABLE_NAME, values, getPrimaryKey() + " = ?", whereArgs);
-			if (id < 1) {
-				throw new DBException("error updating row on :" + TABLE_NAME);
-			}
-			db.setTransactionSuccessful();
-		} catch (Exception e) {
-			throw new DBException(e.getMessage(), e);
-		} finally {
-			db.endTransaction();
-			if (db.isOpen()) {
-				db.close();
-			}
-		}
-	}
-	
-	public void updateServerConnection(long actionId, 
+
+	public void update(long actionId, String title, String description,
 			Long serverOldId, Long serverNewId) throws DBException {
-		
+
 		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
 		db.beginTransaction();
 		try {
+			updateTitle(actionId, title, db);
+			updateDescription(actionId, description, db);
+			
 			if (serverOldId != null) {
 				delete(actionId, serverOldId, db);
 			}
@@ -264,7 +235,27 @@ public class ActionDB extends DBHelper {
 			}
 		}
 	}
-
+	
+	private void updateTitle(long actionId, String title, SQLiteDatabase db) throws DBException {
+		String[] whereArgs = new String[] { String.valueOf(actionId) };
+		ContentValues values = new ContentValues();
+		values.put(COLUMN_NAME_TITLE, title);
+		int id = db.update(TABLE_NAME, values, getPrimaryKey() + " = ?", whereArgs);
+		if (id < 1) {
+			throw new DBException("error updating row on :" + TABLE_NAME);
+		}
+	}
+	
+	private void updateDescription(long actionId, String description, SQLiteDatabase db) throws DBException {
+		String[] whereArgs = new String[] { String.valueOf(actionId) };
+		ContentValues values = new ContentValues();
+		values.put(COLUMN_NAME_DESCRIPTION, description);
+		int id = db.update(TABLE_NAME, values, getPrimaryKey() + " = ?", whereArgs);
+		if (id < 1) {
+			throw new DBException("error updating row on :" + TABLE_NAME);
+		}
+	}
+	
 	private void delete(long actionId, long serverId, SQLiteDatabase db) throws DBException {
 		String[] whereArgs = new String[] { String.valueOf(actionId), String.valueOf(serverId) };
 		String where = ActionServersDB.COLUMN_NAME_ACTION + " = ? AND " + ActionServersDB.COLUMN_NAME_SERVER + " = ?";

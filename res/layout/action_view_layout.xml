@@ -6,130 +6,181 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/actionLayoutView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/action_background"
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/actionLayoutViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <LinearLayout
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:background="@color/gray23"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/actionLayoutViewTitleTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:padding="5dp"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/actionViewEditTitleButton"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/image_edit_selector"
-                android:clickable="true"
-                android:contentDescription="@string/image_content_description"
-                android:visibility="invisible" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/actionLayoutViewDescription"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:id="@+id/actionViewEditDescriptionButton"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/image_edit_selector"
-                android:clickable="true"
-                android:contentDescription="@string/image_content_description"
-                android:visibility="invisible" />
+            android:id="@+id/actionLayoutView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/action_background_choice_green"
+            android:orientation="vertical"
+            android:paddingTop="4dp" >
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/action_description_layout_layer_list"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:background="@color/white"
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/actionLayoutViewDescriptionTextView"
-                    android:layout_width="fill_parent"
+                <LinearLayout
+                    android:id="@+id/actionViewLayoutDetails"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sp" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_selector_blue"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:padding="2dp" >
 
-        <LinearLayout
-            android:id="@+id/actionLayoutViewServerConnection"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+                    <ImageView
+                        android:id="@+id/actionLayoutWidgetStartdf"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/view"
+                        android:contentDescription="@string/image_content_description" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/actionLayoutWidgetStart"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_selector_blue"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:padding="2dp" >
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/lunch"
+                        android:contentDescription="@string/image_content_description" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/actionViewLayoutLink"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_selector_blue"
+                    android:clickable="true"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    android:padding="2dp" >
+
+                    <ImageView
+                        android:id="@+id/actionViewLayoutLinkImage"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/link_broke"
+                        android:contentDescription="@string/image_content_description" />
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dip"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical" >
+                android:baselineAligned="false"
+                android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/actionLayoutWidgetServer"
-                    android:layout_width="fill_parent"
+                <LinearLayout
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/action_view_layout_no_server_connection"
-                    android:textSize="@dimen/_12sp"
-                    android:textStyle="normal" />
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
 
-                <ImageView
-                    android:id="@+id/actionViewEditServerConnectionButton"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/image_edit_selector"
-                    android:clickable="true"
-                    android:contentDescription="@string/image_content_description"
-                    android:visibility="invisible" >
-                </ImageView>
+                    <LinearLayout
+                        android:id="@+id/actionLayoutViewTitle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/actionLayoutViewTitleTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textAllCaps="true"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/actionLayoutViewDescription"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/actionLayoutViewDescriptionTextView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/actionViewLayoutOptionsLayout"
+                    android:layout_width="60dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/action_background"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <RelativeLayout
+                        android:id="@+id/actionViewLayoutOptionsLayoutUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_selector_blue"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/edit_gray"
+                            android:contentDescription="@string/image_content_description" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/actionViewLayoutOptionsLayoutDelete"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_selector_blue"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/delete_gray"
+                            android:contentDescription="@string/image_content_description" />
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/actionLayoutWidgetStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/image_fastforward_selector"
-                android:contentDescription="@string/image_content_description" />
         </LinearLayout>
     </LinearLayout>
 
