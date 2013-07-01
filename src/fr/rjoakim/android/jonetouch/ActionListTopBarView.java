@@ -138,7 +138,7 @@ public class ActionListTopBarView {
 
 	public void showNext(int displayedChild, int next) {
 		LinearLayout actualDisplay = actionsLayouts.get(displayedChild);
-		actualDisplay.setBackgroundColor(activity.getResources().getColor(R.color.gray));
+		actualDisplay.setBackgroundColor(activity.getResources().getColor(R.color.white));
 		
 		LinearLayout nextDisplaying = actionsLayouts.get(next);
 		nextDisplaying.setBackgroundColor(activity.getResources().getColor(R.color.blue));
@@ -154,7 +154,7 @@ public class ActionListTopBarView {
 		if (beforeNext >= 0) {
 			LinearLayout beforeNextDisplaying = actionsLayouts.get(beforeNext);
 			RelativeLayout relativeLayout = (RelativeLayout) beforeNextDisplaying.findViewById(R.id.actionTopBarSeparator);
-			relativeLayout.setBackgroundColor(activity.getResources().getColor(R.color.gray));
+			relativeLayout.setBackgroundColor(activity.getResources().getColor(R.color.white));
 		}
 		
 		scrollTo(Math.round(nextDisplaying.getLeft()));

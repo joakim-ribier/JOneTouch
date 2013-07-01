@@ -3,7 +3,7 @@
     package="fr.rjoakim.android.jonetouch"
     android:installLocation="preferExternal"
     android:versionCode="4"
-    android:versionName="1.2.1" >
+    android:versionName="2.0" >
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -27,7 +27,9 @@
             </intent-filter>
         </activity>
         <activity android:name="fr.rjoakim.android.jonetouch.CreateAccountActivity" />
-        <activity android:name="fr.rjoakim.android.jonetouch.AboutOfActivity" />
+        <activity
+            android:name="fr.rjoakim.android.jonetouch.AboutOfActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
     </application>
 
 </manifest>

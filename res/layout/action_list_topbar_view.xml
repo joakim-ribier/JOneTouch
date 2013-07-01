@@ -7,13 +7,13 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray" >
+        android:background="@color/white" >
 
         <HorizontalScrollView
             android:id="@+id/actionListMainViewContentTopBarScrollView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/gray"
+            android:background="@color/white"
             android:scrollbars="none" >
 
             <LinearLayout
@@ -30,17 +30,25 @@
                     android:orientation="horizontal" >
                 </LinearLayout>
 
-                <ImageView
+                <LinearLayout
                     android:id="@+id/actionTopBarLayoutNewButton"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/image_add_selector"
+                    android:background="@drawable/layout_selector_blue"
                     android:clickable="true"
-                    android:contentDescription="@string/add" >
-                </ImageView>
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/add_gray"
+                        android:contentDescription="@string/add" >
+                    </ImageView>
+                </LinearLayout>
             </LinearLayout>
         </HorizontalScrollView>
     </RelativeLayout>
