@@ -1,5 +1,7 @@
 package fr.rjoakim.android.jonetouch.view;
 
+import java.util.List;
+
 import android.animation.LayoutTransition;
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -14,12 +16,16 @@ import fr.rjoakim.android.jonetouch.MyTerminal;
 import fr.rjoakim.android.jonetouch.R;
 import fr.rjoakim.android.jonetouch.async.CommandExecutor;
 import fr.rjoakim.android.jonetouch.bean.Action;
+import fr.rjoakim.android.jonetouch.bean.ActionScript;
 import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
 import fr.rjoakim.android.jonetouch.bean.Server;
 import fr.rjoakim.android.jonetouch.dialog.ChoiceConnectionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.DeleteActionMyDialog;
+import fr.rjoakim.android.jonetouch.dialog.DeleteActionScriptMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.UpdateActionMyDialog;
+import fr.rjoakim.android.jonetouch.dialog.UpdateActionScriptMyDialog;
 import fr.rjoakim.android.jonetouch.service.ActionService;
+import fr.rjoakim.android.jonetouch.service.ScriptService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
 
@@ -50,24 +56,27 @@ public class ActionView {
 	private final MyTerminal myTerminal;
 	private final MyAuthentication myAuthentication;
 	private final ActionService actionService;
+	private final ScriptService scriptService;
 	
-	private final LinearLayout view;
+	private final LinearLayout mainView;
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public ActionView(JOneTouchActivity activity, ServerService serverService,
-			MyTerminal myTerminal, MyAuthentication myAuthentication, ActionService actionService) {
+			MyTerminal myTerminal, MyAuthentication myAuthentication,
+			ActionService actionService, ScriptService scriptService) {
 		
 		this.activity = activity;
 		this.serverService = serverService;
 		this.myTerminal = myTerminal;
 		this.myAuthentication = myAuthentication;
 		this.actionService = actionService;
+		this.scriptService = scriptService;
 		
-		this.view = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.action_view_layout, null);
+		this.mainView = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.action_view_layout, null);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			LayoutTransition layoutTransition = new LayoutTransition();
 			layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
-			this.view.setLayoutTransition(layoutTransition);
+			this.mainView.setLayoutTransition(layoutTransition);
 		}
 	}
 
@@ -81,7 +90,7 @@ public class ActionView {
 	
 	private View build(final Action action, boolean edit, final int index) {
 		final Server server = getServer(action);
-		final View runScriptView = view.findViewById(R.id.actionLayoutWidgetStart);
+		final View runScriptView = mainView.findViewById(R.id.actionLayoutWidgetStart);
 		runScriptView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -99,18 +108,18 @@ public class ActionView {
 			}
 		});
 		
-		TextView titleTextView = (TextView) view.findViewById(R.id.actionLayoutViewTitleTextView);
+		TextView titleTextView = (TextView) mainView.findViewById(R.id.actionLayoutViewTitleTextView);
 		titleTextView.setText(action.getTitle());
 
-		TextView descTextView = (TextView) view.findViewById(R.id.actionLayoutViewDescriptionTextView);
+		TextView descTextView = (TextView) mainView.findViewById(R.id.actionLayoutViewDescriptionTextView);
 		descTextView.setText(action.getDescription());
 		
-		ImageView isServerConnectionImageDefine = (ImageView) view.findViewById(R.id.actionViewLayoutLinkImage);
+		ImageView isServerConnectionImageDefine = (ImageView) mainView.findViewById(R.id.actionViewLayoutLinkImage);
 		if (server != null) {
 			isServerConnectionImageDefine.setBackgroundResource(R.drawable.link);
 		}
 
-		View isServerConnectionView = view.findViewById(R.id.actionViewLayoutLink);
+		View isServerConnectionView = mainView.findViewById(R.id.actionViewLayoutLink);
 		isServerConnectionView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -124,7 +133,7 @@ public class ActionView {
 			}
 		});
 		
-		View showActionDetailsViewButton = view.findViewById(R.id.actionViewLayoutDetails);
+		View showActionDetailsViewButton = mainView.findViewById(R.id.actionViewLayoutDetails);
 		showActionDetailsViewButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -132,14 +141,58 @@ public class ActionView {
 			}
 		});
 		
+		View showActionScriptsButton = mainView.findViewById(R.id.actionViewLayoutScriptsListButton);
+		final View actionViewLayoutScriptList = mainView.findViewById(R.id.actionViewLayoutScriptList);
+		showActionScriptsButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				switch (actionViewLayoutScriptList.getVisibility()) {
+				case View.VISIBLE:
+					actionViewLayoutScriptList.setVisibility(View.GONE);
+					break;
+				default:
+					actionViewLayoutScriptList.setVisibility(View.VISIBLE);
+					break;
+				}
+			}
+		});
+		
+		addActionScriptToView(action, edit);
+		
 		if (edit) {
-			View optionsLayout = view.findViewById(R.id.actionViewLayoutOptionsLayout);
+			View optionsLayout = mainView.findViewById(R.id.actionViewLayoutOptionsLayout);
 			optionsLayout.setVisibility(View.VISIBLE);
+			
 			setActionUpdateButtonEvent(action, index);
 			setActionDeleteButtonEvent(action);
+			setActionEditActionScript(action);
+			
+			actionViewLayoutScriptList.setVisibility(View.VISIBLE);
 		}
 		
-		return view;
+		return mainView;
+	}
+
+	private void setActionEditActionScript(final Action action) {
+		View editScriptButton = mainView.findViewById(R.id.actionViewLayoutOptionsEditActionScript);
+		editScriptButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				UpdateActionScriptMyDialog updateActionScriptMyDialog = 
+						new UpdateActionScriptMyDialog(activity, scriptService) {
+					@Override
+					public void onSuccess(List<String> values) {
+						try {
+							actionService.updateActionScripts(action.getId(), action.getActionScripts(), values);
+							ActionView.this.activity.rebuildAllActionViews();
+						} catch (ServiceException e) {
+							Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_LONG).show();
+						}
+					}
+				};
+				updateActionScriptMyDialog.show(action);
+			}
+		});
 	}
 
 	private Server getServer(Action action) {
@@ -166,7 +219,7 @@ public class ActionView {
 	}
 	
 	private void setActionUpdateButtonEvent(final Action action, final int index) {
-		View actionUpdateButton = view.findViewById(R.id.actionViewLayoutOptionsLayoutUpdate);
+		View actionUpdateButton = mainView.findViewById(R.id.actionViewLayoutOptionsEditAction);
 		actionUpdateButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -182,7 +235,7 @@ public class ActionView {
 	}
 	
 	private void setActionDeleteButtonEvent(final Action action) {
-		View deleteActionButton = view.findViewById(R.id.actionViewLayoutOptionsLayoutDelete);
+		View deleteActionButton = mainView.findViewById(R.id.actionViewLayoutOptionsDeleteAction);
 		deleteActionButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -193,6 +246,49 @@ public class ActionView {
 					}
 				};
 				deleteActionMyDialog.show();
+			}
+		});
+	}
+
+	private void addActionScriptToView(final Action action, boolean edit) {
+		LinearLayout linearLayout = (LinearLayout) mainView.findViewById(R.id.actionViewLayoutScriptList);
+		int cpt = 1;
+		for (final ActionScript actionScript: action.getActionScripts()) {
+			LinearLayout actionDetailScriptView = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.action_detail_view_script_layout, null);
+			if (edit) {
+				View actionScriptViewLayoutOptionsLayout = actionDetailScriptView.findViewById(R.id.actionScriptViewLayoutOptionsLayout);
+				actionScriptViewLayoutOptionsLayout.setVisibility(View.VISIBLE);
+			}
+			TextView textView = (TextView) actionDetailScriptView.findViewById(R.id.actionDetailScriptTextView);
+			textView.setText(actionScript.getScript());
+			
+			TextView actionDetailScriptNumberTextView = (TextView) actionDetailScriptView.findViewById(R.id.actionDetailScriptNumberTextView);
+			actionDetailScriptNumberTextView.setText("#" + cpt++);
+			
+			addDeleteActionScriptButtonEvent(actionScript, actionDetailScriptView);
+			linearLayout.addView(actionDetailScriptView);
+		}
+	}
+	
+	private void addDeleteActionScriptButtonEvent(final ActionScript actionScript,
+			final LinearLayout actionDetailScriptView) {
+		
+		View view = actionDetailScriptView.findViewById(R.id.actionDetailScriptDeleteButton);
+		view.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DeleteActionScriptMyDialog deleteActionScriptMyDialog = new DeleteActionScriptMyDialog(activity, actionService, actionScript) {
+					@Override
+					public void onSuccess(Void t) {
+						ActionView.this.activity.rebuildAllActionViews();
+					}
+
+					@Override
+					public void onFailed() {
+						Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_LONG).show();
+					}
+				};
+				deleteActionScriptMyDialog.show();
 			}
 		});
 	}

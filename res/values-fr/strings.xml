@@ -9,7 +9,6 @@
     <string name="delete_button">Supprimer</string>
     <string name="no_button">Oui</string>
     <string name="yes_button">Non</string>
-    <string name="cancel">annuler</string>
     <string name="add">ajouter</string>
     <string name="image_content_description">logo</string>
     <string name="back_pressed">Appuyez une deuxième fois pour vous déconnecter de l\'application</string>
@@ -109,12 +108,7 @@
     <!-- action list top layout -->
     <string name="action_list_top_layout_all">Toutes les actions</string>
 
-    <!-- action detail view -->
-    <string name="action_detail_validate_button">valider</string>
-
     <!-- add or update action script action my dialog -->
-    <string name="action_detail_view_script_title_number">Liste des scripts ( %1$s )</string>
-    <string name="add_action_script_dialog_title">Ajouter des scripts</string>
     <string name="update_action_script_dialog_title">Modification des scripts</string>
     <string name="delete_action_script_dialog_title">Suppression d\'un script</string>
     <string name="delete_action_script_dialog_text">Êtes-vous sûr de vouloir supprimer le script suivant ?</string>

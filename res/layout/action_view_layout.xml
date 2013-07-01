@@ -40,7 +40,6 @@
                     android:padding="2dp" >
 
                     <ImageView
-                        android:id="@+id/actionLayoutWidgetStartdf"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_gravity="center_horizontal"
@@ -64,6 +63,25 @@
                         android:layout_height="36dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/lunch"
+                        android:contentDescription="@string/image_content_description" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/actionViewLayoutScriptsListButton"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/layout_selector_blue"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:padding="2dp" >
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/script"
                         android:contentDescription="@string/image_content_description" />
                 </LinearLayout>
 
@@ -139,15 +157,15 @@
 
                 <LinearLayout
                     android:id="@+id/actionViewLayoutOptionsLayout"
-                    android:layout_width="60dp"
-                    android:layout_height="150dp"
+                    android:layout_width="55dp"
+                    android:layout_height="170dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/action_background"
                     android:orientation="vertical"
                     android:visibility="gone" >
 
                     <RelativeLayout
-                        android:id="@+id/actionViewLayoutOptionsLayoutUpdate"
+                        android:id="@+id/actionViewLayoutOptionsEditAction"
                         android:layout_width="match_parent"
                         android:layout_height="0dip"
                         android:layout_weight="1"
@@ -164,7 +182,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/actionViewLayoutOptionsLayoutDelete"
+                        android:id="@+id/actionViewLayoutOptionsDeleteAction"
                         android:layout_width="match_parent"
                         android:layout_height="0dip"
                         android:layout_weight="1"
@@ -179,7 +197,31 @@
                             android:background="@drawable/delete_gray"
                             android:contentDescription="@string/image_content_description" />
                     </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/actionViewLayoutOptionsEditActionScript"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_selector_blue"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/add_gray"
+                            android:contentDescription="@string/image_content_description" />
+                    </RelativeLayout>
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/actionViewLayoutScriptList"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

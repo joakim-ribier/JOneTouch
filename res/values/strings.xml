@@ -9,7 +9,6 @@
     <string name="delete_button">Delete</string>
     <string name="no_button">Yes</string>
     <string name="yes_button">No</string>
-    <string name="cancel">Cancel</string>
     <string name="add">add</string>
     <string name="image_content_description">logo</string>
 	<string name="back_pressed">Press a second time to disconnect from the application</string>
@@ -109,12 +108,7 @@
     <!-- action list top layout -->
     <string name="action_list_top_layout_all">All actions</string>
 
-    <!-- action detail view -->
-    <string name="action_detail_validate_button">OK</string>
-
     <!-- add or update action script action my dialog -->
-    <string name="action_detail_view_script_title_number">Scripts list ( %1$s )</string>
-    <string name="add_action_script_dialog_title">Add script</string>
     <string name="update_action_script_dialog_title">Update script</string>
     <string name="delete_action_script_dialog_title">Delete script</string>
     <string name="delete_action_script_dialog_text">Do you want to remove this script ?</string>

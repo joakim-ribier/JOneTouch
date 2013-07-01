@@ -29,7 +29,7 @@ import fr.rjoakim.android.jonetouch.service.ScriptService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
 import fr.rjoakim.android.jonetouch.service.UserService;
-import fr.rjoakim.android.jonetouch.view.ActionDetailView;
+import fr.rjoakim.android.jonetouch.view.ActionEditView;
 import fr.rjoakim.android.jonetouch.view.ActionView;
 
 /**
@@ -235,12 +235,12 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 
 	private View buildActionView(final Action action, int index) {
 		ActionView actionView = new ActionView(
-				this, serverService, myTerminal, myAuthentication, actionService);
+				this, serverService, myTerminal, myAuthentication, actionService, scriptService);
 		return actionView.build(action, index);
 	}
 
 	private void addOnActionDetailView(Action action, int index) {
-		ActionDetailView actionDetailView = new ActionDetailView(this, gestureListener,
+		ActionEditView actionDetailView = new ActionEditView(this, gestureListener,
 				serverService, myTerminal, myAuthentication, actionService, scriptService);
 		myViewAnimator.get().addView(
 				actionDetailView.build(action, index));
