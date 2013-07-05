@@ -43,6 +43,7 @@ public class ActionDB extends DBHelper {
 	public static final String COLUMN_NAME_ID = "id";
 	private static final String COLUMN_NAME_TITLE = "title";
 	private static final String COLUMN_NAME_DESCRIPTION = "description";
+	private static final String COLUMN_NAME_BACKGROUND_COLOR = "background_color_hex";
 
 	public static String buildCreateTableQuery() {
 		final StringBuilder builder = new StringBuilder();
@@ -54,6 +55,14 @@ public class ActionDB extends DBHelper {
 		return builder.toString();
 	}
 
+	public static String buildUpdateToCodeRelease5TableQuery() {
+		final StringBuilder builder = new StringBuilder();
+		builder.append("ALTER TABLE ").append(TABLE_NAME);
+		builder.append(" ADD COLUMN ").append(COLUMN_NAME_BACKGROUND_COLOR);
+		builder.append(" TEXT NOT NULL DEFAULT ").append("'#99CC00'");
+		return builder.toString();
+	}
+	
 	public static String buildInsertQueries() {
 		final StringBuilder builder = new StringBuilder();
 		builder.append("INSERT INTO ");
@@ -73,17 +82,18 @@ public class ActionDB extends DBHelper {
 		return "SELECT action." + COLUMN_NAME_ID + " as actionId, "
 				+ "action." + COLUMN_NAME_TITLE + " as actionTitle, "
 				+ "action." + COLUMN_NAME_DESCRIPTION + " as actionDescription, "
+				+ "action." + COLUMN_NAME_BACKGROUND_COLOR + " as actionBackgroundColor, "
 				+ "actionServer." + ActionServersDB.COLUMN_NAME_SERVER + " as serverId "
 				+ "FROM " + TABLE_NAME + " action "
 				+ "LEFT JOIN " + ActionServersDB.TABLE_NAME + " actionServer ON action.id=actionServer.action ";
 	}
 	
-	public long insert(String title, String description) throws DBException {
+	public long insert(String title, String description, String color) throws DBException {
 
 		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
 		db.beginTransaction();
 		try {
-			long actionId = insert(title, description, db);
+			long actionId = insert(title, description, color, db);
 			db.setTransactionSuccessful();
 			return actionId;
 		} catch (Exception e) {
@@ -96,12 +106,12 @@ public class ActionDB extends DBHelper {
 		}
 	}
 
-	public Long insert(String title, String description, Server server) throws DBException {
+	public Long insert(String title, String description, String color, Server server) throws DBException {
 	
 		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
 		db.beginTransaction();
 		try {
-			long actionId = insert(title, description, db);
+			long actionId = insert(title, description, color, db);
 			insert(actionId, server.getId(), db);
 			db.setTransactionSuccessful();
 			return actionId;
@@ -115,6 +125,22 @@ public class ActionDB extends DBHelper {
 		}
 	}
 	
+	private Action parseAction(Cursor cursor, SQLiteDatabase db) throws DBException {
+		try {
+			long id = cursor.getLong(cursor.getColumnIndex("actionId"));
+			String title = cursor.getString(cursor.getColumnIndex("actionTitle"));
+			String description = cursor.getString(cursor.getColumnIndex("actionDescription"));
+			Long serverId = cursor.getLong(cursor.getColumnIndex("serverId"));
+			String backgroundColor = cursor.getString(cursor.getColumnIndex("actionBackgroundColor"));
+			List<ActionScript> actionScripts = findAllScriptFromId(id, db);
+			return new Action(
+					id, title, description, backgroundColor,
+					serverId == 0 ? null : serverId, actionScripts);
+		} catch (Exception e) {
+			throw new DBException(e.getMessage(), e);
+		}
+	}
+	
 	public Action findById(long actionId) throws DBException {
 		SQLiteDatabase db = getSqliteHelper().getReadableDatabase();
 		Cursor cursor = null;
@@ -123,14 +149,7 @@ public class ActionDB extends DBHelper {
 			cursor = db.rawQuery(buildSelectQuery() + "WHERE actionId = ?", args);
 			if (cursor != null && cursor.getCount() > 0) {
 				cursor.moveToFirst();
-					long id = cursor.getLong(cursor.getColumnIndex("actionId"));
-					String title = cursor.getString(cursor.getColumnIndex("actionTitle"));
-					String description = cursor.getString(cursor.getColumnIndex("actionDescription"));
-					Long serverId = cursor.getLong(cursor.getColumnIndex("serverId"));
-					List<ActionScript> actionScripts = findAllScriptFromId(id, db);
-					return new Action(
-							id, title, description,
-							serverId == 0 ? null : serverId, actionScripts);
+				return parseAction(cursor, db);
 			}
 			throw new DBException("action id {" + actionId + "} not found.");
 		} catch (Exception e) {
@@ -152,17 +171,7 @@ public class ActionDB extends DBHelper {
 			if (cursor != null && cursor.getCount() > 0) {
 				cursor.moveToFirst();
 				do {
-					long id = cursor.getLong(cursor.getColumnIndex("actionId"));
-					String title = cursor.getString(cursor.getColumnIndex("actionTitle"));
-					String description = cursor.getString(cursor.getColumnIndex("actionDescription"));
-					Long serverId = cursor.getLong(cursor.getColumnIndex("serverId"));
-					
-					List<ActionScript> actionScripts = findAllScriptFromId(id, db);
-					actions.add(
-							new Action(
-									id, title, description,
-									serverId == 0 ? null : serverId, actionScripts));
-					
+					actions.add(parseAction(cursor, db));
 				} while (cursor.moveToNext());
 			}
 			return actions;
@@ -205,10 +214,11 @@ public class ActionDB extends DBHelper {
 		}
 	}
 	
-	private long insert(String title, String description, SQLiteDatabase db) throws DBException {
+	private long insert(String title, String description, String color, SQLiteDatabase db) throws DBException {
 		ContentValues values = new ContentValues();
 		values.put(COLUMN_NAME_TITLE, title);
 		values.put(COLUMN_NAME_DESCRIPTION, description);
+		values.put(COLUMN_NAME_BACKGROUND_COLOR, color);
 		long id = db.insert(getTableName(), null, values);
 		if (id == -1) {
 			throw new DBException("insert row error on :" + TABLE_NAME);
@@ -237,7 +247,7 @@ public class ActionDB extends DBHelper {
 	}
 
 
-	public void update(long actionId, String title, String description,
+	public void update(long actionId, String title, String description, String color,
 			Long serverOldId, Long serverNewId) throws DBException {
 
 		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
@@ -245,6 +255,7 @@ public class ActionDB extends DBHelper {
 		try {
 			updateTitle(actionId, title, db);
 			updateDescription(actionId, description, db);
+			updateColor(actionId, color, db);
 			
 			if (serverOldId != null) {
 				delete(actionId, serverOldId, db);
@@ -278,6 +289,16 @@ public class ActionDB extends DBHelper {
 		String[] whereArgs = new String[] { String.valueOf(actionId) };
 		ContentValues values = new ContentValues();
 		values.put(COLUMN_NAME_DESCRIPTION, description);
+		int id = db.update(TABLE_NAME, values, getPrimaryKey() + " = ?", whereArgs);
+		if (id < 1) {
+			throw new DBException("error updating row on :" + TABLE_NAME);
+		}
+	}
+	
+	private void updateColor(long actionId, String color, SQLiteDatabase db) throws DBException {
+		String[] whereArgs = new String[] { String.valueOf(actionId) };
+		ContentValues values = new ContentValues();
+		values.put(COLUMN_NAME_BACKGROUND_COLOR, color);
 		int id = db.update(TABLE_NAME, values, getPrimaryKey() + " = ?", whereArgs);
 		if (id < 1) {
 			throw new DBException("error updating row on :" + TABLE_NAME);

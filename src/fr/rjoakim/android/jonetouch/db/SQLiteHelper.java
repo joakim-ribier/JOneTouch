@@ -27,7 +27,7 @@ import com.google.common.collect.Lists;
  * 
  */
 public class SQLiteHelper extends SQLiteOpenHelper {
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "actionssvr";
     
 	public SQLiteHelper(Context context) {
@@ -50,6 +50,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 		db.execSQL(ActionScriptsDB.buildCreateTableQuery());
 		onCreate(db, ActionScriptsDB.buildInsertQueries());
 		db.execSQL(ActionServersDB.buildCreateTableQuery());
+
+		db.execSQL(ActionDB.buildUpdateToCodeRelease5TableQuery());
 	}
 
 	private void onCreate(SQLiteDatabase db, Iterable<String> queries) {
@@ -63,5 +65,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 	}
 	
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		switch (oldVersion) {
+		case 1:
+			db.execSQL(ActionDB.buildUpdateToCodeRelease5TableQuery());
+		}
+	}
 }

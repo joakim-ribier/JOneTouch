@@ -6,6 +6,7 @@
     android:orientation="vertical" >
 
     <RelativeLayout
+        android:id="@+id/activityMainWidgetLayoutSeparator"
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:background="@color/action_background_choice_green" >
@@ -78,6 +79,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/activityMainWidgetTitleActionLayout"
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="1"

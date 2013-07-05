@@ -28,6 +28,7 @@ import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.ScriptService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
+import fr.rjoakim.android.jonetouch.util.ColorHexFactory;
 
 /**
  * 
@@ -103,6 +104,9 @@ public class ActionView {
 
 		TextView descTextView = (TextView) mainView.findViewById(R.id.actionLayoutViewDescriptionTextView);
 		descTextView.setText(action.getDescription());
+		
+		View layoutColor = mainView.findViewById(R.id.actionLayoutView);
+		layoutColor.setBackgroundColor(activity.getResources().getColor(ColorHexFactory.hexColorToInt(action.getBackgroundHexColor())));
 		
 		ImageView isServerConnectionImageDefine = (ImageView) mainView.findViewById(R.id.actionViewLayoutLinkImage);
 		if (server != null) {
@@ -237,13 +241,14 @@ public class ActionView {
 		actionUpdateButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				UpdateActionMyDialog updateActionMyDialog = new UpdateActionMyDialog(activity, serverService, actionService) {
+				final UpdateActionMyDialog updateActionMyDialog =
+						new UpdateActionMyDialog(activity, serverService, actionService, action) {
 					@Override
 					public void onSuccess(Long t) {
 						ActionView.this.activity.rebuildAllActionViews(index);
 					}
 				};
-				updateActionMyDialog.show(action);
+				updateActionMyDialog.show();
 			}
 		});
 	}

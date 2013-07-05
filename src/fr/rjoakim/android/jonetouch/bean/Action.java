@@ -29,16 +29,18 @@ public class Action {
 	private final long id;
 	private final String title;
 	private final String description;
+	private final String backgroundHexColor;
 
 	private final Long serverId;
 	private final List<ActionScript> actionScripts;
 
-	public Action(long id, String title, String description,
+	public Action(long id, String title, String description, String backgroundHexColor,
 			Long serverId, List<ActionScript> actionScripts) {
 
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.backgroundHexColor = backgroundHexColor;
 		this.serverId = serverId;
 		this.actionScripts = actionScripts;
 	}
@@ -53,6 +55,10 @@ public class Action {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public String getBackgroundHexColor() {
+		return backgroundHexColor;
 	}
 
 	public Long getServerId() {
@@ -75,8 +81,8 @@ public class Action {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, title, description, serverId,
-				actionScripts);
+		return Objects.hashCode(id, title, description,
+				backgroundHexColor, serverId, actionScripts);
 	}
 
 	@Override
@@ -86,6 +92,7 @@ public class Action {
 			return Objects.equal(this.id, that.id)
 					&& Objects.equal(this.title, that.title)
 					&& Objects.equal(this.description, that.description)
+					&& Objects.equal(this.backgroundHexColor, that.backgroundHexColor)
 					&& Objects.equal(this.serverId, that.serverId)
 					&& Objects.equal(this.actionScripts, that.actionScripts);
 		}
@@ -98,6 +105,7 @@ public class Action {
 				.add("id", id)
 				.add("title", title)
 				.add("description", description)
+				.add("backgroundHexColor", backgroundHexColor)
 				.add("serverId", serverId)
 				.add("actionScripts", actionScripts)
 				.toString();

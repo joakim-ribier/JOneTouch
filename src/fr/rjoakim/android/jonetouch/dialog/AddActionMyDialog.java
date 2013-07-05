@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -18,6 +19,7 @@ import fr.rjoakim.android.jonetouch.bean.Server;
 import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
+import fr.rjoakim.android.jonetouch.util.ColorHexFactory;
 
 /**
  * 
@@ -47,11 +49,21 @@ public abstract class AddActionMyDialog extends MyDialog<Long> {
 	protected final Spinner spinner;
 	protected final CheckBox checkBox;
 
+	protected String color = "";
+	
 	public AddActionMyDialog(Activity activity, ServerService serverService,
 			ActionService actionService) {
 		
+		this(activity, serverService, actionService,
+				activity.getString(R.color.action_background_choice_green));
+	}
+	
+	protected AddActionMyDialog(Activity activity, ServerService serverService,
+			ActionService actionService, String color) {
+		
 		super(activity, R.layout.add_action_dialog);
 		
+		this.color = color;
 		this.serverService = serverService;
 		this.actionService = actionService;
 		
@@ -60,6 +72,28 @@ public abstract class AddActionMyDialog extends MyDialog<Long> {
 		
 		fillSpinnerWithServerConnections();
 		addCheckBoxAskExecutionEvent();
+		addChooseBackgroundColorEvent();
+	}
+
+	private void addChooseBackgroundColorEvent() {
+		View layoutColor = AddActionMyDialog.this.content.findViewById(R.id.addActionViewBackgroundColorLayout);
+		layoutColor.setBackgroundColor(activity.getResources().getColor(ColorHexFactory.hexColorToInt(color)));
+		
+		View view = content.findViewById(R.id.addActionViewBackgroundColorLayoutButton);
+		view.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ChoiceColorActionMyDialog choiceColorActionMyDialog = new ChoiceColorActionMyDialog(activity) {
+					@Override
+					public void onSuccess(String color) {
+						View view = AddActionMyDialog.this.content.findViewById(R.id.addActionViewBackgroundColorLayout);
+						view.setBackgroundColor(activity.getResources().getColor(ColorHexFactory.hexColorToInt(color)));
+						AddActionMyDialog.this.color = color;
+					}
+				};
+				choiceColorActionMyDialog.show(color);
+			}
+		});
 	}
 
 	@Override
@@ -151,9 +185,9 @@ public abstract class AddActionMyDialog extends MyDialog<Long> {
 		try {
 			Server server = getServerConnectionValue();
 			if (server.getId() != -1) {
-				return actionService.create(getTitleText(), getDescriptionText(), server);
+				return actionService.create(getTitleText(), getDescriptionText(), color, server);
 			} else {
-				return actionService.create(getTitleText(), getDescriptionText());
+				return actionService.create(getTitleText(), getDescriptionText(), color);
 			}
 		} catch (ServiceException e) {
 			Toast.makeText(activity,

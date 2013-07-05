@@ -38,9 +38,17 @@ public abstract class UpdateActionMyDialog extends AddActionMyDialog {
 	private Action action;
 
 	public UpdateActionMyDialog(Activity activity, ServerService serverService,
-			ActionService actionService) {
+			ActionService actionService, Action action) {
 
-		super(activity, serverService, actionService);
+		super(activity, serverService, actionService, action.getBackgroundHexColor());
+		this.action = action;
+		
+		setServerConnection(action);
+
+		TextView titleTextView = (TextView) content.findViewById(R.id.addActionViewTitleEditText);
+		titleTextView.setText(action.getTitle());
+		EditText descrTextView = (EditText) content.findViewById(R.id.addActionViewDescriptionEditText);
+		descrTextView.setText(action.getDescription());
 	}
 
 	@Override
@@ -55,9 +63,9 @@ public abstract class UpdateActionMyDialog extends AddActionMyDialog {
 				try {
 					Server server = getServerConnectionValue();
 					if (server.getId() != -1) {
-						actionService.update(action.getId(), getTitleText(), getDescriptionText(), action.getServerId(), server.getId());
+						actionService.update(action.getId(), getTitleText(), getDescriptionText(), color, action.getServerId(), server.getId());
 					} else {
-						actionService.update(action.getId(), getTitleText(), getDescriptionText(), action.getServerId(), null);
+						actionService.update(action.getId(), getTitleText(), getDescriptionText(), color, action.getServerId(), null);
 					}
 					dialog.dismiss();
 					onSuccess(action.getId());
@@ -68,19 +76,6 @@ public abstract class UpdateActionMyDialog extends AddActionMyDialog {
 				}
 			}
 		}
-	}
-	
-	public void show(Action action) {
-		super.show();
-
-		this.action = action;
-		
-		setServerConnection(action);
-
-		TextView titleTextView = (TextView) content.findViewById(R.id.addActionViewTitleEditText);
-		titleTextView.setText(action.getTitle());
-		EditText descrTextView = (EditText) content.findViewById(R.id.addActionViewDescriptionEditText);
-		descrTextView.setText(action.getDescription());
 	}
 	
 	private void setServerConnection(Action action) {

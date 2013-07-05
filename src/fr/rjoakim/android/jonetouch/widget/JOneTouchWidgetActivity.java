@@ -18,6 +18,7 @@ import fr.rjoakim.android.jonetouch.R;
 import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
+import fr.rjoakim.android.jonetouch.util.ColorHexFactory;
 
 /**
  * 
@@ -56,6 +57,12 @@ public class JOneTouchWidgetActivity extends AppWidgetProvider {
     public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId, Action action) {
     	RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.activity_main_widget);
         views.setTextViewText(R.id.activityMainWidgetTitleActionTextView, toFormat(action));
+
+        views.setInt(R.id.activityMainWidgetLayoutSeparator, "setBackgroundResource",
+        		ColorHexFactory.hexColorToInt(action.getBackgroundHexColor()));
+		
+        views.setInt(R.id.activityMainWidgetTitleActionLayout, "setBackgroundResource",
+        		ColorHexFactory.hexColorToInt(action.getBackgroundHexColor()));
         
         createIntentToLauchBrowserOnHomeSite(context, views);
 		createIntentToExecuteScript(context, appWidgetId, views, action);

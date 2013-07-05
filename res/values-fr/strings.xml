@@ -2,6 +2,11 @@
 <resources>
 
     <string name="http_www_joakim_ribier_fr">http://www.joakim-ribier.fr</string>
+    <string name="action_background_choice_green">#99CC00</string>
+    <string name="action_background_choice_blue">#33B5E5</string>
+    <string name="action_background_choice_purple">#AA66CC</string>
+    <string name="action_background_choice_orange">#FFBB33</string>
+    <string name="action_background_choice_red">#FF4444</string>
 
     <!-- global view -->
     <string name="app_widget_name">JOneTouch - Action 2x1</string>
@@ -137,5 +142,8 @@
     <string name="command_executor_connect">connecté</string>
     <string name="command_executor_desconnect">déconnecté</string>
     <string name="command_executor_failed">problème de connexion :\n\n{%1$s}</string>
+
+    <!-- choice color action my dialog -->
+    <string name="choice_color_action_dialog_title">Sélectionnez une couleur de fond pour l\'action</string>
 
 </resources>

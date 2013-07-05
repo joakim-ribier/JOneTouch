@@ -41,24 +41,26 @@ public class ActionService {
 		this.actionDB = new ActionDB(context);
 	}
 
-	public Long create(String title, String description, Server server) throws ServiceException {
+	public Long create(String title, String description, String color, Server server) throws ServiceException {
 
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(title), "title field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(description), "description field is required");
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(color), "color field is required");
 		Preconditions.checkNotNull(server, "server field is required");
 		Preconditions.checkArgument(server.getId() != -1, "server field is required");
 		try {
-			return actionDB.insert(title, description, server);
+			return actionDB.insert(title, description, color, server);
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
 	}
 
-	public Long create(String title, String description) throws ServiceException {
+	public Long create(String title, String description, String color) throws ServiceException {
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(title), "title field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(description), "description field is required");
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(color), "color field is required");
 		try {
-			return actionDB.insert(title, description);
+			return actionDB.insert(title, description, color);
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
@@ -80,11 +82,12 @@ public class ActionService {
 		}
 	}
 
-	public void update(long id, String title, String description, Long serverOldId, Long serverNewId) throws ServiceException {
+	public void update(long id, String title, String description, String color, Long serverOldId, Long serverNewId) throws ServiceException {
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(title), "title field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(description), "description field is required");
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(color), "color field is required");
 		try {
-			actionDB.update(id, title, description, serverOldId, serverNewId);
+			actionDB.update(id, title, description, color, serverOldId, serverNewId);
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
