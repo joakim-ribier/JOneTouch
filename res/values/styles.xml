@@ -5,8 +5,6 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <item name="android:windowBackground">@color/gray</item>
-        <item name="android:colorBackground">@color/gray</item>
         <item name="android:editTextStyle">@style/EditTextAppTheme</item>
     </style>
 

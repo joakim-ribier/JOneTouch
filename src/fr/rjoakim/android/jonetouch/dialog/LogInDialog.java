@@ -45,7 +45,6 @@ public abstract class LogInDialog extends MyDialog<String> {
 		if (!checkIfPasswordIsCorrect()) {
 			Toast.makeText(activity,
 					getString(R.string.log_in_dialog_pwd_wrong), Toast.LENGTH_LONG).show();
-			onFailed();
 		} else {
 			dialog.dismiss();
 			onSuccess(getPasswordEditText());
@@ -54,7 +53,8 @@ public abstract class LogInDialog extends MyDialog<String> {
 	
 	@Override
 	protected void onNegativeButton(View v) {
-		activity.finish();
+		dialog.dismiss();
+		onFailed();
 	}
 	
 	private boolean checkIfPasswordIsCorrect() {

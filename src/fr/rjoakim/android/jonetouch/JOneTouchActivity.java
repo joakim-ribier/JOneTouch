@@ -1,13 +1,16 @@
 package fr.rjoakim.android.jonetouch;
 
 import java.util.List;
+import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.appwidget.AppWidgetManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -20,6 +23,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.google.common.collect.Maps;
+
 import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
 import fr.rjoakim.android.jonetouch.dialog.LogInDialog;
@@ -31,6 +37,7 @@ import fr.rjoakim.android.jonetouch.service.ServiceException;
 import fr.rjoakim.android.jonetouch.service.UserService;
 import fr.rjoakim.android.jonetouch.view.ActionEditView;
 import fr.rjoakim.android.jonetouch.view.ActionView;
+import fr.rjoakim.android.jonetouch.widget.JOneTouchWidgetActivity;
 
 /**
  * 
@@ -72,6 +79,7 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 	private View.OnTouchListener gestureListener;
 	private ActionListTopBarView actionListTopBarView;
 	
+	private Map<Long, ActionEditView> mapActionIdWithActionEditView;
 	private int backPressed = 0;
 	
 	@Override
@@ -104,6 +112,8 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 		this.actionListTopBarView = new ActionListTopBarView(this, serverService,
 				actionService, myViewAnimator, gestureListener);
 		
+		this.mapActionIdWithActionEditView = Maps.newHashMap();
+		
 		if (!userService.isExists()) {
 			startActivity(
 					new Intent(this, CreateAccountActivity.class));
@@ -113,6 +123,13 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 			startApp(savedInstanceState);
 			buildAllActionViews(0);
 		}
+	}
+
+	private ActionEditView getIndexOfViewAnimatorFromActionId(long actionId) {
+		if (mapActionIdWithActionEditView.containsKey(actionId)) {
+			return mapActionIdWithActionEditView.get(actionId);
+		}
+		return null;
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -160,15 +177,39 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 			@Override
 			public void onSuccess(String pwd) {
 				myAuthentication.setKey(pwd);
+				displayEditActionViewFromAppWidget();
 			}
 			@Override
 			public void onFailed() {
 				myAuthentication.setKey(null);
+				finish();
 			}
 		};
 		logInDialog.show();
 	}
 	
+	private void displayEditActionViewFromAppWidget() {
+		Intent intent = getIntent();
+		if (intent != null) {
+			long actionId = intent.getLongExtra(JOneTouchWidgetActivity.ACTION_ID_FIELD, -1);
+			boolean execute = intent.getBooleanExtra(JOneTouchWidgetActivity.ACTION_EXECUTE_FIELD, false);
+			if (actionId != -1) {
+				ActionEditView actionEditView = getIndexOfViewAnimatorFromActionId(actionId);
+				if (actionEditView != null) {
+					actionListTopBarView.displayedViewAnimator(
+							0, actionEditView.getActionView().getIndex());
+					if (execute) {
+						actionEditView.getActionView().execute();
+					}
+				} else {
+					Toast.makeText(this,
+							getString(R.string.app_widget_delete_because_action_is_deleted),
+							Toast.LENGTH_LONG).show();
+				}
+			}
+		}
+	}
+
 	private void buildAllActionViews(int index) {
 		actionListTopBarView.fill();
 
@@ -176,6 +217,15 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 		
 		fillAllViewsWithActions();
 		positionIndexOnViewAnimator(index);
+		
+		refreshAllAppWidgets();
+	}
+
+	private void refreshAllAppWidgets() {
+		AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getApplicationContext());
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(
+        		new ComponentName(getApplicationContext(), JOneTouchWidgetActivity.class));
+        JOneTouchWidgetActivity.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetIds);
 	}
 	
 	public void rebuildAllActionViews() {
@@ -244,6 +294,7 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 				serverService, myTerminal, myAuthentication, actionService, scriptService);
 		myViewAnimator.get().addView(
 				actionDetailView.build(action, index));
+		mapActionIdWithActionEditView.put(action.getId(), actionDetailView);
 	}
 	
 	public void showAnimatorView(int index) {

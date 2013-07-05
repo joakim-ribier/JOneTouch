@@ -115,6 +115,34 @@ public class ActionDB extends DBHelper {
 		}
 	}
 	
+	public Action findById(long actionId) throws DBException {
+		SQLiteDatabase db = getSqliteHelper().getReadableDatabase();
+		Cursor cursor = null;
+		try {
+			String[] args = new String[]{ String.valueOf(actionId) };
+			cursor = db.rawQuery(buildSelectQuery() + "WHERE actionId = ?", args);
+			if (cursor != null && cursor.getCount() > 0) {
+				cursor.moveToFirst();
+					long id = cursor.getLong(cursor.getColumnIndex("actionId"));
+					String title = cursor.getString(cursor.getColumnIndex("actionTitle"));
+					String description = cursor.getString(cursor.getColumnIndex("actionDescription"));
+					Long serverId = cursor.getLong(cursor.getColumnIndex("serverId"));
+					List<ActionScript> actionScripts = findAllScriptFromId(id, db);
+					return new Action(
+							id, title, description,
+							serverId == 0 ? null : serverId, actionScripts);
+			}
+			throw new DBException("action id {" + actionId + "} not found.");
+		} catch (Exception e) {
+			throw new DBException(e.getMessage(), e);
+		} finally {
+			if (cursor != null) {
+				cursor.close();
+			}
+			db.close();
+		}
+	}
+	
 	public List<Action> findAll() throws DBException {
 		SQLiteDatabase db = getSqliteHelper().getReadableDatabase();
 		Cursor cursor = null;

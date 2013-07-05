@@ -64,6 +64,14 @@ public class ActionService {
 		}
 	}
 	
+	public Action get(long actionId) throws ServiceException {
+		try {
+			return actionDB.findById(actionId);
+		} catch (DBException e) {
+			throw new ServiceException(e.getMessage(), e);
+		}
+	}
+	
 	public List<Action> list() throws ServiceException {
 		try {
 			return actionDB.findAll();

@@ -45,6 +45,7 @@ public class ActionEditView {
 	private final ScriptService scriptService;
 	
 	private final View view;
+	private ActionView actionView;
 
 	public ActionEditView(JOneTouchActivity activity, OnTouchListener gestureListener, ServerService serverService,
 			MyTerminal myTerminal, MyAuthentication myAuthentication, ActionService actionService, ScriptService scriptService) {
@@ -67,7 +68,7 @@ public class ActionEditView {
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void addActionView(Action action, int index) {
-		ActionView actionView = new ActionView(
+		this.actionView = new ActionView(
 				activity, serverService, myTerminal, myAuthentication, actionService, scriptService);
 		
 		LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.actionDetailViewLayout);
@@ -77,5 +78,9 @@ public class ActionEditView {
 			linearLayout.setLayoutTransition(layoutTransition);
 		}
 		linearLayout.addView(actionView.buildEditView(action, index));
+	}
+	
+	public ActionView getActionView() {
+		return actionView;
 	}
 }

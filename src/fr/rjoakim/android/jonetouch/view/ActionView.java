@@ -59,6 +59,9 @@ public class ActionView {
 	private final ScriptService scriptService;
 	
 	private final LinearLayout mainView;
+	
+	private Action action;
+	private int index;
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public ActionView(JOneTouchActivity activity, ServerService serverService,
@@ -81,6 +84,9 @@ public class ActionView {
 	}
 
 	public View buildEditView(Action action, int index) {
+		this.action = action;
+		this.index = index;
+		
 		return build(action, true, index);
 	}
 
@@ -90,23 +96,7 @@ public class ActionView {
 	
 	private View build(final Action action, boolean edit, final int index) {
 		final Server server = getServer(action);
-		final View runScriptView = mainView.findViewById(R.id.actionLayoutWidgetStart);
-		runScriptView.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (server != null) {
-					runScript(action, server);
-				} else {
-					ChoiceConnectionMyDialog choiceConnectionMyDialog = new ChoiceConnectionMyDialog(activity, serverService) {
-						@Override
-						public void onSuccess(Server value) {
-							runScript(action, value);
-						}
-					};
-					choiceConnectionMyDialog.show();
-				}
-			}
-		});
+		addEventToExecuteScriptButton(action, server);
 		
 		TextView titleTextView = (TextView) mainView.findViewById(R.id.actionLayoutViewTitleTextView);
 		titleTextView.setText(action.getTitle());
@@ -173,6 +163,30 @@ public class ActionView {
 		return mainView;
 	}
 
+	private void addEventToExecuteScriptButton(final Action action, final Server server) {
+		final View runScriptView = mainView.findViewById(R.id.actionLayoutWidgetStart);
+		runScriptView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				execute(action, server);
+			}
+		});
+	}
+
+	private void execute(final Action action, final Server server) {
+		if (server != null) {
+			runScript(action, server);
+		} else {
+			ChoiceConnectionMyDialog choiceConnectionMyDialog = new ChoiceConnectionMyDialog(activity, serverService) {
+				@Override
+				public void onSuccess(Server value) {
+					runScript(action, value);
+				}
+			};
+			choiceConnectionMyDialog.show();
+		}
+	}
+	
 	private void setActionEditActionScript(final Action action) {
 		View editScriptButton = mainView.findViewById(R.id.actionViewLayoutOptionsEditActionScript);
 		editScriptButton.setOnClickListener(new View.OnClickListener() {
@@ -291,5 +305,18 @@ public class ActionView {
 				deleteActionScriptMyDialog.show();
 			}
 		});
+	}
+	
+	public Action getAction() {
+		return action;
+	}
+	
+	public int getIndex() {
+		return index;
+	}
+	
+	public void execute() {
+		Server server = getServer(action);
+		execute(action, server);
 	}
 }

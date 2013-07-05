@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="http_www_joakim_ribier_fr">http://www.joakim-ribier.fr</string>
+
     <!-- global view -->
+    <string name="app_widget_name">JOneTouch - Action 2x1</string>
+    <string name="app_widget_delete_because_action_is_deleted">L\' action n\'existe plus, vous pouvez supprimer ce widget.</string>
     <string name="app_name">JOneTouch</string>
     <string name="set_clipboard_password">Le mot de passe a été copié dans le presse-papier.</string>
     <string name="failed">Une erreur est survenue, veuillez réessayer ou contacter directement le support.</string>
@@ -63,10 +67,9 @@
     <string name="add_connection_dialog_validation_connextion_exists">Une connexion avec le même hôte et le même type d\'authentification existe déjà.</string>
     <string name="add_connection_dialog_port">Port :</string>
     <string name="add_connection_dialog_port_hint">22</string>
-
     <string name="server_connection_type_no_authentication">aucune</string>
     <string name="server_connection_type_ssh_authentication">ssh avec mot de passe</string>
-    
+
     <!-- update server connection my dialog -->
     <string name="update_server_connection_my_dialog_title">Mise à jour d\'une connexion</string>
     <string name="update_server_connection_my_dialog_success">La connexion au serveur a été modifié.</string>
@@ -82,6 +85,10 @@
     <!-- choice connection my dialog -->
     <string name="choice_connection_dialog_title">Choix de la connexion</string>
     <string name="choice_connection_dialog_unknow">aucune connexion de sélectionnée</string>
+
+    <!-- choice action for widget my dialog -->
+    <string name="choice_action_for_widget_dialog_title">Sélectionnez l\'action à configurer pour le widget</string>
+    <string name="choice_action_for_widget_dialog_unknow">Sélectionnez une action dans la liste ou cliquez sur annuler.</string>
 
     <!-- my dialog -->
     <string name="my_dialog_title">Boîte de dialogue</string>
