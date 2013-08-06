@@ -19,7 +19,7 @@
     <string name="yes_button">Non</string>
     <string name="add">ajouter</string>
     <string name="image_content_description">logo</string>
-    <string name="back_pressed">Appuyez une deuxième fois pour vous déconnecter de l\'application</string>
+    <string name="back_pressed">Appuyez une deuxième fois pour vous déconnecter de l\'application.</string>
 
     <!-- application top menu -->
     <string name="activity_tool">menu</string>
@@ -89,7 +89,7 @@
     <string name="choice_connection_dialog_unknow">aucune connexion de sélectionnée</string>
 
     <!-- choice action for widget my dialog -->
-    <string name="choice_action_for_widget_dialog_title">Sélectionnez l\'action à configurer pour le widget</string>
+    <string name="choice_action_for_widget_dialog_title">Sélectionnez l\'action à configurer pour le widget.</string>
     <string name="choice_action_for_widget_dialog_unknow">Sélectionnez une action dans la liste ou cliquez sur annuler.</string>
 
     <!-- my dialog -->
@@ -130,6 +130,6 @@
     <string name="command_executor_failed">problème de connexion :\n\n{%1$s}</string>
 
     <!-- choice color action my dialog -->
-    <string name="choice_color_action_dialog_title">Sélectionnez une couleur de fond pour l\'action</string>
+    <string name="choice_color_action_dialog_title">Sélectionnez une couleur de fond pour l\'action.</string>
 
 </resources>

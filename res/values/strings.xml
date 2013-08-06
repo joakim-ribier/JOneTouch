@@ -19,7 +19,7 @@
     <string name="yes_button">No</string>
     <string name="add">add</string>
     <string name="image_content_description">logo</string>
-    <string name="back_pressed">Press a second time to disconnect from the application</string>
+    <string name="back_pressed">Press a second time to disconnect from the application.</string>
 
     <!-- application top menu -->
     <string name="activity_tool">menu</string>
@@ -89,7 +89,7 @@
     <string name="choice_connection_dialog_unknow">no connection selected</string>
 
     <!-- choice action for widget my dialog -->
-    <string name="choice_action_for_widget_dialog_title">Please choose action for this widget</string>
+    <string name="choice_action_for_widget_dialog_title">Please choose action for this widget.</string>
     <string name="choice_action_for_widget_dialog_unknow">Please choose action or cancel.</string>
 
     <!-- my dialog -->
@@ -98,7 +98,7 @@
     <string name="my_dialog_negative_button">Cancel</string>
 
     <!-- action view layout -->
-    <string name="action_view_layout_no_server_connection">The connection is not defined, execute action and select connection</string>
+    <string name="action_view_layout_no_server_connection">The connection is not defined, execute action and select connection.</string>
     <string name="action_view_server_connection">The connection is defined on %1$s</string>
     <string name="about_of_loading">loading &#8230;</string>
 
