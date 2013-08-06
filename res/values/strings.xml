@@ -58,7 +58,7 @@
 
     <!-- logIn dialog view -->
     <string name="log_in_dialog_title">Connect to the application</string>
-    <string name="log_in_dialog_pwd_wrong">Dialog</string>
+    <string name="log_in_dialog_pwd_wrong">The password is incorrect.</string>
 
     <!-- add server connection my dialog -->
     <string name="add_connection_dialog_title">New connection</string>
