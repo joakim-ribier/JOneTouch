@@ -15,7 +15,6 @@
     <string name="set_clipboard_password">The password has been copied to the clipboard.</string>
     <string name="failed">An error occurred, please try again or contact support.</string>
     <string name="incorrect_data">The data entered is incorrect.</string>
-    <string name="delete_button">Delete</string>
     <string name="no_button">Yes</string>
     <string name="yes_button">No</string>
     <string name="add">add</string>
@@ -31,8 +30,6 @@
 
     <!-- my menu view -->
     <string name="my_menu_add_action">Create action</string>
-    <string name="my_menu_add_script_model">Script template</string>
-    <string name="my_menu_update_script_model">Update template</string>
     <string name="my_menu_help">Help</string>
     <string name="my_menu_add_server_connection">Server connection</string>
     <string name="my_menu_remove_server_connection">delete</string>
@@ -124,17 +121,6 @@
     <string name="update_action_script_dialog_title">Update script</string>
     <string name="delete_action_script_dialog_title">Delete script</string>
     <string name="delete_action_script_dialog_text">Do you want to remove this script ?</string>
-
-    <!-- add update and delete model script dialog -->
-    <string name="add_script_model_dialog_title">New template</string>
-    <string name="add_or_update_script_model_title_label">Title</string>
-    <string name="add_or_update_script_model_hint">Copy and paste your script here or select a template.</string>
-    <string name="add_or_update_script_model_default_choice">select a template &#8230;</string>
-    <string name="add_script_model_success">The script template \"%1$s\" has been created.</string>
-    <string name="update_script_model_dialog_title">Update template</string>
-    <string name="update_script_model_success">The script template \"%1$s\" has been updated.</string>
-    <string name="update_script_model_unselected">Select a template for to update it or delete.</string>
-    <string name="delete_script_model_success">The script template \"%1$s\" has been deleted.</string>
 
     <!-- command executor -->
     <string name="command_executor_execute">Executing script &#8230;</string>

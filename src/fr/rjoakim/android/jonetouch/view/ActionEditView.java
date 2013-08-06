@@ -12,7 +12,6 @@ import fr.rjoakim.android.jonetouch.R;
 import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
 import fr.rjoakim.android.jonetouch.service.ActionService;
-import fr.rjoakim.android.jonetouch.service.ScriptService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 
 /**
@@ -42,20 +41,18 @@ public class ActionEditView {
 	private final MyTerminal myTerminal;
 	private final MyAuthentication myAuthentication;
 	private final ActionService actionService;
-	private final ScriptService scriptService;
 	
 	private final View view;
 	private ActionView actionView;
 
 	public ActionEditView(JOneTouchActivity activity, OnTouchListener gestureListener, ServerService serverService,
-			MyTerminal myTerminal, MyAuthentication myAuthentication, ActionService actionService, ScriptService scriptService) {
+			MyTerminal myTerminal, MyAuthentication myAuthentication, ActionService actionService) {
 
 		this.activity = activity;
 		this.serverService = serverService;
 		this.myTerminal = myTerminal;
 		this.myAuthentication = myAuthentication;
 		this.actionService = actionService;
-		this.scriptService = scriptService;
 		
 		this.view = activity.getLayoutInflater().inflate(R.layout.action_edit_view, null);
 		this.view.findViewById(R.id.actionDetailViewScroll).setOnTouchListener(gestureListener);
@@ -69,7 +66,7 @@ public class ActionEditView {
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void addActionView(Action action, int index) {
 		this.actionView = new ActionView(
-				activity, serverService, myTerminal, myAuthentication, actionService, scriptService);
+				activity, serverService, myTerminal, myAuthentication, actionService);
 		
 		LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.actionDetailViewLayout);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {

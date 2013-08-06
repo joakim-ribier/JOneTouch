@@ -4,12 +4,9 @@ import java.util.List;
 
 import android.app.Activity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.common.base.Splitter;
@@ -20,9 +17,6 @@ import com.google.common.collect.Lists;
 import fr.rjoakim.android.jonetouch.R;
 import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.bean.ActionScript;
-import fr.rjoakim.android.jonetouch.bean.Script;
-import fr.rjoakim.android.jonetouch.service.ScriptService;
-import fr.rjoakim.android.jonetouch.service.ServiceException;
 
 /**
  * 
@@ -47,15 +41,9 @@ import fr.rjoakim.android.jonetouch.service.ServiceException;
 public abstract class UpdateActionScriptMyDialog extends MyDialog<List<String>> {
 
 	private final static String SEPARATOR = "#script suivant#";
-	private final ScriptService scriptService;
 
-	public UpdateActionScriptMyDialog(Activity activity, ScriptService scriptService) {
+	public UpdateActionScriptMyDialog(Activity activity) {
 		super(activity, R.layout.add_or_update_action_script_dialog);
-		
-		this.scriptService = scriptService;
-		
-		fillSpinnerWithScriptModels(content);
-		addSpinnerChangeScriptEvent(content);
 		addCheckBoxSeparatorEvent();
 	}
 
@@ -78,47 +66,6 @@ public abstract class UpdateActionScriptMyDialog extends MyDialog<List<String>> 
 	@Override
 	public void onNegativeButton(View v) {
 		dialog.dismiss();
-	}
-	
-	private void fillSpinnerWithScriptModels(View content) {
-		Spinner spinner = (Spinner) content.findViewById(R.id.addOrUpdateActionScriptListSpinner);
-		try {
-			List<Script> scripts = scriptService.list();
-			List<Script> values = Lists.newArrayList(buildFakeModel());
-			values.addAll(scripts);
-			
-			ArrayAdapter<Script> dataAdapter = new ArrayAdapter<Script>(activity,
-					R.layout.spinner_layout, values);
-			
-			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			spinner.setAdapter(dataAdapter);
-		} catch (ServiceException e) {
-			Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_LONG).show();
-			setClipboardError(e.getMessage());
-		}
-	}
-	
-	private Script buildFakeModel() {
-		return new Script(
-				-1,
-				getString(R.string.add_or_update_script_model_default_choice), null);
-	}
-	
-	private void addSpinnerChangeScriptEvent(View content) {
-		final EditText editText = (EditText) content.findViewById(R.id.addOrUpdateActionScriptEditText);
-		final Spinner spinner = (Spinner) content.findViewById(R.id.addOrUpdateActionScriptListSpinner);
-		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
-				if (position != 0) {
-					Script script = (Script) spinner.getItemAtPosition(position);
-					insertTextAtCursorPosition(editText, script.getValue() + "\n");
-				}
-			}
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-			}
-		});
 	}
 	
 	private void insertTextAtCursorPosition(EditText editText, String value) {

@@ -14,15 +14,12 @@ import fr.rjoakim.android.jonetouch.async.CommandExecutor;
 import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
 import fr.rjoakim.android.jonetouch.bean.Server;
 import fr.rjoakim.android.jonetouch.dialog.AddActionMyDialog;
-import fr.rjoakim.android.jonetouch.dialog.AddScriptModelMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.AddServerConnectionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.DeleteServerConnectionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.HelpMyDialog;
-import fr.rjoakim.android.jonetouch.dialog.UpdateScriptModelMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.UpdateServerConnectionMyDialog;
 import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.AuthenticationTypeService;
-import fr.rjoakim.android.jonetouch.service.ScriptService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
 
@@ -58,16 +55,13 @@ public class MyMenu {
 	
 	private final ServerService serverService;
 	private final AuthenticationTypeService authenticationTypeService;
-	private final ScriptService scriptService;
 	private final ActionService actionService;
 	
 	public MyMenu(JOneTouchActivity activity, MyAuthentication myAuthentication, ServerService serverService,
-			AuthenticationTypeService authenticationTypeService, ScriptService scriptService,
-			ActionService actionService) {
+			AuthenticationTypeService authenticationTypeService, ActionService actionService) {
 		
 		this.activity = activity;
 		this.serverService = serverService;
-		this.scriptService = scriptService;
 		this.authenticationTypeService = authenticationTypeService;
 		this.myAuthentication = myAuthentication;
 		this.actionService = actionService;
@@ -92,22 +86,6 @@ public class MyMenu {
 			@Override
 			public void onClick(View v) {
 				displayAddOrUpdateActionDialog();
-			}
-		});
-		
-		final View addScriptModelLayout = root.findViewById(R.id.myMenuScriptModelAddButton);
-		addScriptModelLayout.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				displayAddScriptModelDialog();
-			}
-		});
-		
-		final View updateScriptModelLayout = root.findViewById(R.id.myMenuScriptModelUpdateButton);
-		updateScriptModelLayout.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				displayUpdateScriptModelDialog();
 			}
 		});
 		
@@ -155,26 +133,6 @@ public class MyMenu {
 			}
 		};
 		myDialog.show();
-	}
-	
-	private void displayAddScriptModelDialog() {
-		AddScriptModelMyDialog addScriptModelMyDialog = new AddScriptModelMyDialog(activity, scriptService) {
-			@Override
-			public void onSuccess(String value) {
-				Toast.makeText(activity,
-						getString(R.string.add_script_model_success, value), Toast.LENGTH_LONG).show();
-			}
-		};
-		addScriptModelMyDialog.show();
-	}
-	
-	private void displayUpdateScriptModelDialog() {
-		UpdateScriptModelMyDialog updateScriptModelMyDialog = new UpdateScriptModelMyDialog(activity, scriptService) {
-			@Override
-			public void onSuccess(String value) {
-			}
-		};
-		updateScriptModelMyDialog.show();
 	}
 	
 	private void displayAddConnectionDialog() {

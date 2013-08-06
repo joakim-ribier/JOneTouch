@@ -25,7 +25,6 @@ import fr.rjoakim.android.jonetouch.dialog.DeleteActionScriptMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.UpdateActionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.UpdateActionScriptMyDialog;
 import fr.rjoakim.android.jonetouch.service.ActionService;
-import fr.rjoakim.android.jonetouch.service.ScriptService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
 import fr.rjoakim.android.jonetouch.util.ColorHexFactory;
@@ -57,7 +56,6 @@ public class ActionView {
 	private final MyTerminal myTerminal;
 	private final MyAuthentication myAuthentication;
 	private final ActionService actionService;
-	private final ScriptService scriptService;
 	
 	private final LinearLayout mainView;
 	
@@ -67,14 +65,13 @@ public class ActionView {
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public ActionView(JOneTouchActivity activity, ServerService serverService,
 			MyTerminal myTerminal, MyAuthentication myAuthentication,
-			ActionService actionService, ScriptService scriptService) {
+			ActionService actionService) {
 		
 		this.activity = activity;
 		this.serverService = serverService;
 		this.myTerminal = myTerminal;
 		this.myAuthentication = myAuthentication;
 		this.actionService = actionService;
-		this.scriptService = scriptService;
 		
 		this.mainView = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.action_view_layout, null);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -197,7 +194,7 @@ public class ActionView {
 			@Override
 			public void onClick(View v) {
 				UpdateActionScriptMyDialog updateActionScriptMyDialog = 
-						new UpdateActionScriptMyDialog(activity, scriptService) {
+						new UpdateActionScriptMyDialog(activity) {
 					@Override
 					public void onSuccess(List<String> values) {
 						try {

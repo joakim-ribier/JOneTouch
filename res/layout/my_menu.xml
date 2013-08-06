@@ -43,63 +43,6 @@
             android:padding="10dp" />
 
         <LinearLayout
-            android:id="@+id/myMenuScriptModelAddButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="@drawable/my_menu_item_selector"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:padding="10dp" >
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:contentDescription="@string/my_menu_add_script_model"
-                android:src="@drawable/add" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:text="@string/my_menu_add_script_model"
-                android:textAppearance="@style/TextViewWhiteAppTheme" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/myMenuScriptModelUpdateButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="@drawable/my_menu_item_selector"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:padding="10dp" >
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:contentDescription="@string/my_menu_update_script_model"
-                android:src="@drawable/edit_click" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:text="@string/my_menu_update_script_model"
-                android:textAppearance="@style/TextViewWhiteAppTheme" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:background="@color/gray23"
-            android:padding="10dp" />
-
-        <LinearLayout
             android:id="@+id/layoutLeftMenuAddConnection"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

@@ -49,7 +49,7 @@ public class ActionScriptsDB extends DBHelper {
 				append(COLUMN_NAME_ID).append(",").
 				append(COLUMN_NAME_ACTION).append(",").
 				append(COLUMN_NAME_SCRIPT).append(") ");
-		builder.append("VALUES ('1', '1', '" + ScriptDB.DEFAULT_SCRIPT_VALUE_1 + "');");
+		builder.append("VALUES ('1', '1', '" + "hostname" + "');");
 		return builder.toString();
 	}
 	

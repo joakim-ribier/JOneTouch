@@ -5,12 +5,6 @@
     android:orientation="vertical"
     android:padding="5dp" >
 
-    <Spinner
-        android:id="@+id/addOrUpdateActionScriptListSpinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
-
     <CheckBox
         android:id="@+id/addOrUpdateActionSeparatorCheckBox"
         android:layout_width="fill_parent"

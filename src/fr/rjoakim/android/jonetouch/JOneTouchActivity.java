@@ -31,7 +31,6 @@ import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
 import fr.rjoakim.android.jonetouch.dialog.LogInDialog;
 import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.AuthenticationTypeService;
-import fr.rjoakim.android.jonetouch.service.ScriptService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
 import fr.rjoakim.android.jonetouch.service.UserService;
@@ -72,7 +71,6 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 	private AuthenticationTypeService authenticationTypeService;
 	private ServerService serverService;
 	private UserService userService;
-	private ScriptService scriptService;
 	private ActionService actionService;
 	
 	private GestureDetector gesureDetector;
@@ -99,12 +97,11 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 		this.authenticationTypeService = new AuthenticationTypeService(getApplicationContext());
 		this.serverService = new ServerService(getApplicationContext());
 		this.userService = new UserService(getApplicationContext());
-		this.scriptService = new ScriptService(getApplicationContext());
 		this.actionService = new ActionService(getApplicationContext());
 		
 		this.myTerminal = new MyTerminal(this);
 		this.myMenu = new MyMenu(this, myAuthentication, serverService,
-				authenticationTypeService, scriptService, actionService);
+				authenticationTypeService, actionService);
 		
 		this.myTerminal.initMenu(myMenu);
 		this.myMenu.initTerminal(myTerminal);
@@ -285,13 +282,13 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 
 	private View buildActionView(final Action action, int index) {
 		ActionView actionView = new ActionView(
-				this, serverService, myTerminal, myAuthentication, actionService, scriptService);
+				this, serverService, myTerminal, myAuthentication, actionService);
 		return actionView.build(action, index);
 	}
 
 	private void addOnActionDetailView(Action action, int index) {
 		ActionEditView actionDetailView = new ActionEditView(this, gestureListener,
-				serverService, myTerminal, myAuthentication, actionService, scriptService);
+				serverService, myTerminal, myAuthentication, actionService);
 		myViewAnimator.get().addView(
 				actionDetailView.build(action, index));
 		mapActionIdWithActionEditView.put(action.getId(), actionDetailView);
