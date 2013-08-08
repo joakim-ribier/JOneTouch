@@ -118,15 +118,21 @@ public abstract class MyDialog<T> implements ResultView<T> {
 		return editText.getText().toString();
 	}
 	
+	protected void setClipboardError(String message) {
+		setClipboardMessage("error-message", message);
+	}
+	
 	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
-	protected void setClipboardError(String message) {
+	protected void setClipboardMessage(String label, String message) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE); 
-			ClipData clip = ClipData.newPlainText("error-message", message);
+			ClipboardManager clipboard = (ClipboardManager) activity
+					.getSystemService(Context.CLIPBOARD_SERVICE);
+			ClipData clip = ClipData.newPlainText(label, message);
 			clipboard.setPrimaryClip(clip);
 		} else {
-			android.text.ClipboardManager clipboard = (android.text.ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+			android.text.ClipboardManager clipboard = (android.text.ClipboardManager) activity
+					.getSystemService(Context.CLIPBOARD_SERVICE);
 			clipboard.setText(message);
 		}
 	}

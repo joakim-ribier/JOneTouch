@@ -79,6 +79,38 @@
             android:background="@color/gray23"
             android:padding="10dp" >
         </RelativeLayout>
+        
+         <LinearLayout
+            android:id="@+id/myMenuBackupLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_backup"
+                android:src="@drawable/backup" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_backup"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+        
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/gray23"
+            android:padding="10dp" >
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/myMenuHelpLayout"

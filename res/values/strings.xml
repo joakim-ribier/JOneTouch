@@ -20,6 +20,7 @@
     <string name="add">add</string>
     <string name="image_content_description">logo</string>
     <string name="back_pressed">Press a second time to disconnect from the application.</string>
+    <string name="in_process">In process &#8230;</string>
 
     <!-- application top menu -->
     <string name="activity_tool">menu</string>
@@ -37,6 +38,7 @@
     <string name="my_menu_update_server_connection">update</string>
     <string name="my_menu_logout">Disconnect</string>
     <string name="my_menu_about_of">About</string>
+    <string name="my_menu_backup">Backup my datas</string>
 
     <!-- create account activity -->
     <string name="create_account_email">Email address</string>
@@ -131,5 +133,15 @@
 
     <!-- choice color action my dialog -->
     <string name="choice_color_action_dialog_title">Choose background color for the action.</string>
+    
+    <!-- choice backup data my dialog -->
+    <string name="choice_backup_data_dialog_title">Backup settings</string>
+    <string name="choice_backup_data_dialog_choice_1">Send the backup by e-mail.</string>
+    <string name="choice_backup_data_dialog_choice_2">Make only a copy/paste of the backup.</string>
+    <string name="choice_backup_data_dialog_set_clipboard">The backup have been copied to the clipboard.</string>
+    <string name="choice_backup_data_dialog_by_email_subject">JOneTouch Backup - %1$s</string>
+    <string name="choice_backup_data_dialog_chooser_client">Choice client mail</string>
+    <string name="choice_backup_data_dialog_checkbox_if_encrypt_password">I want my passwords encrypted in the backup. For the restoration of the backup, I will need my connection password.</string>
+    <string name="choice_backup_data_dialog_checkbox_if_encrypt_password_warning">If I choose not encrypt my passwords, they will then be clear in the backup.</string>
 
 </resources>

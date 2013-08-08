@@ -15,6 +15,7 @@ import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
 import fr.rjoakim.android.jonetouch.bean.Server;
 import fr.rjoakim.android.jonetouch.dialog.AddActionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.AddServerConnectionMyDialog;
+import fr.rjoakim.android.jonetouch.dialog.ChoiceBackupDataMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.DeleteServerConnectionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.HelpMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.UpdateServerConnectionMyDialog;
@@ -97,6 +98,14 @@ public class MyMenu {
 			}
 		});
 		
+		final View exportLayout = root.findViewById(R.id.myMenuBackupLayout);
+		exportLayout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				displayBackupDialog();
+			}
+		});
+		
 		final View helpLayout = root.findViewById(R.id.myMenuHelpLayout);
 		helpLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -104,7 +113,6 @@ public class MyMenu {
 				displayHelpDialog();
 			}
 		});
-		
 		
 		final View logout = root.findViewById(R.id.myMenuViewLogoutLayout);
 		logout.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +131,13 @@ public class MyMenu {
 		});
 	}
 
+	private void displayBackupDialog() {
+		ChoiceBackupDataMyDialog choiceBackupDataMyDialog = new ChoiceBackupDataMyDialog(
+				activity, myAuthentication, serverService, actionService) {
+		};
+		choiceBackupDataMyDialog.show();
+	}
+	
 	private void displayAddOrUpdateActionDialog() {
 		final AddActionMyDialog myDialog = new AddActionMyDialog(
 				activity, serverService, actionService) {

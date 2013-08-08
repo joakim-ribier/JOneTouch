@@ -20,6 +20,7 @@
     <string name="add">ajouter</string>
     <string name="image_content_description">logo</string>
     <string name="back_pressed">Appuyez une deuxième fois pour vous déconnecter de l\'application.</string>
+	<string name="in_process">Traitement en cours &#8230;</string>
 
     <!-- application top menu -->
     <string name="activity_tool">menu</string>
@@ -37,7 +38,8 @@
     <string name="my_menu_update_server_connection">modifier</string>
     <string name="my_menu_logout">Se déconnecter</string>
     <string name="my_menu_about_of">À propos</string>
-
+    <string name="my_menu_backup">Sauvegarder mes données</string>
+    
     <!-- create account activity -->
     <string name="create_account_email">Adresse électronique</string>
     <string name="create_account_password">Mot de passe ( avec au minimum 8 caractères )</string>
@@ -131,5 +133,15 @@
 
     <!-- choice color action my dialog -->
     <string name="choice_color_action_dialog_title">Sélectionnez une couleur de fond pour l\'action.</string>
-
+    
+    <!-- choice backup data my dialog -->
+    <string name="choice_backup_data_dialog_title">Paramètres de la sauvegarde</string>
+    <string name="choice_backup_data_dialog_choice_1">Envoyer la sauvegarde par e-mail.</string>
+    <string name="choice_backup_data_dialog_choice_2">Faire simplement un copier/coller de la sauvegarde.</string>
+    <string name="choice_backup_data_dialog_set_clipboard">La sauvegarde a été copié dans le presse-papier.</string>
+    <string name="choice_backup_data_dialog_by_email_subject">JOneTouch Sauvegarde - %1$s</string>
+	<string name="choice_backup_data_dialog_chooser_client">Choix du client de messagerie</string>
+	<string name="choice_backup_data_dialog_checkbox_if_encrypt_password">Je veux mes mots de passes cryptés dans la sauvegarde. Pour la restauration de la sauvegarde, j\'aurai besoin de mon mot de passe de connexion.</string>
+	<string name="choice_backup_data_dialog_checkbox_if_encrypt_password_warning">Si je choisi de ne pas crypter mes mots de passes, ils seront alors en clair dans la sauvegarde.</string>
+	
 </resources>

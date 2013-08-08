@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <CheckBox
+        android:id="@+id/choiceBackupViewIfEncryptPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:checked="true"
+        android:text="@string/choice_backup_data_dialog_checkbox_if_encrypt_password"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/choice_backup_data_dialog_checkbox_if_encrypt_password_warning"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sp" />
+
+    <RadioGroup
+        android:id="@+id/choiceBackupViewRadioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black" >
+
+        <RadioButton
+            android:id="@+id/choiceBackupViewRadioGroupButtonChoice1"
+            android:text="@string/choice_backup_data_dialog_choice_1"
+            android:textSize="@dimen/_14sp" />
+
+        <RadioButton
+            android:id="@+id/choiceBackupViewRadioGroupButtonChoice2"
+            android:text="@string/choice_backup_data_dialog_choice_2"
+            android:textSize="@dimen/_14sp" />
+    </RadioGroup>
+
+</LinearLayout>
