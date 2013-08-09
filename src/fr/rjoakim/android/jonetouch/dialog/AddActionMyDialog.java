@@ -185,7 +185,9 @@ public abstract class AddActionMyDialog extends MyDialog<Long> {
 		try {
 			Server server = getServerConnectionValue();
 			if (server.getId() != -1) {
-				return actionService.create(getTitleText(), getDescriptionText(), color, server);
+				return actionService.create(getTitleText(), getDescriptionText(),
+						color, server.getId());
+				
 			} else {
 				return actionService.create(getTitleText(), getDescriptionText(), color);
 			}

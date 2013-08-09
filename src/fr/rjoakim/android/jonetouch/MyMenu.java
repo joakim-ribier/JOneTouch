@@ -16,6 +16,7 @@ import fr.rjoakim.android.jonetouch.bean.Server;
 import fr.rjoakim.android.jonetouch.dialog.AddActionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.AddServerConnectionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.ChoiceBackupDataMyDialog;
+import fr.rjoakim.android.jonetouch.dialog.ChoiceRestoreDataMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.DeleteServerConnectionMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.HelpMyDialog;
 import fr.rjoakim.android.jonetouch.dialog.UpdateServerConnectionMyDialog;
@@ -78,7 +79,7 @@ public class MyMenu {
 		this.root = slidingMenu.getMenu();
 		
 		configureMenu();
-		addServersToLayout();
+		rebuildAllServerConnections();
 	}
 	
 	private void configureMenu() {
@@ -103,6 +104,14 @@ public class MyMenu {
 			@Override
 			public void onClick(View v) {
 				displayBackupDialog();
+			}
+		});
+		
+		final View restoreLayout = root.findViewById(R.id.myMenuRestorationLayout);
+		restoreLayout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				displayRestoreDialog();
 			}
 		});
 		
@@ -131,6 +140,18 @@ public class MyMenu {
 		});
 	}
 
+	private void displayRestoreDialog() {
+		ChoiceRestoreDataMyDialog choiceRestoreDataMyDialog = new ChoiceRestoreDataMyDialog(
+				activity, myAuthentication, serverService, actionService) {
+					@Override
+					public void onSuccess(Void t) {
+						rebuildAllServerConnections();
+						MyMenu.this.activity.rebuildAllActionViews(0);
+					}
+		};
+		choiceRestoreDataMyDialog.show();
+	}
+
 	private void displayBackupDialog() {
 		ChoiceBackupDataMyDialog choiceBackupDataMyDialog = new ChoiceBackupDataMyDialog(
 				activity, myAuthentication, serverService, actionService) {
@@ -155,7 +176,7 @@ public class MyMenu {
 				new AddServerConnectionMyDialog(activity, serverService, authenticationTypeService, myAuthentication) {
 			@Override
 			public void onSuccess(Long id) {
-				addServersToLayout();
+				rebuildAllServerConnections();
 				MyMenu.this.activity.rebuildAllActionViews(0);
 			}
 		};
@@ -167,7 +188,7 @@ public class MyMenu {
 		helpDialog.show();
 	}
 
-	private void addServersToLayout() {
+	public void rebuildAllServerConnections() {
 		final LinearLayout layoutContainsServerItems = (LinearLayout) root.findViewById(R.id.myMenuLayoutContainsServersItem);
 		layoutContainsServerItems.removeAllViewsInLayout();
 		try {
@@ -219,7 +240,7 @@ public class MyMenu {
 					public void onSuccess(Void t) {
 						Toast.makeText(activity,
 								activity.getString(R.string.delete_server_connection_my_dialog_success), Toast.LENGTH_LONG).show();
-						addServersToLayout();
+						rebuildAllServerConnections();
 						MyMenu.this.activity.rebuildAllActionViews(0);
 					}
 					
@@ -242,7 +263,7 @@ public class MyMenu {
 						new UpdateServerConnectionMyDialog(activity, serverService, authenticationTypeService, server, myAuthentication) {
 					@Override
 					public void onSuccess(Long id) {
-						addServersToLayout();
+						rebuildAllServerConnections();
 						MyMenu.this.activity.rebuildAllActionViews(0);
 					}
 				};

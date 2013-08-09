@@ -348,6 +348,26 @@ public class ServerDB extends DBHelper {
 		}
 	}
 
+	public int delete() throws DBException {
+		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
+		db.beginTransaction();
+		try {
+			db.delete(ActionServersDB.TABLE_NAME, null, null);
+			db.delete(NoAuthenticationDB.TABLE_NAME, null, null);
+			db.delete(SSHAuthenticationPasswordDB.TABLE_NAME, null, null);
+			int nbr = db.delete(TABLE_NAME, null, null);
+			db.setTransactionSuccessful();
+			return nbr;
+		} catch (Exception e) {
+			throw new DBException(e.getMessage(), e);
+		} finally {
+			db.endTransaction();
+			if (db.isOpen()) {
+				db.close();
+			}
+		}
+	}
+
 	@Override
 	public String getTableName() {
 		return TABLE_NAME;
@@ -357,4 +377,5 @@ public class ServerDB extends DBHelper {
 	public String getPrimaryKey() {
 		return COLUMN_NAME_ID;
 	}
+
 }

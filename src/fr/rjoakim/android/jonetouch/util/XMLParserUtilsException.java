@@ -20,14 +20,14 @@ package fr.rjoakim.android.jonetouch.util;
  * limitations under the License.
  * 
  */
-public class XMLWriterUtilsException extends Exception {
+public class XMLParserUtilsException extends Exception {
 	private static final long serialVersionUID = 1L;
 	
-	public XMLWriterUtilsException(String arg0) {
+	public XMLParserUtilsException(String arg0) {
 		super(arg0);
 	}
 
-	public XMLWriterUtilsException(String arg0, Throwable arg1) {
+	public XMLParserUtilsException(String arg0, Throwable arg1) {
 		super(arg0, arg1);
 	}
 }

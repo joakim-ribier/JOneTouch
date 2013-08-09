@@ -103,6 +103,29 @@
                 android:textAppearance="@style/TextViewWhiteAppTheme" />
         </LinearLayout>
         
+          <LinearLayout
+            android:id="@+id/myMenuRestorationLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/my_menu_item_selector"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp" >
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/my_menu_restoration"
+                android:src="@drawable/restore" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/my_menu_restoration"
+                android:textAppearance="@style/TextViewWhiteAppTheme" />
+        </LinearLayout>
+        
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

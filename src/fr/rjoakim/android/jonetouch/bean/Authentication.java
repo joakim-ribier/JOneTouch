@@ -50,4 +50,16 @@ public abstract class Authentication {
 			throw new IllegalArgumentException("authentication type not supported");
 		}
 	}
+	
+	public String getPassword() {
+		switch (authenticationTypeEnum) {
+		case NO_AUTHENTICATION:
+			return null;
+		case SSH_AUTHENTICATION_PASSWORD:
+			SSHAuthenticationPassword sshAuthenticationPassword = (SSHAuthenticationPassword)this;
+			return sshAuthenticationPassword.getPassword();
+		default:
+			throw new IllegalArgumentException("authentication type not supported");
+		}
+	}
 }

@@ -9,7 +9,6 @@ import com.google.common.base.Strings;
 
 import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.bean.ActionScript;
-import fr.rjoakim.android.jonetouch.bean.Server;
 import fr.rjoakim.android.jonetouch.db.ActionDB;
 import fr.rjoakim.android.jonetouch.db.DBException;
 
@@ -41,15 +40,13 @@ public class ActionService {
 		this.actionDB = new ActionDB(context);
 	}
 
-	public Long create(String title, String description, String color, Server server) throws ServiceException {
+	public Long create(String title, String description, String color, long serverId) throws ServiceException {
 
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(title), "title field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(description), "description field is required");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(color), "color field is required");
-		Preconditions.checkNotNull(server, "server field is required");
-		Preconditions.checkArgument(server.getId() != -1, "server field is required");
 		try {
-			return actionDB.insert(title, description, color, server);
+			return actionDB.insert(title, description, color, serverId);
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
@@ -116,6 +113,14 @@ public class ActionService {
 		Preconditions.checkNotNull(action, "action field is required");
 		try {
 			actionDB.delete(action);
+		} catch (DBException e) {
+			throw new ServiceException(e.getMessage(), e);
+		}
+	}
+	
+	public int remove() throws ServiceException {
+		try {
+			return actionDB.delete();
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}

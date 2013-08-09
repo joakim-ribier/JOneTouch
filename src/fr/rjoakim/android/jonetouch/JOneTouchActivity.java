@@ -330,6 +330,7 @@ public class JOneTouchActivity extends Activity implements OnGestureListener {
 			finish();
 			break;
 		case R.id.action_options_refresh:
+			myMenu.rebuildAllServerConnections();
 			rebuildAllActionViews(0);
 			break;
 		default:

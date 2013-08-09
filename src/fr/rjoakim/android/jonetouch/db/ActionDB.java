@@ -11,7 +11,6 @@ import com.google.common.collect.Lists;
 
 import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.bean.ActionScript;
-import fr.rjoakim.android.jonetouch.bean.Server;
 
 /**
  * 
@@ -106,13 +105,13 @@ public class ActionDB extends DBHelper {
 		}
 	}
 
-	public Long insert(String title, String description, String color, Server server) throws DBException {
+	public Long insert(String title, String description, String color, long serverId) throws DBException {
 	
 		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
 		db.beginTransaction();
 		try {
 			long actionId = insert(title, description, color, db);
-			insert(actionId, server.getId(), db);
+			insert(actionId, serverId, db);
 			db.setTransactionSuccessful();
 			return actionId;
 		} catch (Exception e) {
@@ -392,6 +391,24 @@ public class ActionDB extends DBHelper {
 		}
 	}
 
+	public int delete() throws DBException {
+		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
+		db.beginTransaction();
+		try {
+			db.delete(ActionScriptsDB.TABLE_NAME, null, null);
+			int nbr = db.delete(TABLE_NAME, null, null);
+			db.setTransactionSuccessful();
+			return nbr;
+		} catch (Exception e) {
+			throw new DBException(e.getMessage(), e);
+		} finally {
+			db.endTransaction();
+			if (db.isOpen()) {
+				db.close();
+			}
+		}
+	}
+
 	@Override
 	public String getTableName() {
 		return TABLE_NAME;
@@ -401,4 +418,5 @@ public class ActionDB extends DBHelper {
 	public String getPrimaryKey() {
 		return COLUMN_NAME_ID;
 	}
+
 }

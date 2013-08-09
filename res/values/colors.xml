@@ -14,5 +14,7 @@
     <color name="action_background_choice_purple">#AA66CC</color>
     <color name="action_background_choice_orange">#FFBB33</color>
     <color name="action_background_choice_red">#FF4444</color>
-
+	<color name="html_blue">#0000FF</color>
+	<color name="html_green">#008000</color>
+	<color name="html_red">#FF0000</color>
 </resources>

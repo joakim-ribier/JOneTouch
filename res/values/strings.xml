@@ -21,6 +21,7 @@
     <string name="image_content_description">logo</string>
     <string name="back_pressed">Press a second time to disconnect from the application.</string>
     <string name="in_process">In process &#8230;</string>
+	<string name="set_clipboard_message">The message has been copied to the clipboard.</string>
 
     <!-- application top menu -->
     <string name="activity_tool">menu</string>
@@ -39,6 +40,7 @@
     <string name="my_menu_logout">Disconnect</string>
     <string name="my_menu_about_of">About</string>
     <string name="my_menu_backup">Backup my datas</string>
+    <string name="my_menu_restoration">Restore my datas</string>
 
     <!-- create account activity -->
     <string name="create_account_email">Email address</string>
@@ -143,5 +145,26 @@
     <string name="choice_backup_data_dialog_chooser_client">Choice client mail</string>
     <string name="choice_backup_data_dialog_checkbox_if_encrypt_password">I want my passwords encrypted in the backup. For the restoration of the backup, I will need my connection password.</string>
     <string name="choice_backup_data_dialog_checkbox_if_encrypt_password_warning">If I choose not encrypt my passwords, they will then be clear in the backup.</string>
+    
+     <!-- choice restore data my dialog -->
+    <string name="choice_restore_data_dialog_title">Restore settings</string>
+    <string name="choice_restore_data_dialog_restore_action">I want to restore all of my actions.</string>
+    <string name="choice_restore_data_dialog_restore_servers">I want to restore all of my server connections.</string>
+    <string name="choice_restore_data_dialog_restore_reset">I want to delete all content before to start the restoration.</string>
+    <string name="choice_restore_data_dialog_backup">Please paste the content of the backup here with the top buttons.</string>
+	<string name="choice_restore_data_dialog_pwd">The password of the backup for to decrypt the other passwords :</string>
+	<string name="choice_restore_data_dialog_end_info">End of the restoration.</string>
+    <string name="choice_restore_data_dialog_parameters_info">Restoration settings:</string>
+    <string name="choice_restore_data_dialog_server_connection_info">[Server connection:%1$s]</string>
+    <string name="choice_restore_data_dialog_action_info">[Action:%1$s]</string>
+    <string name="choice_restore_data_dialog_reset_info">[Reset:%1$s]</string>
+    <string name="choice_restore_data_dialog_yes_info">yes</string>
+    <string name="choice_restore_data_dialog_no_info">no</string>
+    <string name="choice_restore_data_dialog_check_backup_info">Check of the backup.</string>
+    <string name="choice_restore_data_dialog_delete_connection_server_info">Server connection deletions.</string>
+    <string name="choice_restore_data_dialog_delete_action_info">Actions deletions.</string>
+    <string name="choice_restore_data_dialog_restore_connection_server_info">Restoration of the new server connections in database.</string>
+    <string name="choice_restore_data_dialog_restore_action_info">Restoration of the new actions in database.</string>
+    <string name="choice_restore_data_dialog_failed_info">An error occurred during the restoration.</string>
 
 </resources>

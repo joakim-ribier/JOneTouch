@@ -46,45 +46,22 @@ import fr.rjoakim.android.jonetouch.bean.Server;
  * limitations under the License.
  * 
  */
-public class XMLWriterUtils {
+public class XMLWriterUtils extends XMLParserUtils {
 	
-	private static final String JONETOUCH = "jonetouch";
-	private static final String NAME = "name";
-	private static final String VERSION_NAME = "versionName";
-	private static final String VERSION_CODE = "versionCode";
-	private static final String DATETIME = "datetime";
-	private static final String SERVERS = "servers";
-	private static final String SERVER = "server";
-	private static final String HOSTNAME = "hostname";
-	private static final String PORT = "port";
-	private static final String DATABASE_ID = "databaseId";
-	private static final String AUTHENTICATION = "authentication";
-	private static final String TYPE = "type";
-	private static final String LOGIN = "login";
-	private static final String PASSWORD = "password";
-	private static final String SCRIPTS = "scripts";
-	private static final String SCRIPT = "script";
-	private static final String ACTIONS = "actions";
-	private static final String ACTION = "action";
-	private static final String TITLE = "title";
-	private static final String SERVER_ID = "serverId";
-	private static final String BACKGROUND_COLOR = "backgroundColor";
-	private static final String DESCRIPTION = "description";
-
 	public static String write(String key, List<Server> servers, List<Action> actions,
-			int versionCode, String versionName) throws XMLWriterUtilsException {
+			int versionCode, String versionName) throws XMLParserUtilsException {
 		
 		return writeXMLDocument(key, servers, actions, versionCode, versionName);
 	}
 	
 	public static String write(List<Server> servers, List<Action> actions,
-			int versionCode, String versionName) throws XMLWriterUtilsException {
+			int versionCode, String versionName) throws XMLParserUtilsException {
 		
 		return writeXMLDocument(null, servers, actions, versionCode, versionName);
 	}
 
 	private static String writeXMLDocument(String key, List<Server> servers, List<Action> actions
-			, int versionCode, String versionName) throws XMLWriterUtilsException {
+			, int versionCode, String versionName) throws XMLParserUtilsException {
 		
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -99,7 +76,7 @@ public class XMLWriterUtils {
 			
 			return transform(document);
 		} catch (ParserConfigurationException e) {
-			throw new XMLWriterUtilsException(e.getMessage(), e);
+			throw new XMLParserUtilsException(e.getMessage(), e);
 		}
 	}
 
@@ -107,17 +84,17 @@ public class XMLWriterUtils {
 		Element element = document.createElement(JONETOUCH);
 		
 		element.setAttributeNode(
-				createAttribute(document, NAME, "backup"));
+				createAttribute(document, NAME, BACKUP));
 		
 		element.setAttributeNode(
 				createAttribute(document, DATETIME, DateTime.now().toString()));
 		
 		if (key != null) {
 			element.setAttributeNode(
-					createAttribute(document, AUTHENTICATION, "decrypt"));
+					createAttribute(document, AUTHENTICATION, DECRYPT));
 		} else {
 			element.setAttributeNode(
-					createAttribute(document, AUTHENTICATION, "encrypt"));
+					createAttribute(document, AUTHENTICATION, ENCRYPT));
 		}
 		
 		element.setAttributeNode(
@@ -223,7 +200,7 @@ public class XMLWriterUtils {
 		}
 	}
 	
-	private static String transform(Document document) throws XMLWriterUtilsException {
+	private static String transform(Document document) throws XMLParserUtilsException {
 		try {
 			TransformerFactory transformerFactory =
 					TransformerFactory.newInstance();
@@ -242,9 +219,9 @@ public class XMLWriterUtils {
 			return stringWriter.getBuffer().toString();
 		
 		} catch (TransformerConfigurationException e) {
-			throw new XMLWriterUtilsException(e.getMessage(), e);
+			throw new XMLParserUtilsException(e.getMessage(), e);
 		} catch (TransformerException e) {
-			throw new XMLWriterUtilsException(e.getMessage(), e);
+			throw new XMLParserUtilsException(e.getMessage(), e);
 		}
 	}
 

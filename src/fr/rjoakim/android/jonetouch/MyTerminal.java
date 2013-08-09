@@ -59,11 +59,11 @@ public class MyTerminal {
 	}
 
 	public TextView buildErrorTextView(String message) {
-		return buildTextView(message, R.style.TextViewRedAppTheme);
+		return buildTextView(message, R.style.text_red_overlay_12sp);
 	}
 	
 	public TextView buildInfoTextView(String message) {
-		return buildTextView(message, R.style.TextViewGreenAppTheme);
+		return buildTextView(message, R.style.text_green_overlay_12sp);
 	}
 	
 	private TextView buildTextView(String message, int styleResId) {

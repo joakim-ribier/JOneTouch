@@ -105,11 +105,11 @@ public abstract class MyDialog<T> implements ResultView<T> {
 		dialog.show();
 	}
 	
-	protected String getString(int resource) {
+	public String getString(int resource) {
 		return activity.getString(resource);
 	}
 	
-	protected String getString(int resource, Object... objects) {
+	public String getString(int resource, Object... objects) {
 		return activity.getString(resource, objects);
 	}
 	
@@ -118,13 +118,34 @@ public abstract class MyDialog<T> implements ResultView<T> {
 		return editText.getText().toString();
 	}
 	
-	protected void setClipboardError(String message) {
+	@SuppressWarnings("deprecation")
+	@SuppressLint("NewApi")
+	public String getTextFromClipboard() {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			ClipboardManager clipboard = (ClipboardManager) activity
+					.getSystemService(Context.CLIPBOARD_SERVICE);
+			
+			ClipData.Item item = clipboard.getPrimaryClip().getItemAt(0);
+			if (item != null) {
+				return item.getText().toString();
+			}
+		} else {
+			android.text.ClipboardManager clipboard = (android.text.ClipboardManager) activity
+					.getSystemService(Context.CLIPBOARD_SERVICE);
+			if (clipboard != null) {
+				return clipboard.toString();
+			}
+		}
+		return "";
+	}
+	
+	public void setClipboardError(String message) {
 		setClipboardMessage("error-message", message);
 	}
 	
 	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
-	protected void setClipboardMessage(String label, String message) {
+	public void setClipboardMessage(String label, String message) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			ClipboardManager clipboard = (ClipboardManager) activity
 					.getSystemService(Context.CLIPBOARD_SERVICE);

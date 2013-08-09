@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/choiceRestoreViewAnimator"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp" >
+
+    <LinearLayout
+        android:id="@+id/choiceRestoreViewBackupContentLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/choiceRestoreViewTrashButton"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/layout_selector_blue"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="2dp" >
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/trash_black"
+                    android:contentDescription="@string/image_content_description" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/choiceRestoreViewPasteButton"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/layout_selector_blue"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:padding="2dp" >
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/paste_gray"
+                    android:contentDescription="@string/image_content_description" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/choiceRestoreViewServersCheckBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:checked="true"
+            android:text="@string/choice_restore_data_dialog_restore_servers"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sp" />
+
+        <CheckBox
+            android:id="@+id/choiceRestoreViewActionsCheckBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:checked="true"
+            android:text="@string/choice_restore_data_dialog_restore_action"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/choice_restore_data_dialog_pwd"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/choiceRestoreViewPwdEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/blue" />
+
+        <CheckBox
+            android:id="@+id/choiceRestoreViewResetBeforeCheckBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:checked="true"
+            android:text="@string/choice_restore_data_dialog_restore_reset"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sp" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/blue" />
+
+        <TextView
+            android:id="@+id/choiceRestoreViewBackupContentEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/choice_restore_data_dialog_backup"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/choiceRestoreViewBackupLogLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</ViewAnimator>

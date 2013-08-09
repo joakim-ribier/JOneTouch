@@ -21,7 +21,7 @@ import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
 import fr.rjoakim.android.jonetouch.util.XMLWriterUtils;
-import fr.rjoakim.android.jonetouch.util.XMLWriterUtilsException;
+import fr.rjoakim.android.jonetouch.util.XMLParserUtilsException;
 
 /**
  * 
@@ -104,7 +104,7 @@ public abstract class ChoiceBackupDataMyDialog extends MyDialog<Void> {
 			Toast.makeText(activity,
 					getString(R.string.failed), Toast.LENGTH_LONG).show();
 			setClipboardError(e.getMessage());
-		} catch (XMLWriterUtilsException e) {
+		} catch (XMLParserUtilsException e) {
 			Toast.makeText(activity,
 					getString(R.string.failed), Toast.LENGTH_LONG).show();
 			setClipboardError(e.getMessage());
@@ -116,7 +116,7 @@ public abstract class ChoiceBackupDataMyDialog extends MyDialog<Void> {
 	}
 
 	private String getBackup(boolean isEncryptedPassword, List<Server> servers,
-			List<Action> actions) throws XMLWriterUtilsException, NameNotFoundException {
+			List<Action> actions) throws XMLParserUtilsException, NameNotFoundException {
 		
 		PackageInfo packageInfo = activity.getPackageManager(
 				).getPackageInfo(activity.getPackageName(), 0);

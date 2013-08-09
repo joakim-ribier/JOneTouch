@@ -142,4 +142,12 @@ public class ServerService {
 			throw new ServiceException(e.getMessage(), e);
 		}
 	}
+	
+	public int remove() throws ServiceException {
+		try {
+			return serverDB.delete();
+		} catch (DBException e) {
+			throw new ServiceException(e.getMessage(), e);
+		}
+	}
 }

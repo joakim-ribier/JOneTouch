@@ -21,6 +21,7 @@
     <string name="image_content_description">logo</string>
     <string name="back_pressed">Appuyez une deuxième fois pour vous déconnecter de l\'application.</string>
 	<string name="in_process">Traitement en cours &#8230;</string>
+	<string name="set_clipboard_message">Le message a été copié dans le presse-papier.</string>
 
     <!-- application top menu -->
     <string name="activity_tool">menu</string>
@@ -39,6 +40,7 @@
     <string name="my_menu_logout">Se déconnecter</string>
     <string name="my_menu_about_of">À propos</string>
     <string name="my_menu_backup">Sauvegarder mes données</string>
+    <string name="my_menu_restoration">Restaurer mes données</string>
     
     <!-- create account activity -->
     <string name="create_account_email">Adresse électronique</string>
@@ -141,7 +143,28 @@
     <string name="choice_backup_data_dialog_set_clipboard">La sauvegarde a été copié dans le presse-papier.</string>
     <string name="choice_backup_data_dialog_by_email_subject">JOneTouch Sauvegarde - %1$s</string>
 	<string name="choice_backup_data_dialog_chooser_client">Choix du client de messagerie</string>
-	<string name="choice_backup_data_dialog_checkbox_if_encrypt_password">Je veux mes mots de passes cryptés dans la sauvegarde. Pour la restauration de la sauvegarde, j\'aurai besoin de mon mot de passe de connexion.</string>
-	<string name="choice_backup_data_dialog_checkbox_if_encrypt_password_warning">Si je choisi de ne pas crypter mes mots de passes, ils seront alors en clair dans la sauvegarde.</string>
+	<string name="choice_backup_data_dialog_checkbox_if_encrypt_password">Je veux mes mots de passe cryptés dans la sauvegarde. Pour la restauration de la sauvegarde, j\'aurai besoin de mon mot de passe de connexion.</string>
+	<string name="choice_backup_data_dialog_checkbox_if_encrypt_password_warning">Si je choisi de ne pas crypter mes mots de passe, ils seront alors en clair dans la sauvegarde.</string>
 	
+	<!-- choice restore data my dialog -->
+    <string name="choice_restore_data_dialog_title">Paramètres de la restauration</string>
+    <string name="choice_restore_data_dialog_restore_servers">Je veux restaurer toutes mes connexions.</string>
+    <string name="choice_restore_data_dialog_restore_action">Je veux restaurer toutes mes actions.</string>
+    <string name="choice_restore_data_dialog_restore_reset">Je veux tout supprimer avant de faire la restauration.</string>
+    <string name="choice_restore_data_dialog_backup">Veuillez coller le contenu de la sauvegarde ici à l\'aide des boutons ci-dessus.</string>
+    <string name="choice_restore_data_dialog_pwd">Le mot de passe de la sauvegarde pour décrypter les autres mots de passe :</string>
+    <string name="choice_restore_data_dialog_end_info">Restauration des données terminée.</string>
+    <string name="choice_restore_data_dialog_parameters_info">Paramètres de la restauration :</string>
+    <string name="choice_restore_data_dialog_server_connection_info">[Connexion serveur:%1$s]</string>
+    <string name="choice_restore_data_dialog_action_info">[Action:%1$s]</string>
+    <string name="choice_restore_data_dialog_reset_info">[Reset:%1$s]</string>
+    <string name="choice_restore_data_dialog_yes_info">oui</string>
+    <string name="choice_restore_data_dialog_no_info">non</string>
+    <string name="choice_restore_data_dialog_check_backup_info">Vérification de la sauvegarde.</string>
+    <string name="choice_restore_data_dialog_delete_connection_server_info">Suppression des connexions serveur.</string>
+    <string name="choice_restore_data_dialog_delete_action_info">Suppression des actions.</string>
+    <string name="choice_restore_data_dialog_restore_connection_server_info">Restauration des nouvelles connexions serveur en base de données.</string>
+    <string name="choice_restore_data_dialog_restore_action_info">Restauration des nouvelles actions en base de données.</string>
+    <string name="choice_restore_data_dialog_failed_info">Une erreur est suvenue pendant la restauration des données.</string>
+    
 </resources>
