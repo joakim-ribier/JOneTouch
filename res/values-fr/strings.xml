@@ -52,10 +52,24 @@
 
     <!-- help dialog view -->
     <string name="help_dialog_title">Bienvenue sur l\'application</string>
-    <string name="help_dialog_text_1"><![CDATA[<strong>JOneTouch</strong> est un gestionnaire de scripts qui a pour seul but de vous faciliter l\'administration d\'urgence de votre serveur depuis votre t&eacute;l&eacute;phone par l\'ex&eacute;cution d\'action en \"OneTouch\".]]></string>
-    <string name="help_dialog_text_2"><![CDATA[<br /><br />Le menu de gauche, permet d\'effectuer plusieurs op&eacute;rations : <ol><li>Param&eacute;trer et enregistrer les connexions SSH des serveurs distants.</li><li>Pr&eacute;d&eacute;finir les mod&egrave;les afin de ne pas r&eacute;&eacute;crire toujours le m&ecirc;me script.</li><li>Cr&eacute;er une action avec un ou plusieurs scripts sur une connexion donn&eacute;e.</li><li>Ex&eacute;cuter une action avec un simple et rapide \"OneTouch\".</li></ol>]]></string>
-    <string name="help_dialog_text_3"><![CDATA[<br />Le mot de passe de l\'application est crypt&eacute; en base de donn&eacute;es avec l\'algorithme <strong>SHA-2</strong> <i>(Secure Hash Algorithm)</i>. Les acc&egrave;s SSH des serveurs sont &eacute;galement crypt&eacute;s avec l\'algorithme <strong>AES</strong> <i>(Advanced Encryption Standard)</i>.<br />]]></string>
-    <string name="help_dialog_text_4"><![CDATA[<br />En cas de probl&egrave;mes ou de questions veuillez contacter directement le support.]]></string>
+    <string name="help_dialog_text_global">JOneTouch est un gestionnaire de scripts sh pour faciliter l\'administration de votre serveur par l\'exécution d\'actions.</string>
+    <string name="help_dialog_text_global_1">Étape par étape :</string>
+    <string name="help_dialog_text_global_2">1. Créez une nouvelle connexion ssh à l\'aide du menu de gauche.</string>
+    <string name="help_dialog_text_global_3">2. Testez votre connexion ssh après l\'avoir créée, en cliquant dessus.</string>
+    <string name="help_dialog_text_global_4">3. Créez une nouvelle action à l\'aide du menu de gauche.</string>
+    <string name="help_dialog_text_global_5">4. Ajoutez vos scripts sh à partir de la vue de modifications.</string>
+    <string name="help_dialog_text_global_6">5. Exécutez votre nouvelle action.</string>
+    <string name="help_dialog_text_view">De cette vue, vous avez la possibilité de :</string>
+    <string name="help_dialog_text_main_view">La vue principale de l\'application contient la liste de toutes vos actions.</string>
+    <string name="help_dialog_text_main_view_edit_action">Modifier les informations d\'une action et lui ajouter des scripts sh.</string>
+    <string name="help_dialog_text_main_view_execute_action">Exécuter l\'action.</string>
+    <string name="help_dialog_text_main_view_list_action">Afficher la liste des scripts sh de l\'action.</string>
+    <string name="help_dialog_text_main_view_connection_action">Afficher la connexion serveur avec laquelle l\'action va être exécutée.</string>
+    <string name="help_dialog_text_main_view_noconnection_action">Aucune connexion serveur n\'a été définie sur cette action.</string>
+    <string name="help_dialog_text_edit_action_view">La deuxième vue la plus importante de l\'application, correspond à la vue de modifications. Vous avez la possibilité d\'ajouter des scripts sh pour vos actions.</string>
+    <string name="help_dialog_text_edit_action_edit">Modifier le nom, la description, la couleur de fond et la connexion par défaut d\'une action.</string>
+    <string name="help_dialog_text_edit_action_delete">Supprimer une action avec ses scripts sh ou supprimer seulement un script.</string>
+    <string name="help_dialog_text_edit_action_update_script">Ajouter ou modifier les scripts sh de l\'action.</string>
 
     <!-- logIn dialog view -->
     <string name="log_in_dialog_title">Connexion à l\'application</string>

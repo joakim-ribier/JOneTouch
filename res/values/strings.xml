@@ -52,11 +52,25 @@
 
     <!-- help dialog view -->
     <string name="help_dialog_title">Welcome</string>
-    <string name="help_dialog_text_1"><![CDATA[Execute quickly scripts in SSH on your external servers with  \'OneTouch\'.]]></string>
-    <string name="help_dialog_text_2"><![CDATA[<br /><br />The left menu allows several operations: <ol><li>Save your SSH server connections.</li><li>Create your administration scripts.</li><li>Configure your action with default server connection and add scripts which will be executed by it.</li><li>Execute your action with one touch.</li></ol>]]></string>
-    <string name="help_dialog_text_3"><![CDATA[<br />The application password is encrypted in a database with <strong>SHA-2</strong> <i>(Secure Hash Algorithm)</i> algorithm. All server connection access is also encrypted in the database with <strong>AES</strong> <i>(Advanced Encryption Standard)</i> algorithm.<br />]]></string>
-    <string name="help_dialog_text_4"><![CDATA[<br />In case of problems or questions, please contact support by email.]]></string>
-
+    <string name="help_dialog_text_global">Execute quickly scripts in SSH on your external servers</string>
+    <string name="help_dialog_text_global_1">Step by step :</string>
+    <string name="help_dialog_text_global_2">1. Create new ssh connection from the left menu.</string>
+    <string name="help_dialog_text_global_3">2. Check your ssh connection by clicking on its name after created it.</string>
+    <string name="help_dialog_text_global_4">3. Create a new action from the left menu.</string>
+    <string name="help_dialog_text_global_5">4. Add sh scripts from the modifications view.</string>
+    <string name="help_dialog_text_global_6">5. Execute your new action.</string>
+    <string name="help_dialog_text_view">From this view, you have the possibility to:</string>
+    <string name="help_dialog_text_main_view">The application main view contains the list of all your actions.</string>
+    <string name="help_dialog_text_main_view_edit_action">Update action information and add sh scripts.</string>
+    <string name="help_dialog_text_main_view_execute_action">Execute the action.</string>
+    <string name="help_dialog_text_main_view_list_action">Display the list of action sh scripts.</string>
+    <string name="help_dialog_text_main_view_connection_action">Display the ssh server connection of the action.</string>
+    <string name="help_dialog_text_main_view_noconnection_action">None ssh server connection on the action.</string>
+ 	<string name="help_dialog_text_edit_action_view">The most important second view , is the modifications view with the possibility to add sh scripts to an action.</string>
+    <string name="help_dialog_text_edit_action_edit">Update the name, the description, the background color and the ssh server connection of the action.</string>
+    <string name="help_dialog_text_edit_action_delete">Delete the action with its scripts or delete only one sh script.</string>
+    <string name="help_dialog_text_edit_action_update_script">Add or update the sh scripts of the action.</string>
+    
     <!-- logIn dialog view -->
     <string name="log_in_dialog_title">Connect to the application</string>
     <string name="log_in_dialog_pwd_wrong">The password is incorrect.</string>

@@ -2,7 +2,6 @@ package fr.rjoakim.android.jonetouch.dialog;
 
 import android.app.Activity;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import fr.rjoakim.android.jonetouch.R;
@@ -31,15 +30,6 @@ public abstract class HelpMyDialog extends MyDialog<Void> {
 
 	public HelpMyDialog(final Activity activity) {
 		super(activity, R.layout.help_my_dialog);
-		
-		String html = "<html><body style=\"text-align:justify;background-color:#F2F2F2;color:#000000;\">%s</body></Html>";
-		final WebView webView = (WebView) content;
-		
-		String t = getString(R.string.help_dialog_text_1);
-		t = t + getString(R.string.help_dialog_text_2);
-		t = t + getString(R.string.help_dialog_text_3);
-		t = t + getString(R.string.help_dialog_text_4);
-		webView.loadData(String.format(html, t), "text/html", "utf-8");
 	}
 
 	@Override
