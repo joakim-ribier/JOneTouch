@@ -125,8 +125,9 @@ public abstract class MyDialog<T> implements ResultView<T> {
 			ClipboardManager clipboard = (ClipboardManager) activity
 					.getSystemService(Context.CLIPBOARD_SERVICE);
 			
-			ClipData.Item item = clipboard.getPrimaryClip().getItemAt(0);
-			if (item != null) {
+			ClipData primaryClip = clipboard.getPrimaryClip();
+			if (primaryClip != null) {
+				ClipData.Item item = clipboard.getPrimaryClip().getItemAt(0);
 				return item.getText().toString();
 			}
 		} else {
