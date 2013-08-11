@@ -129,7 +129,7 @@
     <string name="add_or_update_action_public_label">à l\'execution de l\'action</string>
     <string name="add_or_update_action_script_label">Copiez et collez votre script ici ou selectionnez un modèle dans la liste ci-dessus.\n\nVous avez la possibilité d\'executer plusieurs scripts en respectant correctement le séparateur suivant: #script suivant#.\n\nModèle de script :\n\nls -l /var/log/myapp/\necho \"le répertoire de log est vide\"\n#script suivant#\nmkdir /home/savelog\ncp /var/log/myapp/* /home/savelog/\necho \"log sauvegardé\"\n#script suivant#\nls -l /home/savelog/\necho \"OK\"</string>
     <string name="add_or_update_action_seperator_label">insérer une balise séparateur</string>
-    <string name="delete_action_dialog_title">Suppresion d\'une action</string>
+    <string name="delete_action_dialog_title">Suppression d\'une action</string>
     <string name="delete_action_dialog_text">Êtes-vous sûr de vouloir supprimer l\'action suivante ?</string>
 
     <!-- action list top layout -->
