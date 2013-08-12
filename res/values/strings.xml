@@ -52,7 +52,7 @@
 
     <!-- help dialog view -->
     <string name="help_dialog_title">Welcome</string>
-    <string name="help_dialog_text_global">Execute quickly scripts in SSH on your external servers</string>
+    <string name="help_dialog_text_global">Execute quickly scripts in SSH on your external servers.</string>
     <string name="help_dialog_text_global_1">Step by step :</string>
     <string name="help_dialog_text_global_2">1. Create new ssh connection from the left menu.</string>
     <string name="help_dialog_text_global_3">2. Check your ssh connection by clicking on its name after created it.</string>
