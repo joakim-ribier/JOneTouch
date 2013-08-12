@@ -133,8 +133,8 @@ public abstract class MyDialog<T> implements ResultView<T> {
 		} else {
 			android.text.ClipboardManager clipboard = (android.text.ClipboardManager) activity
 					.getSystemService(Context.CLIPBOARD_SERVICE);
-			if (clipboard != null) {
-				return clipboard.toString();
+			if (clipboard != null && clipboard.getText() != null) {
+				return clipboard.getText().toString();
 			}
 		}
 		return "";
