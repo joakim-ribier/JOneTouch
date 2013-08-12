@@ -31,20 +31,20 @@
     <string name="activity_help">aide</string>
 
     <!-- my menu view -->
-    <string name="my_menu_add_action">Créer une action</string>
+    <string name="my_menu_add_action">Ajouter une action</string>
     <string name="my_menu_help">Aide</string>
-    <string name="my_menu_add_server_connection">Connexion serveur</string>
+    <string name="my_menu_add_server_connection">Connexion `ssh`</string>
     <string name="my_menu_remove_server_connection">supprimer</string>
-    <string name="my_menu_nothing_server_connection">( cliquez ci-dessus pour créer une nouvelle connexion )</string>
+    <string name="my_menu_nothing_server_connection">(cliquez ci-dessus pour créer une nouvelle connexion)</string>
     <string name="my_menu_update_server_connection">modifier</string>
     <string name="my_menu_logout">Se déconnecter</string>
-    <string name="my_menu_about_of">À propos</string>
+    <string name="my_menu_about_of">`Fork me` on GitHub</string>
     <string name="my_menu_backup">Sauvegarder mes données</string>
     <string name="my_menu_restoration">Restaurer mes données</string>
     
     <!-- create account activity -->
-    <string name="create_account_email">Adresse électronique</string>
-    <string name="create_account_password">Mot de passe ( avec au minimum 8 caractères )</string>
+    <string name="create_account_email">Adresse électronique :</string>
+    <string name="create_account_password">Mot de passe (avec au minimum 8 caractères) :</string>
     <string name="create_account_button_ok">Créer mon compte</string>
     <string name="create_account_error_validation_email">L\'adresse électronique n\'est pas valide.</string>
     <string name="create_account_error_validation_pwd">Le mot de passe n\'est pas valide.</string>
@@ -64,12 +64,15 @@
     <string name="help_dialog_text_main_view_edit_action">Modifier les informations d\'une action et lui ajouter des scripts sh.</string>
     <string name="help_dialog_text_main_view_execute_action">Exécuter l\'action.</string>
     <string name="help_dialog_text_main_view_list_action">Afficher la liste des scripts sh de l\'action.</string>
-    <string name="help_dialog_text_main_view_connection_action">Afficher la connexion serveur avec laquelle l\'action va être exécutée.</string>
-    <string name="help_dialog_text_main_view_noconnection_action">Aucune connexion serveur n\'a été définie sur cette action.</string>
+    <string name="help_dialog_text_main_view_connection_action">Afficher la connexion ssh avec laquelle l\'action va être exécutée.</string>
+    <string name="help_dialog_text_main_view_noconnection_action">Aucune connexion ssh n\'a été définie sur cette action.</string>
     <string name="help_dialog_text_edit_action_view">La deuxième vue la plus importante de l\'application, correspond à la vue de modifications. Vous avez la possibilité d\'ajouter des scripts sh pour vos actions.</string>
     <string name="help_dialog_text_edit_action_edit">Modifier le nom, la description, la couleur de fond et la connexion par défaut d\'une action.</string>
     <string name="help_dialog_text_edit_action_delete">Supprimer une action avec ses scripts sh ou supprimer seulement un script.</string>
     <string name="help_dialog_text_edit_action_update_script">Ajouter ou modifier les scripts sh de l\'action.</string>
+    <string name="help_dialog_text_backup">Vous pouvez aussi sauvegarder toutes vos connexions ssh et vos actions à l\'aide du menu de gauche.</string>
+    <string name="help_dialog_text_pwd">Pour plus de sécurité, l\'application est accessible par un mot de passe.</string>
+    <string name="help_dialog_text_support">En cas de problème ou de question, n\'hésitez pas à me contacter directement par e-mail.</string>
 
     <!-- logIn dialog view -->
     <string name="log_in_dialog_title">Connexion à l\'application</string>
@@ -92,15 +95,15 @@
 
     <!-- update server connection my dialog -->
     <string name="update_server_connection_my_dialog_title">Mise à jour d\'une connexion</string>
-    <string name="update_server_connection_my_dialog_success">La connexion au serveur a été modifié.</string>
+    <string name="update_server_connection_my_dialog_success">La connexion ssh a été modifié.</string>
 
     <!-- remove server connection my dialog -->
     <string name="delete_server_connection_my_dialog_title">Suppression d\'une connexion</string>
-    <string name="delete_server_connection_my_dialog_text">Êtes-vous sûr de vouloir supprimer la connexion au serveur suivant ?</string>
+    <string name="delete_server_connection_my_dialog_text">Êtes-vous sûr de vouloir supprimer la connexion ssh suivante ?</string>
     <string name="delete_server_connection_my_dialog_type_no">connexion sans authentification</string>
     <string name="delete_server_connection_my_dialog_type_auth">connexion avec mot de passe</string>
     <string name="delete_server_connection_my_dialog_replace">à remplacer</string>
-    <string name="delete_server_connection_my_dialog_success">La connexion au serveur a été supprimé.</string>
+    <string name="delete_server_connection_my_dialog_success">La connexion ssh a été supprimé.</string>
 
     <!-- choice connection my dialog -->
     <string name="choice_connection_dialog_title">Choix de la connexion</string>
@@ -125,7 +128,7 @@
     <string name="update_action_dialog_title">Mise à jour de l\'action</string>
     <string name="add_or_update_action_title_label">Nom de l\'action :</string>
     <string name="add_or_update_action_description_label">Description :</string>
-    <string name="add_or_update_action_server_spinner_label">Connexion serveur &#8230;</string>
+    <string name="add_or_update_action_server_spinner_label">Connexion ssh &#8230;</string>
     <string name="add_or_update_action_public_label">à l\'execution de l\'action</string>
     <string name="add_or_update_action_script_label">Copiez et collez votre script ici ou selectionnez un modèle dans la liste ci-dessus.\n\nVous avez la possibilité d\'executer plusieurs scripts en respectant correctement le séparateur suivant: #script suivant#.\n\nModèle de script :\n\nls -l /var/log/myapp/\necho \"le répertoire de log est vide\"\n#script suivant#\nmkdir /home/savelog\ncp /var/log/myapp/* /home/savelog/\necho \"log sauvegardé\"\n#script suivant#\nls -l /home/savelog/\necho \"OK\"</string>
     <string name="add_or_update_action_seperator_label">insérer une balise séparateur</string>

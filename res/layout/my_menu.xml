@@ -172,7 +172,7 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:contentDescription="@string/my_menu_about_of"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/github" />
 
             <TextView
                 android:layout_width="fill_parent"

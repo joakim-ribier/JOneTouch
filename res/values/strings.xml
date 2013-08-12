@@ -31,20 +31,20 @@
     <string name="activity_help">help</string>
 
     <!-- my menu view -->
-    <string name="my_menu_add_action">Create action</string>
+    <string name="my_menu_add_action">Add an action</string>
     <string name="my_menu_help">Help</string>
-    <string name="my_menu_add_server_connection">Server connection</string>
+    <string name="my_menu_add_server_connection">`Ssh` connection</string>
     <string name="my_menu_remove_server_connection">delete</string>
-    <string name="my_menu_nothing_server_connection">( click above to create a new connection )</string>
+    <string name="my_menu_nothing_server_connection">(click above to create a new connection)</string>
     <string name="my_menu_update_server_connection">update</string>
     <string name="my_menu_logout">Disconnect</string>
-    <string name="my_menu_about_of">About</string>
+    <string name="my_menu_about_of">`Fork me` on GitHub</string>
     <string name="my_menu_backup">Backup my datas</string>
     <string name="my_menu_restoration">Restore my datas</string>
 
     <!-- create account activity -->
-    <string name="create_account_email">Email address</string>
-    <string name="create_account_password">Password ( minimum 8 characters )</string>
+    <string name="create_account_email">Email address:</string>
+    <string name="create_account_password">Password ( minimum 8 characters ):</string>
     <string name="create_account_button_ok">Create account</string>
     <string name="create_account_error_validation_email">The email address is invalid.</string>
     <string name="create_account_error_validation_pwd">The password is invalid.</string>
@@ -64,12 +64,15 @@
     <string name="help_dialog_text_main_view_edit_action">Update action information and add sh scripts.</string>
     <string name="help_dialog_text_main_view_execute_action">Execute the action.</string>
     <string name="help_dialog_text_main_view_list_action">Display the list of action sh scripts.</string>
-    <string name="help_dialog_text_main_view_connection_action">Display the ssh server connection of the action.</string>
-    <string name="help_dialog_text_main_view_noconnection_action">None ssh server connection on the action.</string>
+    <string name="help_dialog_text_main_view_connection_action">Display the ssh connection of the action.</string>
+    <string name="help_dialog_text_main_view_noconnection_action">None ssh connection on the action.</string>
  	<string name="help_dialog_text_edit_action_view">The most important second view , is the modifications view with the possibility to add sh scripts to an action.</string>
     <string name="help_dialog_text_edit_action_edit">Update the name, the description, the background color and the ssh server connection of the action.</string>
     <string name="help_dialog_text_edit_action_delete">Delete the action with its scripts or delete only one sh script.</string>
     <string name="help_dialog_text_edit_action_update_script">Add or update the sh scripts of the action.</string>
+    <string name="help_dialog_text_backup">You can make a backup of your ssh connections and your actions from the left menu.</string>
+    <string name="help_dialog_text_pwd">For the more security, the application is accessible by a password.</string>
+    <string name="help_dialog_text_support">In case of problem or question, please contact support by e-mail.</string>
     
     <!-- logIn dialog view -->
     <string name="log_in_dialog_title">Connect to the application</string>
@@ -96,7 +99,7 @@
 
     <!-- remove server connection my dialog -->
     <string name="delete_server_connection_my_dialog_title">Deleting connection</string>
-    <string name="delete_server_connection_my_dialog_text">Do you want to remove this connection ?</string>
+    <string name="delete_server_connection_my_dialog_text">Do you want to remove this ssh connection ?</string>
     <string name="delete_server_connection_my_dialog_type_no">connection without authentication</string>
     <string name="delete_server_connection_my_dialog_type_auth">connection with password</string>
     <string name="delete_server_connection_my_dialog_replace">replace</string>
@@ -125,7 +128,7 @@
     <string name="update_action_dialog_title">Updating action</string>
     <string name="add_or_update_action_title_label">Title :</string>
     <string name="add_or_update_action_description_label">Description :</string>
-    <string name="add_or_update_action_server_spinner_label">Server connection &#8230;</string>
+    <string name="add_or_update_action_server_spinner_label">Ssh connection &#8230;</string>
     <string name="add_or_update_action_public_label">execute the action</string>
     <string name="add_or_update_action_script_label">Copy and paste your script here or select a template from the list above.\n\nYou have the ability to run multiple scripts simultaneously according to the following separator: #script suivant#.\n\Script template :\n\nls -l /var/log/myapp/\necho \"empty directory\"\n#script suivant#\nmkdir /home/savelog\ncp /var/log/myapp/* /home/savelog/\necho \"save log\"\n#script suivant#\nls -l /home/savelog/\necho \"OK\"</string>
     <string name="add_or_update_action_seperator_label">insert separator tag</string>

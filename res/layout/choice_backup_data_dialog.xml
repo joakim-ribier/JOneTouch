@@ -9,7 +9,6 @@
         android:id="@+id/choiceBackupViewIfEncryptPassword"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:checked="true"
         android:text="@string/choice_backup_data_dialog_checkbox_if_encrypt_password"
         android:textColor="@color/black"

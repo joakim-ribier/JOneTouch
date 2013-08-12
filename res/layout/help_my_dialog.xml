@@ -299,4 +299,28 @@
             android:textSize="@dimen/_14sp" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/help_dialog_text_backup"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/help_dialog_text_pwd"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/help_dialog_text_support"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sp" />
+
 </LinearLayout>

@@ -2,14 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="5dp" >
+    android:orientation="vertical" >
 
     <CheckBox
         android:id="@+id/addOrUpdateActionSeparatorCheckBox"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
         android:text="@string/add_or_update_action_seperator_label"
         android:textColor="@color/black"
         android:textSize="@dimen/_14sp" />
@@ -18,7 +17,7 @@
         android:id="@+id/addOrUpdateActionScriptEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_margin="5dp"
         android:ems="10"
         android:gravity="top"
         android:hint="@string/add_or_update_action_script_label"

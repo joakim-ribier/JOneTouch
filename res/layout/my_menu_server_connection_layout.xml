@@ -17,16 +17,18 @@
             android:layout_height="wrap_content"
             android:background="@color/gray23"
             android:baselineAligned="false"
+            android:gravity="center_vertical"
             android:orientation="horizontal" >
 
             <LinearLayout
                 android:id="@+id/myMenuItemServerConnectionUpdateClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/my_menu_server_connection_selector"
                 android:clickable="true"
                 android:orientation="vertical"
-                android:padding="10dp" >
+                android:padding="5dp" >
 
                 <ImageView
                     android:id="@+id/myMenuItemConnectionImage"
@@ -41,28 +43,30 @@
                 android:id="@+id/myMenuItemConnectionTerminalLayoutClick"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:background="@drawable/my_menu_server_connection_selector"
                 android:clickable="true"
-                android:padding="10dp" >
+                android:padding="5dp" >
 
                 <TextView
                     android:id="@+id/myMenuItemConnectionTitleTextView"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text=""
+                    android:gravity="center_vertical"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/myMenuItemServerConnectionDeleteClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/my_menu_server_connection_selector"
                 android:clickable="true"
                 android:orientation="vertical"
-                android:padding="10dp" >
+                android:padding="5dp" >
 
                 <ImageView
                     android:layout_width="28dp"
