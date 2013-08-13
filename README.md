@@ -1,13 +1,20 @@
 JOneTouch
 =========
 
-Execute quickly scripts in SSH on your external servers with  'OneTouch'
+You need to restart your apache server, to execute a script or to check a log file ?
 
-1. Save your SSH server connections.
+`JOneTouch` allows to program all these actions. Add your `sh` scripts and easily execute them.
+
+1. Save all the `ssh` connections of your servers.
 2. Create your administration scripts.
-3. Configure your action with default server connection and add scripts which will be executed by it.
+3. Choose `ssh` connections by default for which your actions will be executed.
 
-This application is accessible by password.
+Do not be afraid for your scripts, the application is protected by a password! And for more security all provided passwords are encrypted.
+
+A 2x1 widget allows you to execute and modify an action even faster.
+
+To save or share your work, `JOneTouch` allows you to export your `ssh` connections and actions through the application of your choice.
+
 
 [JOneTouch on Google Play Store](https://play.google.com/store/apps/details?id=fr.rjoakim.android.jonetouch)
 
