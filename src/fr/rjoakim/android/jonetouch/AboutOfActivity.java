@@ -1,7 +1,6 @@
 package fr.rjoakim.android.jonetouch;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +30,7 @@ import android.webkit.WebViewClient;
  * 
  */
 @SuppressLint("SetJavaScriptEnabled")
-public class AboutOfActivity extends Activity {
+public class AboutOfActivity extends MyActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

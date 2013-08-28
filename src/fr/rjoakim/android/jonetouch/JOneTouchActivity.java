@@ -6,7 +6,6 @@ import java.util.Map;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
-import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -58,7 +57,7 @@ import fr.rjoakim.android.jonetouch.widget.JOneTouchWidgetActivity;
  * limitations under the License.
  * 
  */
-public class JOneTouchActivity extends Activity implements OnGestureListener {
+public class JOneTouchActivity extends MyActivity implements OnGestureListener {
 
 	private static final String KEY_AUTH = "key_auth";
 	

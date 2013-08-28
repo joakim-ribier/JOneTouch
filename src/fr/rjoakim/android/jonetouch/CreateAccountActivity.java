@@ -1,7 +1,6 @@
 package fr.rjoakim.android.jonetouch;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,7 +34,7 @@ import fr.rjoakim.android.jonetouch.service.UserService;
  * limitations under the License.
  * 
  */
-public class CreateAccountActivity extends Activity implements OnClickListener {
+public class CreateAccountActivity extends MyActivity implements OnClickListener {
 
 	private final static int PASSWORD_LENGTH = 8;
 	private Button button;
