@@ -11,7 +11,7 @@
     <!-- global view -->
     <string name="app_widget_name">JOneTouch - Action 2x1</string>
     <string name="app_widget_delete_because_action_is_deleted">The Action does not exist, you can delete this widget.</string>
-    <string name="app_name">JOneTouch</string>
+    <string name="app_name">JOneTouch SSH</string>
     <string name="set_clipboard_password">The password has been copied to the clipboard.</string>
     <string name="failed">An error occurred, please try again or contact support.</string>
     <string name="incorrect_data">The data entered is incorrect.</string>
