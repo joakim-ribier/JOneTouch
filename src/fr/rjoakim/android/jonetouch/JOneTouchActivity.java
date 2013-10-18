@@ -33,6 +33,7 @@ import fr.rjoakim.android.jonetouch.service.AuthenticationTypeService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
 import fr.rjoakim.android.jonetouch.service.UserService;
+import fr.rjoakim.android.jonetouch.util.APIUtils;
 import fr.rjoakim.android.jonetouch.view.ActionEditView;
 import fr.rjoakim.android.jonetouch.view.ActionView;
 import fr.rjoakim.android.jonetouch.widget.JOneTouchWidgetActivity;
@@ -136,7 +137,7 @@ public class JOneTouchActivity extends MyActivity implements OnGestureListener {
 		if (pwd != null) {
 			myAuthentication.setKey(pwd);
 			intent.removeExtra("user_pwd");
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			if (APIUtils.ifAvailableAPI(Build.VERSION_CODES.HONEYCOMB)) {
 				ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
 				ClipData clip = ClipData.newPlainText("mdp", pwd);
 				clipboard.setPrimaryClip(clip);
@@ -301,7 +302,7 @@ public class JOneTouchActivity extends MyActivity implements OnGestureListener {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main_activity, menu);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		if (APIUtils.ifAvailableAPI(Build.VERSION_CODES.HONEYCOMB)) {
 			ActionBar actionBar = getActionBar();
 			actionBar.setDisplayHomeAsUpEnabled(true);
 		} else {

@@ -13,6 +13,7 @@ import fr.rjoakim.android.jonetouch.bean.Action;
 import fr.rjoakim.android.jonetouch.bean.MyAuthentication;
 import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
+import fr.rjoakim.android.jonetouch.util.APIUtils;
 
 /**
  * 
@@ -69,7 +70,8 @@ public class ActionEditView {
 				activity, serverService, myTerminal, myAuthentication, actionService);
 		
 		LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.actionDetailViewLayout);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		// FIXME : LayoutTransition is available from HONEYCOMB but the LayoutTransition.CHANGING is available only from JELLY_BEAN
+		if (APIUtils.ifAvailableAPI(Build.VERSION_CODES.JELLY_BEAN)) {
 			LayoutTransition layoutTransition = new LayoutTransition();
 			layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
 			linearLayout.setLayoutTransition(layoutTransition);

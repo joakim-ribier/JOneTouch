@@ -27,6 +27,7 @@ import fr.rjoakim.android.jonetouch.dialog.UpdateActionScriptMyDialog;
 import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
+import fr.rjoakim.android.jonetouch.util.APIUtils;
 import fr.rjoakim.android.jonetouch.util.ColorHexFactory;
 
 /**
@@ -74,7 +75,8 @@ public class ActionView {
 		this.actionService = actionService;
 		
 		this.mainView = (LinearLayout) activity.getLayoutInflater().inflate(R.layout.action_view_layout, null);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		// FIXME : LayoutTransition is available from HONEYCOMB but the LayoutTransition.CHANGING is available only from JELLY_BEAN
+		if (APIUtils.ifAvailableAPI(Build.VERSION_CODES.JELLY_BEAN)) {
 			LayoutTransition layoutTransition = new LayoutTransition();
 			layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
 			this.mainView.setLayoutTransition(layoutTransition);

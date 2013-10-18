@@ -22,6 +22,7 @@ import fr.rjoakim.android.jonetouch.dialog.AddActionMyDialog;
 import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
+import fr.rjoakim.android.jonetouch.util.APIUtils;
 
 /**
  * 
@@ -126,7 +127,7 @@ public class ActionListTopBarView {
 	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
 	private void setClipboardError(String message) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		if (APIUtils.ifAvailableAPI(Build.VERSION_CODES.HONEYCOMB)) {
 			ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE); 
 			ClipData clip = ClipData.newPlainText("error-message", message);
 			clipboard.setPrimaryClip(clip);

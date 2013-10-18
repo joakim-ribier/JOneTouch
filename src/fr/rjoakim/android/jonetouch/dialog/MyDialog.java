@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import fr.rjoakim.android.jonetouch.R;
+import fr.rjoakim.android.jonetouch.util.APIUtils;
 
 /**
  * 
@@ -121,7 +122,7 @@ public abstract class MyDialog<T> implements ResultView<T> {
 	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
 	public String getTextFromClipboard() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		if (APIUtils.ifAvailableAPI(Build.VERSION_CODES.HONEYCOMB)) {
 			ClipboardManager clipboard = (ClipboardManager) activity
 					.getSystemService(Context.CLIPBOARD_SERVICE);
 			
@@ -147,7 +148,7 @@ public abstract class MyDialog<T> implements ResultView<T> {
 	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
 	public void setClipboardMessage(String label, String message) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+		if (APIUtils.ifAvailableAPI(Build.VERSION_CODES.HONEYCOMB)) {
 			ClipboardManager clipboard = (ClipboardManager) activity
 					.getSystemService(Context.CLIPBOARD_SERVICE);
 			ClipData clip = ClipData.newPlainText(label, message);
