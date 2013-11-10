@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import fr.rjoakim.android.jonetouch.service.ActionService;
 import fr.rjoakim.android.jonetouch.service.AuthenticationTypeService;
 import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
+import fr.rjoakim.android.jonetouch.util.SharePreferencesUtils;
 
 /**
  * 
@@ -120,6 +122,19 @@ public class MyMenu {
 			@Override
 			public void onClick(View v) {
 				displayHelpDialog();
+			}
+		});
+		
+		final View lockOrUnlockLayout = root.findViewById(R.id.myMenuViewLockOrUnLockLayout);
+		lockOrUnlockLayout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (SharePreferencesUtils.isAppLocked(activity)) {
+					SharePreferencesUtils.setAppLocked(activity, false);
+				} else {
+					SharePreferencesUtils.setAppLocked(activity, true);
+				}
+				displayLockOrUnlockItemMenu();
 			}
 		});
 		
@@ -291,5 +306,17 @@ public class MyMenu {
 
 	public void initTerminal(MyTerminal myTerminal) {
 		this.myTerminal = myTerminal;
+	}
+
+	public void displayLockOrUnlockItemMenu() {
+		ImageView lockOrUnlockImageView = (ImageView) root.findViewById(R.id.myMenuViewLockOrUnLockImageView);
+		TextView lockOrUnlockTextView = (TextView) root.findViewById(R.id.myMenuViewLockOrUnLockTextView);
+		if (SharePreferencesUtils.isAppLocked(activity)) {
+			lockOrUnlockTextView.setText(activity.getString(R.string.my_menu_unlock));
+			lockOrUnlockImageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.unlock));
+		} else {
+			lockOrUnlockTextView.setText(activity.getString(R.string.my_menu_lock));
+			lockOrUnlockImageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.lock));
+		}
 	}
 }

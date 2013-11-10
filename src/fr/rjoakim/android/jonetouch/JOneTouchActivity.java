@@ -34,6 +34,7 @@ import fr.rjoakim.android.jonetouch.service.ServerService;
 import fr.rjoakim.android.jonetouch.service.ServiceException;
 import fr.rjoakim.android.jonetouch.service.UserService;
 import fr.rjoakim.android.jonetouch.util.APIUtils;
+import fr.rjoakim.android.jonetouch.util.SharePreferencesUtils;
 import fr.rjoakim.android.jonetouch.view.ActionEditView;
 import fr.rjoakim.android.jonetouch.view.ActionView;
 import fr.rjoakim.android.jonetouch.widget.JOneTouchWidgetActivity;
@@ -119,6 +120,10 @@ public class JOneTouchActivity extends MyActivity implements OnGestureListener {
 		} else {
 			startApp(savedInstanceState);
 			buildAllActionViews(0);
+			this.myMenu.displayLockOrUnlockItemMenu();
+			if (!SharePreferencesUtils.isAppLocked(this)) {
+				displayEditActionViewFromAppWidget();
+			}
 		}
 	}
 
@@ -148,12 +153,14 @@ public class JOneTouchActivity extends MyActivity implements OnGestureListener {
 			Toast.makeText(this,
 					getString(R.string.set_clipboard_password), Toast.LENGTH_SHORT).show();
 			myMenu.displayHelpDialog();
+		} else {
+			authentication(savedInstanceState);
 		}
-		authentication(savedInstanceState);
 	}
 	
 	private void authentication(Bundle savedInstanceState) {
-		if (myAuthentication != null && myAuthentication.is()) {
+		if (!SharePreferencesUtils.isAppLocked(this)) {
+			myAuthentication.setKey(SharePreferencesUtils.getKey(this));
 			return;
 		}
 		
@@ -165,7 +172,7 @@ public class JOneTouchActivity extends MyActivity implements OnGestureListener {
 					return;
 				}
 			}
-		} 
+		}
 		displayLogInDialog();
 	}
 
@@ -174,6 +181,7 @@ public class JOneTouchActivity extends MyActivity implements OnGestureListener {
 			@Override
 			public void onSuccess(String pwd) {
 				myAuthentication.setKey(pwd);
+				SharePreferencesUtils.setKey(activity, myAuthentication.getKey());
 				displayEditActionViewFromAppWidget();
 			}
 			@Override

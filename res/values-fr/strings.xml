@@ -37,6 +37,8 @@
     <string name="my_menu_remove_server_connection">supprimer</string>
     <string name="my_menu_nothing_server_connection">(cliquez ci-dessus pour créer une nouvelle connexion)</string>
     <string name="my_menu_update_server_connection">modifier</string>
+    <string name="my_menu_lock">Oublier mon mot de passe.</string>
+    <string name="my_menu_unlock">Retenir mon mot de passe.</string>
     <string name="my_menu_logout">Se déconnecter</string>
     <string name="my_menu_about_of">`Fork me` on GitHub</string>
     <string name="my_menu_backup">Sauvegarder mes données</string>
