@@ -28,7 +28,7 @@
                 android:background="@drawable/my_menu_server_connection_selector"
                 android:clickable="true"
                 android:orientation="vertical"
-                android:padding="5dp" >
+                android:padding="6dp" >
 
                 <ImageView
                     android:id="@+id/myMenuItemConnectionImage"
@@ -47,7 +47,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/my_menu_server_connection_selector"
                 android:clickable="true"
-                android:padding="5dp" >
+                android:padding="6dp" >
 
                 <TextView
                     android:id="@+id/myMenuItemConnectionTitleTextView"
@@ -66,7 +66,7 @@
                 android:background="@drawable/my_menu_server_connection_selector"
                 android:clickable="true"
                 android:orientation="vertical"
-                android:padding="5dp" >
+                android:padding="6dp" >
 
                 <ImageView
                     android:layout_width="28dp"
