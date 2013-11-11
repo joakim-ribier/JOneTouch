@@ -105,17 +105,6 @@ public class ServerService {
 		}
 	}
 	
-	public boolean isExists(String host, AuthenticationTypeEnum authenticationTypeEnum) throws ServiceException {
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(host), "host field is required");
-		Preconditions.checkNotNull(authenticationTypeEnum);
-		try {
-			return serverDB.findByHostAndAuthenticationType(
-					host, authenticationTypeEnum) != null;
-		} catch (DBException e) {
-			throw new ServiceException(e.getMessage(), e);
-		}
-	}
-
 	public void remove(Server server) throws ServiceException {
 		Preconditions.checkNotNull(server, "server field is required");
 		Preconditions.checkNotNull(server.getAuthentication(), "server authentication field is required");
@@ -143,9 +132,9 @@ public class ServerService {
 		}
 	}
 	
-	public int remove() throws ServiceException {
+	public int removeAll() throws ServiceException {
 		try {
-			return serverDB.delete();
+			return serverDB.deleteAll();
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}

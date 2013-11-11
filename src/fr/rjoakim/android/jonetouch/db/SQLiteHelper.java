@@ -27,7 +27,7 @@ import com.google.common.collect.Lists;
  * 
  */
 public class SQLiteHelper extends SQLiteOpenHelper {
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "actionssvr";
     
 	public SQLiteHelper(Context context) {
@@ -38,7 +38,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("PRAGMA foreign_keys=ON;");
 		db.execSQL(UserDB.buildCreateTableQuery());
-		db.execSQL(ServerDB.buildCreateTableQuery());
+		db.execSQL(ServerDB.createASecondTableToRemoveUniqueConstraintAndToMigrateAlldatas(ServerDB.TABLE_NAME));
 		db.execSQL(AuthenticationTypeDB.buildCreateTableQuery());
 		onCreate(db, AuthenticationTypeDB.buildInsertQueries());
 		db.execSQL(SSHAuthenticationPasswordDB.buildCreateTableQuery());
@@ -70,6 +70,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 			break;
 		case 2:
 			db.execSQL("DROP TABLE script;");
+			break;
+		case 3:
+			db.execSQL(ServerDB.createASecondTableToRemoveUniqueConstraintAndToMigrateAlldatas(ServerDB.TABLE_NAME_TMP));
+			db.execSQL(ServerDB.migrationAllDatasBeetweenTables(ServerDB.TABLE_NAME, ServerDB.TABLE_NAME_TMP));
+			db.execSQL("DROP TABLE " + ServerDB.TABLE_NAME + ";");
+			db.execSQL("ALTER TABLE " + ServerDB.TABLE_NAME_TMP + " RENAME TO " + ServerDB.TABLE_NAME + ";");
 			break;
 		}
 	}

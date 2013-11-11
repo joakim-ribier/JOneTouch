@@ -210,15 +210,12 @@ public class RestoreBackupAsyncTask extends AsyncTask<String, String, String>{
 		Map<Long, Long> mapsOldIdWithNewId = Maps.newHashMap();
 		for (Server server: servers) {
 			try {
-				if(!serverService.isExists(
-						server.getHost(), server.getAuthentication().getAuthenticationTypeEnum())) {
-					Long newId = serverService.create(
-							server.getTitle(), server.getHost(), server.getPort(),
-							server.getDescription(), server.getAuthentication().getAuthenticationTypeEnum(),
-							server.getAuthentication().getLogin(),
-							server.getAuthentication().getPassword());
-					mapsOldIdWithNewId.put(server.getId(), newId);
-				}
+				Long newId = serverService.create(
+						server.getTitle(), server.getHost(), server.getPort(),
+						server.getDescription(), server.getAuthentication().getAuthenticationTypeEnum(),
+						server.getAuthentication().getLogin(),
+						server.getAuthentication().getPassword());
+				mapsOldIdWithNewId.put(server.getId(), newId);
 			} catch (ServiceException e) {
 				// try to insert next server connection 
 			}
@@ -228,7 +225,7 @@ public class RestoreBackupAsyncTask extends AsyncTask<String, String, String>{
 
 	private int removeAllServerConnection() {
 		try {
-			return serverService.remove();
+			return serverService.removeAll();
 		} catch (ServiceException e) {
 			// -- try to insert data
 			return -1;

@@ -38,6 +38,8 @@ import fr.rjoakim.android.jonetouch.bean.Server;
 public class ServerDB extends DBHelper {
 
 	public static final String TABLE_NAME = "server";
+	public static final String TABLE_NAME_TMP = "server_1";
+	
 	public static final String COLUMN_NAME_ID = "id";
 	private static final String COLUMN_NAME_TITLE = "title";
 	private static final String COLUMN_NAME_HOST = "host";
@@ -45,16 +47,15 @@ public class ServerDB extends DBHelper {
 	private static final String COLUMN_NAME_DESCRIPTION = "description";
 	private static final String COLUMN_NAME_AUTHENTICATION_TYPE = "authentication_type";
 
-	public static String buildCreateTableQuery() {
+	public static String createASecondTableToRemoveUniqueConstraintAndToMigrateAlldatas(String tableName) {
 		final StringBuilder builder = new StringBuilder();
-		builder.append("CREATE TABLE ").append(TABLE_NAME).append(" (");
+		builder.append("CREATE TABLE ").append(tableName).append(" (");
 		builder.append(COLUMN_NAME_ID).append(" INTEGER PRIMARY KEY, ");
 		builder.append(COLUMN_NAME_TITLE).append(" TEXT NOT NULL, ");
 		builder.append(COLUMN_NAME_HOST).append(" TEXT NOT NULL, ");
 		builder.append(COLUMN_NAME_PORT).append(" INTEGER NOT NULL, ");
 		builder.append(COLUMN_NAME_DESCRIPTION).append(" TEXT NOT NULL, ");
 		builder.append(COLUMN_NAME_AUTHENTICATION_TYPE).append(" INTEGER NOT NULL, ");
-		builder.append("UNIQUE(").append(COLUMN_NAME_HOST).append(", ").append(COLUMN_NAME_AUTHENTICATION_TYPE).append("), ");
 		builder.append("FOREIGN KEY(");
 		builder.append(COLUMN_NAME_AUTHENTICATION_TYPE).append(") REFERENCES ");
 		builder.append(AuthenticationTypeDB.TABLE_NAME).append("(").append(AuthenticationTypeDB.COLUMN_NAME_ID).append(")");
@@ -62,6 +63,27 @@ public class ServerDB extends DBHelper {
 		return builder.toString();
 	}
 
+	public static String migrationAllDatasBeetweenTables(String tableFrom, String tableTo) {
+		final StringBuilder builder = new StringBuilder();
+		builder.append("INSERT INTO ").append(tableTo).append(" (");
+		builder.append(COLUMN_NAME_ID).append(", ");
+		builder.append(COLUMN_NAME_TITLE).append(", ");
+		builder.append(COLUMN_NAME_HOST).append(", ");
+		builder.append(COLUMN_NAME_PORT).append(", ");
+		builder.append(COLUMN_NAME_DESCRIPTION).append(", ");
+		builder.append(COLUMN_NAME_AUTHENTICATION_TYPE).append(") ");
+		builder.append("SELECT ");
+		builder.append(COLUMN_NAME_ID).append(", ");
+		builder.append(COLUMN_NAME_TITLE).append(", ");
+		builder.append(COLUMN_NAME_HOST).append(", ");
+		builder.append(COLUMN_NAME_PORT).append(", ");
+		builder.append(COLUMN_NAME_DESCRIPTION).append(", ");
+		builder.append(COLUMN_NAME_AUTHENTICATION_TYPE).append(" ");
+		builder.append("FROM ").append(tableFrom);
+		builder.append(";");
+		return builder.toString();
+	}
+	
 	public ServerDB(Context context) {
 		super(new SQLiteHelper(context));
 	}
@@ -168,30 +190,6 @@ public class ServerDB extends DBHelper {
 		}
 	}
 	
-	public Long findByHostAndAuthenticationType(String host,
-			AuthenticationTypeEnum authenticationTypeEnum) throws DBException {
-		
-		SQLiteDatabase db = getSqliteHelper().getReadableDatabase();
-		Cursor cursor = null;
-		try {
-			String where = COLUMN_NAME_HOST + " = ?" + " AND " + COLUMN_NAME_AUTHENTICATION_TYPE + " = ?";
-			String[] arguments = new String[] { host, String.valueOf(authenticationTypeEnum.getId()) };
-			cursor = db.query(getTableName(), null, where, arguments, null, null, null);
-			if (cursor != null && cursor.getCount() > 0) {
-				cursor.moveToFirst();
-				return cursor.getLong(cursor.getColumnIndex(getPrimaryKey()));
-			}
-			return null;
-		} catch (Exception e) {
-			throw new DBException(e.getMessage(), e);
-		} finally {
-			if (cursor != null) {
-				cursor.close();
-			}
-			db.close();
-		}
-	}
-
 	public void delete(long serverId, AuthenticationTypeEnum authenticationTypeEnum) throws DBException {
 		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
 		db.beginTransaction();
@@ -348,7 +346,7 @@ public class ServerDB extends DBHelper {
 		}
 	}
 
-	public int delete() throws DBException {
+	public int deleteAll() throws DBException {
 		SQLiteDatabase db = getSqliteHelper().getWritableDatabase();
 		db.beginTransaction();
 		try {

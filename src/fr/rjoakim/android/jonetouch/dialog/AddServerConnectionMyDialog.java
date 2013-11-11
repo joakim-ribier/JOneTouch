@@ -144,14 +144,8 @@ public abstract class AddServerConnectionMyDialog extends MyDialog<Long> {
 		try {
 			String host = getHost();
 			AuthenticationTypeUI authenticationTypeUI = getType();
-			if (!serverService.isExists(host, authenticationTypeUI.getType())) {
-				return serverService.create(getTitle(), host, getPort(),
-						getDescription(), authenticationTypeUI.getType(), getLogin(), encryptPassword(getPassword()));
-			} else {
-				String failed = getString(R.string.add_connection_dialog_validation_connextion_exists);
-				Toast.makeText(activity, failed, Toast.LENGTH_LONG).show();
-				return null;
-			}
+			return serverService.create(getTitle(), host, getPort(),
+					getDescription(), authenticationTypeUI.getType(), getLogin(), encryptPassword(getPassword()));
 		} catch (ServiceException e) {
 			Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_LONG).show();
 			return null;
