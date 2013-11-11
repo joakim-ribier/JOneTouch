@@ -10,8 +10,6 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.google.common.base.Preconditions;
-
 import android.util.Base64;
 
 /**
@@ -53,7 +51,9 @@ public class CryptographyUtils {
 
 	public static String decrypt(String ciphertext, String key) throws CryptographyException {
 		String[] fields = ciphertext.split(DELIMITER);
-		Preconditions.checkArgument(fields.length == 3, "Invalid encypted text format");
+		if (fields.length != 3) {
+			throw new CryptographyException("Invalid encypted text format.");
+		}
 
 		byte[] salt = fromBase64(fields[0]);
 		byte[] iv = fromBase64(fields[1]);
