@@ -33,12 +33,12 @@
     <!-- my menu view -->
     <string name="my_menu_add_action">Ajouter une action</string>
     <string name="my_menu_help">Aide</string>
-    <string name="my_menu_add_server_connection">Connexion `ssh`</string>
+    <string name="my_menu_add_server_connection">Ajouter une connexion `Ssh`</string>
     <string name="my_menu_remove_server_connection">supprimer</string>
     <string name="my_menu_nothing_server_connection">(cliquez ci-dessus pour créer une nouvelle connexion)</string>
     <string name="my_menu_update_server_connection">modifier</string>
-    <string name="my_menu_lock">Oublier mon mot de passe.</string>
-    <string name="my_menu_unlock">Retenir mon mot de passe.</string>
+    <string name="my_menu_lock">Oublier mon mot de passe</string>
+    <string name="my_menu_unlock">Retenir mon mot de passe</string>
     <string name="my_menu_logout">Se déconnecter</string>
     <string name="my_menu_about_of">`Fork me` on GitHub</string>
     <string name="my_menu_backup">Sauvegarder mes données</string>
@@ -131,7 +131,7 @@
     <string name="add_or_update_action_title_label">Nom de l\'action :</string>
     <string name="add_or_update_action_description_label">Description :</string>
     <string name="add_or_update_action_server_spinner_label">Connexion ssh &#8230;</string>
-    <string name="add_or_update_action_public_label">à l\'execution de l\'action</string>
+    <string name="add_or_update_action_public_label">Choisissez la connexion ssh à l\'execution de l\'action.</string>
     <string name="add_or_update_action_script_label">Copiez et collez votre script ici ou selectionnez un modèle dans la liste ci-dessus.\n\nVous avez la possibilité d\'executer plusieurs scripts en respectant correctement le séparateur suivant: #script suivant#.\n\nModèle de script :\n\nls -l /var/log/myapp/\necho \"le répertoire de log est vide\"\n#script suivant#\nmkdir /home/savelog\ncp /var/log/myapp/* /home/savelog/\necho \"log sauvegardé\"\n#script suivant#\nls -l /home/savelog/\necho \"OK\"</string>
     <string name="add_or_update_action_seperator_label">insérer une balise séparateur</string>
     <string name="delete_action_dialog_title">Suppression d\'une action</string>

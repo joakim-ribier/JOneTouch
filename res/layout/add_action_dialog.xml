@@ -56,12 +56,6 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <Spinner
-        android:id="@+id/addActionViewServerConnectionSpinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
-
     <CheckBox
         android:id="@+id/addActionViewAskCheckbox"
         android:layout_width="fill_parent"
@@ -70,5 +64,11 @@
         android:text="@string/add_or_update_action_public_label"
         android:textColor="@color/black"
         android:textSize="@dimen/_14sp" />
+
+    <Spinner
+        android:id="@+id/addActionViewServerConnectionSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

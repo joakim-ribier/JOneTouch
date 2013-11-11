@@ -33,16 +33,16 @@
     <!-- my menu view -->
     <string name="my_menu_add_action">Add an action</string>
     <string name="my_menu_help">Help</string>
-    <string name="my_menu_add_server_connection">`Ssh` connection</string>
+    <string name="my_menu_add_server_connection">Add an `Ssh` connection</string>
     <string name="my_menu_remove_server_connection">delete</string>
     <string name="my_menu_nothing_server_connection">(click above to create a new connection)</string>
     <string name="my_menu_update_server_connection">update</string>
-    <string name="my_menu_lock">Forget my password.</string>
-    <string name="my_menu_unlock">Save my password.</string>
+    <string name="my_menu_lock">Forget my password</string>
+    <string name="my_menu_unlock">Save my password</string>
     <string name="my_menu_logout">Disconnect</string>
     <string name="my_menu_about_of">`Fork me` on GitHub</string>
-    <string name="my_menu_backup">Backup my datas</string>
-    <string name="my_menu_restoration">Restore my datas</string>
+    <string name="my_menu_backup">Backup my data</string>
+    <string name="my_menu_restoration">Restore my data</string>
 
     <!-- create account activity -->
     <string name="create_account_email">Email address:</string>
@@ -131,7 +131,7 @@
     <string name="add_or_update_action_title_label">Title :</string>
     <string name="add_or_update_action_description_label">Description :</string>
     <string name="add_or_update_action_server_spinner_label">Ssh connection &#8230;</string>
-    <string name="add_or_update_action_public_label">execute the action</string>
+    <string name="add_or_update_action_public_label">Choose SSH connection when executed.</string>
     <string name="add_or_update_action_script_label">Copy and paste your script here or select a template from the list above.\n\nYou have the ability to run multiple scripts simultaneously according to the following separator: #script suivant#.\n\Script template :\n\nls -l /var/log/myapp/\necho \"empty directory\"\n#script suivant#\nmkdir /home/savelog\ncp /var/log/myapp/* /home/savelog/\necho \"save log\"\n#script suivant#\nls -l /home/savelog/\necho \"OK\"</string>
     <string name="add_or_update_action_seperator_label">insert separator tag</string>
     <string name="delete_action_dialog_title">Delete action</string>
@@ -149,7 +149,7 @@
     <string name="command_executor_execute">Executing script &#8230;</string>
     <string name="command_executor_try_connection">connection attempt at %1$s&#8230;\n</string>
     <string name="command_executor_connect">connected</string>
-    <string name="command_executor_desconnect">not logged</string>
+    <string name="command_executor_desconnect">disconnected</string>
     <string name="command_executor_failed">connection error :\n\n{%1$s}</string>
 
     <!-- choice color action my dialog -->
