@@ -1,5 +1,7 @@
 package fr.rjoakim.android.jonetouch.util;
 
+import com.google.common.base.Strings;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -28,22 +30,20 @@ import android.content.SharedPreferences.Editor;
 public class SharePreferencesUtils {
 	
 	private static final String PREFS_FILE = "jonetouch_prefs";
-	private static final String LOCK = "lock";
 	private static final String KEY = "key";
 	
 	public static boolean isAppLocked(Activity activity) {
-		SharedPreferences sharedPreferences = getSharePreferences(activity);
-		return sharedPreferences.getBoolean(LOCK, true);
+		return Strings.isNullOrEmpty(getKey(activity));
 	}
 	
 	public static SharedPreferences getSharePreferences(Context context) {
 		return context.getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE);
 	}
 	
-	public static void setAppLocked(Activity activity, boolean lock) {
+	public static void setAppLocked(Activity activity) {
 		SharedPreferences sharedPreferences = getSharePreferences(activity);
 		Editor edit = sharedPreferences.edit();
-		edit.putBoolean(LOCK, lock);
+		edit.remove(KEY);
 		edit.commit();
 	}
 

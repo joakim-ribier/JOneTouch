@@ -130,9 +130,9 @@ public class MyMenu {
 			@Override
 			public void onClick(View v) {
 				if (SharePreferencesUtils.isAppLocked(activity)) {
-					SharePreferencesUtils.setAppLocked(activity, false);
+					SharePreferencesUtils.setKey(activity, myAuthentication.getKey());
 				} else {
-					SharePreferencesUtils.setAppLocked(activity, true);
+					SharePreferencesUtils.setAppLocked(activity);
 				}
 				displayLockOrUnlockItemMenu();
 			}

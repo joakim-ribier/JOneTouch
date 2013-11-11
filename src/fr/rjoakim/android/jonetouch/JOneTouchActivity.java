@@ -181,7 +181,6 @@ public class JOneTouchActivity extends MyActivity implements OnGestureListener {
 			@Override
 			public void onSuccess(String pwd) {
 				myAuthentication.setKey(pwd);
-				SharePreferencesUtils.setKey(activity, myAuthentication.getKey());
 				displayEditActionViewFromAppWidget();
 			}
 			@Override
