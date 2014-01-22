@@ -27,7 +27,7 @@ import com.google.common.collect.Lists;
  * 
  */
 public class SQLiteHelper extends SQLiteOpenHelper {
-	private static final int DATABASE_VERSION = 4;
+	private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "actionssvr";
     
 	public SQLiteHelper(Context context) {
@@ -76,6 +76,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 			db.execSQL(ServerDB.migrationAllDatasBeetweenTables(ServerDB.TABLE_NAME, ServerDB.TABLE_NAME_TMP));
 			db.execSQL("DROP TABLE " + ServerDB.TABLE_NAME + ";");
 			db.execSQL("ALTER TABLE " + ServerDB.TABLE_NAME_TMP + " RENAME TO " + ServerDB.TABLE_NAME + ";");
+			break;
+		case 4:
+			db.execSQL("UPDATE " + ActionDB.TABLE_NAME + " SET " + ActionDB.COLUMN_NAME_DESCRIPTION + " = '" + ActionDB.DEFAULT_ACTION_DESC_EN + ActionDB.DEFAULT_ACTION_DESC_FR + "' WHERE title = 'action de démonstration';");
+			db.execSQL("UPDATE " + ActionDB.TABLE_NAME + " SET " + ActionDB.COLUMN_NAME_TITLE + " = '" + ActionDB.DEFAULT_ACTION_TITLE + "' WHERE title = 'action de démonstration';");
 			break;
 		}
 	}

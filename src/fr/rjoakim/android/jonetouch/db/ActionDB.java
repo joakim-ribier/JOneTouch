@@ -34,14 +34,15 @@ import fr.rjoakim.android.jonetouch.bean.ActionScript;
  */
 public class ActionDB extends DBHelper {
 
-	private static final String DEFAULT_ACTION_TITLE = "action de démonstration"; 
-	private static final String DEFAULT_ACTION_DESC = "Cette action de démonstration exécute seulement sur votre serveur la commande hostname." +
-			"\n\nCommencez par créer une nouvelle connexion à l''aide du menu de gauche sur l''un de vos serveurs puis testez le script !!!\n\n Enjoy :)";
+	public static final String DEFAULT_ACTION_TITLE = "action"; 
+	public static final String DEFAULT_ACTION_DESC_FR = "\n\n[FR]\nCette action de démonstration exécute sur votre serveur la commande hostname." +
+			"\n\nCommencez par créer une nouvelle connexion à l''aide du menu de gauche sur l''un de vos serveurs, puis testez le script.";
+	public static final String DEFAULT_ACTION_DESC_EN = "[EN]\nThis demonstration action runs only on your server the hostname command.\n\nStart to create a new connection on your server with the left menu and test the script.";
 	
 	public static final String TABLE_NAME = "action";
 	public static final String COLUMN_NAME_ID = "id";
-	private static final String COLUMN_NAME_TITLE = "title";
-	private static final String COLUMN_NAME_DESCRIPTION = "description";
+	public static final String COLUMN_NAME_TITLE = "title";
+	public static final String COLUMN_NAME_DESCRIPTION = "description";
 	private static final String COLUMN_NAME_BACKGROUND_COLOR = "background_color_hex";
 
 	public static String buildCreateTableQuery() {
@@ -69,7 +70,7 @@ public class ActionDB extends DBHelper {
 				append(COLUMN_NAME_ID).append(",").
 				append(COLUMN_NAME_TITLE).append(",").
 				append(COLUMN_NAME_DESCRIPTION).append(") ");
-		builder.append("VALUES ('1', '" + DEFAULT_ACTION_TITLE + "', '" + DEFAULT_ACTION_DESC + "');");
+		builder.append("VALUES ('1', '" + DEFAULT_ACTION_TITLE + "', '" + DEFAULT_ACTION_DESC_EN + DEFAULT_ACTION_DESC_FR + "');");
 		return builder.toString();
 	}
 	
